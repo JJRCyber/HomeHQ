@@ -11,7 +11,7 @@ import SwiftUI
 struct HomeHQApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabBarView(showSignInView: .constant(false))
         }
     }
 }
