@@ -21,7 +21,7 @@ struct NoticeBoardWidgetView: View {
             }
             List {
                 ForEach(viewModel.notices) { notice in
-                    NoticeRowView(notice: notice)
+                    NoticeWidgetRowView(notice: notice)
                 }
                 .listRowBackground(Color.clear)
             }

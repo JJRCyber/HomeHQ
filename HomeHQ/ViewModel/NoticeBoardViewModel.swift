@@ -12,14 +12,16 @@ struct Notice: Identifiable {
     let title: String
     let detail: String
     let date: Date
+    let importance: Int
+    let user: String
 }
 
 class NoticeBoardViewModel: ObservableObject {
     @Published var notices: [Notice] = []
     
     func addNotice() {
-        let notice1 = Notice(title: "Shower isn't working", detail: "Shower needs to be fixed don't use until 08/23", date: Date())
-        let notice2 = Notice(title: "Internet is slow today", detail: "Should be fixed tomorrow", date: Date())
+        let notice1 = Notice(title: "Electrician coming today", detail: "Should be coming between 1 - 2pm, changing lights", date: Date(), importance: 4, user: "Cooper")
+        let notice2 = Notice(title: "Internet is slow today", detail: "Should be fixed tomorrow", date: Date(), importance: 3, user: "Amelia")
         
         notices.append(notice1)
         notices.append(notice2)
