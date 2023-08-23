@@ -12,9 +12,24 @@ struct NoticeBoardWidgetView: View {
     @StateObject var viewModel = NoticeBoardViewModel()
     
     var body: some View {
-        HStack(alignment: .top) {
-            Text("Notices")
-                .font(.headline)
+        VStack(spacing: 0) {
+            HStack(alignment: .top) {
+                Text("Notices")
+                    .font(.headline)
+                    .padding()
+                Spacer()
+            }
+            List {
+                ForEach(viewModel.notices) { notice in
+                    NoticeRowView(notice: notice)
+                }
+                .listRowBackground(Color.clear)
+            }
+            .listStyle(PlainListStyle())
+            Spacer()
+        }
+        .onAppear {
+            viewModel.addNotice()
         }
         .frame(height: 150)
         .frame(maxWidth: .infinity)

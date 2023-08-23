@@ -10,6 +10,7 @@ import SwiftUI
 struct DashboardView: View {
     
     @StateObject var viewModel = DashboardViewModel()
+    @ObservedObject var tabBarViewModel: TabBarViewModel
     
     var body: some View {
         ZStack {
@@ -17,9 +18,21 @@ struct DashboardView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     NoticeBoardWidgetView()
+                        .onTapGesture {
+                            tabBarViewModel.selectedTab = 2
+                        }
                     RemindersWidgetView()
+                        .onTapGesture {
+                            tabBarViewModel.selectedTab = 3
+                        }
                     BillWidgetView()
+                        .onTapGesture {
+                            tabBarViewModel.selectedTab = 1
+                        }
                     HouseDutiesWidgetView()
+                        .onTapGesture {
+                            tabBarViewModel.selectedTab = 4
+                        }
                 }
                 .padding(.top)
             }

@@ -31,6 +31,7 @@
 		9B17BF3C2A96096B007516C6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9B17BF3B2A96096B007516C6 /* FirebaseAnalytics */; };
 		9B17BF3E2A96096B007516C6 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9B17BF3D2A96096B007516C6 /* FirebaseAnalyticsSwift */; };
 		9B17BF402A96096B007516C6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9B17BF3F2A96096B007516C6 /* FirebaseAuth */; };
+		9B17BF432A96222B007516C6 /* NoticeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF422A96222B007516C6 /* NoticeRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		9B17BF362A95DE25007516C6 /* HouseDutiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseDutiesViewModel.swift; sourceTree = "<group>"; };
 		9B17BF382A9608FE007516C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9B17BF412A9609C9007516C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9B17BF422A96222B007516C6 /* NoticeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				9B17BF2E2A95D64A007516C6 /* BillWidgetView.swift */,
 				9B17BF322A95D752007516C6 /* RemindersWidgetView.swift */,
 				9B17BF342A95DDE6007516C6 /* HouseDutiesWidgetView.swift */,
+				9B17BF422A96222B007516C6 /* NoticeRowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				9B17BF2B2A95D4E4007516C6 /* NoticeBoardViewModel.swift in Sources */,
 				9B17BF1A2A95BCD2007516C6 /* TabBarViewModel.swift in Sources */,
 				9B17BF1F2A95BD73007516C6 /* NoticeBoardView.swift in Sources */,
+				9B17BF432A96222B007516C6 /* NoticeRowView.swift in Sources */,
 				9B17BF212A95BD87007516C6 /* RemindersView.swift in Sources */,
 				9B17BF2F2A95D64A007516C6 /* BillWidgetView.swift in Sources */,
 				9B17BF232A95BD95007516C6 /* HouseDutiesView.swift in Sources */,

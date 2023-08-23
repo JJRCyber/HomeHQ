@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabBarView: View {
 
-    @State var selectedTab: Int = 0
+
     @Binding var showSignInView: Bool
     @StateObject var viewModel = TabBarViewModel()
 
@@ -31,9 +31,9 @@ struct TabBarView: View {
                 .background(Color("AlternateBackground"))
                 .font(.title)
                 .foregroundColor(Color("PrimaryText"))
-                TabView(selection: $selectedTab) {
+                TabView(selection: $viewModel.selectedTab) {
                     Group {
-                        DashboardView()
+                        DashboardView(tabBarViewModel: viewModel)
                             .tabItem {
                                 Image(systemName: "square.grid.2x2")
                                 Text("Dashboard")                        }
