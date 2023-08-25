@@ -34,6 +34,8 @@
 		9B17BF432A96222B007516C6 /* NoticeWidgetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF422A96222B007516C6 /* NoticeWidgetRowView.swift */; };
 		9B17BF452A96289D007516C6 /* NoticeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF442A96289D007516C6 /* NoticeRowView.swift */; };
 		9B17BF482A9639C6007516C6 /* ImportanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF472A9639C6007516C6 /* ImportanceView.swift */; };
+		9BF66B0B2A98BA3C00720241 /* WeekPlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */; };
+		9BF66B0D2A98C04C00720241 /* WeekPlannerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,8 @@
 		9B17BF422A96222B007516C6 /* NoticeWidgetRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeWidgetRowView.swift; sourceTree = "<group>"; };
 		9B17BF442A96289D007516C6 /* NoticeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeRowView.swift; sourceTree = "<group>"; };
 		9B17BF472A9639C6007516C6 /* ImportanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportanceView.swift; sourceTree = "<group>"; };
+		9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPlannerView.swift; sourceTree = "<group>"; };
+		9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPlannerRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,8 @@
 				9B17BF422A96222B007516C6 /* NoticeWidgetRowView.swift */,
 				9B17BF442A96289D007516C6 /* NoticeRowView.swift */,
 				9B17BF472A9639C6007516C6 /* ImportanceView.swift */,
+				9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */,
+				9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */,
 			);
 			path = "Notice Board";
 			sourceTree = "<group>";
@@ -240,10 +246,12 @@
 			files = (
 				9B17BF2B2A95D4E4007516C6 /* NoticeBoardViewModel.swift in Sources */,
 				9B17BF1A2A95BCD2007516C6 /* TabBarViewModel.swift in Sources */,
+				9BF66B0D2A98C04C00720241 /* WeekPlannerRowView.swift in Sources */,
 				9B17BF1F2A95BD73007516C6 /* NoticeBoardView.swift in Sources */,
 				9B17BF432A96222B007516C6 /* NoticeWidgetRowView.swift in Sources */,
 				9B17BF212A95BD87007516C6 /* RemindersView.swift in Sources */,
 				9B17BF2F2A95D64A007516C6 /* BillWidgetView.swift in Sources */,
+				9BF66B0B2A98BA3C00720241 /* WeekPlannerView.swift in Sources */,
 				9B17BF232A95BD95007516C6 /* HouseDutiesView.swift in Sources */,
 				9B17BF2D2A95D5DC007516C6 /* BillViewModel.swift in Sources */,
 				9B17BF372A95DE25007516C6 /* HouseDutiesViewModel.swift in Sources */,

@@ -17,7 +17,30 @@ struct Notice: Identifiable {
 }
 
 class NoticeBoardViewModel: ObservableObject {
+    
     @Published var notices: [Notice] = []
+    
+    var upcomingWeek: [Date] {
+        var dates: [Date] = []
+        
+        for index in 0..<7 {
+            if let date = Calendar.current.date(byAdding: .day, value: index, to: Date()) {
+                dates.append(date)
+            }
+        }
+
+        return dates
+    }
+    
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE" // Day of the week
+        return formatter
+    }()
+    
+    func formatDayOfWeek(date: Date) -> String {
+        return dateFormatter.string(from: date)
+    }
     
     func addNotice() {
         let notice1 = Notice(title: "Electrician coming today", detail: "Should be coming between 1 - 2pm, changing lights", date: Date(), importance: 4, user: "Cooper")

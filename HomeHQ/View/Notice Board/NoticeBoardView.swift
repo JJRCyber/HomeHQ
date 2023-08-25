@@ -10,18 +10,17 @@ import SwiftUI
 struct NoticeBoardView: View {
     
     @StateObject var viewModel = NoticeBoardViewModel()
+    
     var body: some View {
-        VStack() {
-
+        VStack(spacing: 0) {
             ScrollView {
                 ForEach(viewModel.notices) { notice in
                     NoticeRowView(notice: notice)
-                        .padding(.top)
                 }
             }
-            .frame(height: 380)
-            .cornerRadius(10)
-            Spacer()
+            .frame(maxHeight: 250)
+            WeekPlannerView(viewModel: viewModel)
+                .shadow(color: Color("AccentColor"), radius: 5)
             Button {
                 
             } label: {
@@ -34,6 +33,8 @@ struct NoticeBoardView: View {
                     .padding()
                     .foregroundColor(Color("SecondaryText"))
             }
+
+            
 
         }
         .onAppear {
