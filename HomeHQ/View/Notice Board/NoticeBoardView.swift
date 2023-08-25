@@ -13,12 +13,8 @@ struct NoticeBoardView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            ScrollView {
-                ForEach(viewModel.notices) { notice in
-                    NoticeRowView(notice: notice)
-                }
-            }
-            .frame(maxHeight: 250)
+            BulletinView(viewModel: viewModel)
+                .shadow(color: Color("AccentColor"), radius: 5)
             WeekPlannerView(viewModel: viewModel)
                 .shadow(color: Color("AccentColor"), radius: 5)
             Button {

@@ -13,7 +13,6 @@ struct NoticeRowView: View {
     
     var body: some View {
         HStack() {
-            // Need to change to snapshot taken when map is downloaded
             Image("Example")
                 .resizable()
                 .frame(width: 100, height: 100)
@@ -27,7 +26,6 @@ struct NoticeRowView: View {
                 Text(notice.detail)
                     .font(.caption2)
                     .multilineTextAlignment(.leading)
-                    .padding(.trailing)
                 Spacer()
                 HStack {
                     ImportanceView(importance: notice.importance)
@@ -42,10 +40,6 @@ struct NoticeRowView: View {
         
         .frame(maxWidth: .infinity)
         .frame(maxHeight: 100)
-        .background(Color("ButtonBackground"))
-        .cornerRadius(10)
-        .padding(.horizontal)
-        .shadow(color: Color("AccentColor") ,radius: 5, y: 5)
     }
 }
 

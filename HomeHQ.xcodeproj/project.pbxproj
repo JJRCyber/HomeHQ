@@ -36,6 +36,7 @@
 		9B17BF482A9639C6007516C6 /* ImportanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF472A9639C6007516C6 /* ImportanceView.swift */; };
 		9BF66B0B2A98BA3C00720241 /* WeekPlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */; };
 		9BF66B0D2A98C04C00720241 /* WeekPlannerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */; };
+		9BF66B112A98D1AE00720241 /* BulletinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B102A98D1AE00720241 /* BulletinView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		9B17BF472A9639C6007516C6 /* ImportanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportanceView.swift; sourceTree = "<group>"; };
 		9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPlannerView.swift; sourceTree = "<group>"; };
 		9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPlannerRowView.swift; sourceTree = "<group>"; };
+		9BF66B102A98D1AE00720241 /* BulletinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				9B17BF472A9639C6007516C6 /* ImportanceView.swift */,
 				9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */,
 				9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */,
+				9BF66B102A98D1AE00720241 /* BulletinView.swift */,
 			);
 			path = "Notice Board";
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				9B17BF272A95C12A007516C6 /* DashboardViewModel.swift in Sources */,
 				9B17BF452A96289D007516C6 /* NoticeRowView.swift in Sources */,
 				9B17BF312A95D734007516C6 /* RemindersViewModel.swift in Sources */,
+				9BF66B112A98D1AE00720241 /* BulletinView.swift in Sources */,
 				9B17BF332A95D752007516C6 /* RemindersWidgetView.swift in Sources */,
 				9B17BF252A95BD9D007516C6 /* SettingsView.swift in Sources */,
 				9B17BF152A95BBFE007516C6 /* DashboardView.swift in Sources */,
