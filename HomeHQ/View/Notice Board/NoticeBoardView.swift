@@ -14,28 +14,27 @@ struct NoticeBoardView: View {
         VStack() {
 
             ScrollView {
-                Button {
-                    
-                } label: {
-                    Text("Create Notice")
-                        .frame(height: 55)
-                        .frame(maxWidth: .infinity)
-                        .background(Color("Highlight"))
-                        .cornerRadius(10)
-                        .shadow(color: Color("AccentColor"), radius: 5, x: 0, y: 5)
-                        .padding()
-                        .foregroundColor(Color("SecondaryText"))
-                }
                 ForEach(viewModel.notices) { notice in
                     NoticeRowView(notice: notice)
                         .padding(.top)
                 }
             }
-            .frame(height: 400)
+            .frame(height: 380)
             .cornerRadius(10)
-            .shadow(radius: 10, y: 5)
-            .padding()
             Spacer()
+            Button {
+                
+            } label: {
+                Text("Create Notice")
+                    .frame(height: 55)
+                    .frame(maxWidth: .infinity)
+                    .background(Color("Highlight"))
+                    .cornerRadius(10)
+                    .shadow(color: Color("AccentColor"), radius: 5, x: 0, y: 5)
+                    .padding()
+                    .foregroundColor(Color("SecondaryText"))
+            }
+
         }
         .onAppear {
             viewModel.addNotice()
@@ -45,7 +44,13 @@ struct NoticeBoardView: View {
 }
 
 struct NoticeBoardView_Previews: PreviewProvider {
+    static var viewModel: TabBarViewModel = {
+        let vm = TabBarViewModel()
+        vm.selectedTab = 2
+        return vm
+    }()
+    
     static var previews: some View {
-        TabBarView(showSignInView: .constant(false))
+        TabBarView(showSignInView: .constant(false), viewModel: viewModel)
     }
 }

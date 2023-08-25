@@ -45,7 +45,7 @@ struct NoticeRowView: View {
         .background(Color("ButtonBackground"))
         .cornerRadius(10)
         .padding(.horizontal)
-        .shadow(radius: 5, y: 5)
+        .shadow(color: Color("AccentColor") ,radius: 5, y: 5)
     }
 }
 
