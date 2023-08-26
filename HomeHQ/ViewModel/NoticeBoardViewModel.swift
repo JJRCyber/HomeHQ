@@ -24,7 +24,8 @@ class NoticeBoardViewModel: ObservableObject {
     // Stores array of notices that is displayed on view
     // Currently does not persist will add persistence later
     @Published var notices: [Notice] = [
-        Notice(title: "Test", detail: "Test", date: Date(), importance: 3, user: "Cooper")
+        Notice(title: "Test", detail: "Test", date: Date(), importance: 3, user: "Cooper"),
+        Notice(title: "Test2", detail: "Test2", date: Date(), importance: 4, user: "Cooper")
     ]
     
     // Is toggled when "Add Notice" button is pressed
@@ -71,6 +72,10 @@ class NoticeBoardViewModel: ObservableObject {
         noticeImportance = 1
         noticeDate = Date()
     }
+    
+    func deleteNotice(at offsets: IndexSet) {
+            notices.remove(atOffsets: offsets)
+        }
     
     
 }

@@ -13,19 +13,28 @@ struct BulletinView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Text("Bulletins")
+            Text("Notices")
                 .foregroundColor(Color("PrimaryText"))
                 .padding(.vertical)
             Divider()
-            ScrollView {
-                VStack(spacing: 0) {
+            if !viewModel.notices.isEmpty {
+                List {
                     ForEach(viewModel.notices) { notice in
                         NoticeRowView(notice: notice)
-                        Divider()
+                            .listRowInsets(EdgeInsets())
+                            .listRowBackground(Color.clear)
                     }
+                    .onDelete(perform: viewModel.deleteNotice)
                 }
-
+                .listStyle(.plain)
+            } else {
+                Spacer()
+                Text("No Notices!")
+                    .font(.headline)
+                    .foregroundColor(Color("PrimaryText"))
+                Spacer()
             }
+
         }
         .frame(maxHeight: 250)
         .frame(maxWidth: .infinity)
