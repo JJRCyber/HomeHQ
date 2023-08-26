@@ -28,9 +28,6 @@ struct NoticeBoardWidgetView: View {
             .listStyle(PlainListStyle())
             Spacer()
         }
-        .onAppear {
-            viewModel.addNotice()
-        }
         .frame(height: 150)
         .frame(maxWidth: .infinity)
         .background(Color("ButtonBackground"))

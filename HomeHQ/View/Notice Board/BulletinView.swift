@@ -32,10 +32,6 @@ struct BulletinView: View {
         .background(Color("ButtonBackground"))
         .cornerRadius(10)
         .padding()
-        
-        .onAppear {
-            viewModel.addNotice()
-        }
     }
 }
 

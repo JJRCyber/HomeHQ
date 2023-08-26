@@ -26,6 +26,7 @@ struct NoticeRowView: View {
                 Text(notice.detail)
                     .font(.caption2)
                     .multilineTextAlignment(.leading)
+                    .padding(.trailing)
                 Spacer()
                 HStack {
                     ImportanceView(importance: notice.importance)

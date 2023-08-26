@@ -37,6 +37,7 @@
 		9BF66B0B2A98BA3C00720241 /* WeekPlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */; };
 		9BF66B0D2A98C04C00720241 /* WeekPlannerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */; };
 		9BF66B112A98D1AE00720241 /* BulletinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B102A98D1AE00720241 /* BulletinView.swift */; };
+		9BF66B132A99F19400720241 /* AddNoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B122A99F19400720241 /* AddNoticeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPlannerView.swift; sourceTree = "<group>"; };
 		9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPlannerRowView.swift; sourceTree = "<group>"; };
 		9BF66B102A98D1AE00720241 /* BulletinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinView.swift; sourceTree = "<group>"; };
+		9BF66B122A99F19400720241 /* AddNoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoticeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */,
 				9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */,
 				9BF66B102A98D1AE00720241 /* BulletinView.swift */,
+				9BF66B122A99F19400720241 /* AddNoticeView.swift */,
 			);
 			path = "Notice Board";
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				9BF66B0D2A98C04C00720241 /* WeekPlannerRowView.swift in Sources */,
 				9B17BF1F2A95BD73007516C6 /* NoticeBoardView.swift in Sources */,
 				9B17BF432A96222B007516C6 /* NoticeWidgetRowView.swift in Sources */,
+				9BF66B132A99F19400720241 /* AddNoticeView.swift in Sources */,
 				9B17BF212A95BD87007516C6 /* RemindersView.swift in Sources */,
 				9B17BF2F2A95D64A007516C6 /* BillWidgetView.swift in Sources */,
 				9BF66B0B2A98BA3C00720241 /* WeekPlannerView.swift in Sources */,

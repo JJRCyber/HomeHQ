@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+// View model for bill view
 class BillViewModel: ObservableObject {
     
 }

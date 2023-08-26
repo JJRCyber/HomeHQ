@@ -9,7 +9,9 @@ import SwiftUI
 
 struct NoticeBoardView: View {
     
+    // View model initialised
     @StateObject var viewModel = NoticeBoardViewModel()
+    
     
     var body: some View {
         VStack(spacing: 0) {
@@ -17,24 +19,26 @@ struct NoticeBoardView: View {
                 .shadow(color: Color("AccentColor"), radius: 5)
             WeekPlannerView(viewModel: viewModel)
                 .shadow(color: Color("AccentColor"), radius: 5)
-            Button {
-                
-            } label: {
-                Text("Create Notice")
-                    .frame(height: 55)
-                    .frame(maxWidth: .infinity)
-                    .background(Color("Highlight"))
-                    .cornerRadius(10)
-                    .shadow(color: Color("AccentColor"), radius: 5, x: 0, y: 5)
-                    .padding()
-                    .foregroundColor(Color("SecondaryText"))
-            }
-
-            
-
+            createNoticeButton
         }
-        .onAppear {
-            viewModel.addNotice()
+        .sheet(isPresented: $viewModel.showAddNoticeSheet) {
+            AddNoticeView(viewModel: viewModel)
+        }
+
+    }
+    
+    var createNoticeButton: some View {
+        Button {
+            viewModel.showAddNoticeSheet.toggle()
+        } label: {
+            Text("Create Notice")
+                .frame(height: 55)
+                .frame(maxWidth: .infinity)
+                .background(Color("Highlight"))
+                .cornerRadius(10)
+                .shadow(color: Color("AccentColor"), radius: 5, x: 0, y: 5)
+                .padding()
+                .foregroundColor(Color("SecondaryText"))
         }
 
     }
