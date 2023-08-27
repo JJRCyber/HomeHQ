@@ -25,7 +25,7 @@ struct NoticeBoardWidgetView: View {
                 }
                 .listRowBackground(Color.clear)
             }
-            .listStyle(PlainListStyle())
+            .listStyle(.plain)
             Spacer()
         }
         .frame(height: 150)
