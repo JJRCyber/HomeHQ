@@ -7,8 +7,10 @@
 
 import Foundation
 
+// View model for Tab + Top bar view
 final class TabBarViewModel: ObservableObject {
     
     @Published var homeName = "Rickard Street"
+    @Published var selectedTab: Int = 0
     
 }

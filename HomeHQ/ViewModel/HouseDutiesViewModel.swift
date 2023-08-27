@@ -7,6 +7,7 @@
 
 import Foundation
 
+// View model for house duties view
 final class HouseDutiesViewModel: ObservableObject {
     
 }
