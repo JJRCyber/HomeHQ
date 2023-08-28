@@ -18,7 +18,6 @@ struct RemindersView: View {
             Color("BackgroundPrimary")
             VStack(spacing: 0) {
                 ShoppingListView()
-                    .shadow(color: Color("AccentColor"), radius: 5)
                 Spacer()
             }
         }

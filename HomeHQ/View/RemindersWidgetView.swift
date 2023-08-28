@@ -20,7 +20,6 @@ struct RemindersWidgetView: View {
             .frame(maxWidth: .infinity)
             .background(Color("ButtonBackground"))
             .cornerRadius(10)
-            .shadow(color: Color("AccentColor"), radius: 5, x: 0, y: 5)
             .padding(.leading)
             .foregroundColor(Color("PrimaryText"))
             VStack() {
@@ -33,7 +32,6 @@ struct RemindersWidgetView: View {
             .frame(maxWidth: .infinity)
             .background(Color("Highlight"))
             .cornerRadius(10)
-            .shadow(color: Color("Highlight"), radius: 5, x: 0, y: 5)
             .padding(.trailing)
             .foregroundColor(Color("SecondaryText"))
         }

@@ -14,18 +14,21 @@ struct NoticeBoardView: View {
     
     
     var body: some View {
-        VStack(spacing: 0) {
-            BulletinView(viewModel: viewModel)
-                .shadow(color: Color("AccentColor"), radius: 5)
-            WeekPlannerView(viewModel: viewModel)
-                .shadow(color: Color("AccentColor"), radius: 5)
-            createNoticeButton
-        }
-        .sheet(isPresented: $viewModel.showAddNoticeSheet) {
-            AddNoticeView(viewModel: viewModel)
-        }
+        ZStack {
+            Color("BackgroundPrimary")
+                .edgesIgnoringSafeArea(.all)
+            VStack(spacing: 0) {
+                BulletinView(viewModel: viewModel)
+                WeekPlannerView(viewModel: viewModel)
+                createNoticeButton
+            }
+            .sheet(isPresented: $viewModel.showAddNoticeSheet) {
+                AddNoticeView(viewModel: viewModel)
+            }
 
-    }
+        }
+        }
+        
     
     var createNoticeButton: some View {
         Button {
@@ -36,7 +39,6 @@ struct NoticeBoardView: View {
                 .frame(maxWidth: .infinity)
                 .background(Color("Highlight"))
                 .cornerRadius(10)
-                .shadow(color: Color("AccentColor"), radius: 5, x: 0, y: 5)
                 .padding()
                 .foregroundColor(Color("SecondaryText"))
         }

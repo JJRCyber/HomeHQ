@@ -32,7 +32,6 @@ struct NoticeBoardWidgetView: View {
         .frame(maxWidth: .infinity)
         .background(Color("ButtonBackground"))
         .cornerRadius(10)
-        .shadow(color: Color("AccentColor"), radius: 5, x: 0, y: 5)
         .padding(.horizontal)
         .foregroundColor(Color("PrimaryText"))
     }
