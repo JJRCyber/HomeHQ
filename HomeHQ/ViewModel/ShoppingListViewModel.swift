@@ -7,24 +7,6 @@
 
 import Foundation
 
-struct ShoppingListItem: Identifiable {
-    let id: String
-    let name: String
-    let quantity: Int
-    var completed: Bool = false
-    
-    init(id: String = UUID().uuidString, name: String, quantity: Int = 1, completed: Bool = false) {
-        self.id = id
-        self.name = name
-        self.quantity = quantity
-        self.completed = completed
-    }
-    
-    func updateCompletion() -> ShoppingListItem {
-        return ShoppingListItem(id: id, name: name, quantity: 3, completed: !completed)
-    }
-}
-
 // View model for reminders view
 class ShoppingListViewModel: ObservableObject {
     
@@ -40,11 +22,15 @@ class ShoppingListViewModel: ObservableObject {
         }
     
     func updateItemCompletion(item: ShoppingListItem) {
-        if let index = shoppingList.firstIndex(where: { $0.id == item.id }) {
-            shoppingList[index] = item.updateCompletion()
-        }
+        item.toggleCompleted()
     }
     
+    func updateItemQuantity(item: ShoppingListItem, newQuantity: Int) {
+        if newQuantity > 0 && newQuantity < 100 {
+            item.updateQuantity(newQuantity: newQuantity)
+        }
+    }
+
     func addItem() {
         let item = ShoppingListItem(name: newItemName)
         shoppingList.insert(item, at: 0)

@@ -20,41 +20,25 @@ struct ShoppingListView: View {
                     .padding(.vertical)
                     .padding(.leading)
                 Spacer()
-                Image(systemName: "plus")
-                    .padding(.trailing)
             }
 
             Divider()
-            if !viewModel.shoppingList.isEmpty {
-                List {
-                    TextField("Add Item", text: $viewModel.newItemName)
-                        .listRowBackground(Color.clear)
-                        .foregroundColor(Color("PrimaryText"))
-                        .font(.callout)
-                        .onSubmit {
-                            viewModel.addItem()
-                        }
-                    ForEach(viewModel.shoppingList) { item in
-                        ShoppingListRowView(item: item)
-                            .listRowInsets(EdgeInsets())
-                            .listRowBackground(Color.clear)
-                            .onTapGesture {
-                                withAnimation(.linear) {
-                                    viewModel.updateItemCompletion(item: item)
-                                }
-                            }
-                    }
-                    .onDelete(perform: viewModel.deleteItem)
-                }
-                .listStyle(.plain)
-            } else {
-                Spacer()
-                Text("Nothing in Shopping List!")
-                    .font(.headline)
+            List {
+                TextField("Add Item", text: $viewModel.newItemName)
+                    .listRowBackground(Color.clear)
                     .foregroundColor(Color("PrimaryText"))
-                Spacer()
+                    .font(.callout)
+                    .onSubmit {
+                        viewModel.addItem()
+                    }
+                ForEach(viewModel.shoppingList) { item in
+                    ShoppingListRowView(viewModel: viewModel, item: item)
+                        .listRowInsets(EdgeInsets())
+                        .listRowBackground(Color.clear)
+                }
+                .onDelete(perform: viewModel.deleteItem)
             }
-
+            .listStyle(.plain)
         }
         .frame(maxHeight: 250)
         .frame(maxWidth: .infinity)
