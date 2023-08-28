@@ -75,7 +75,6 @@ struct AddNoticeView: View {
                 }
             }
         }
-        .ignoresSafeArea(.keyboard, edges: .bottom)
     }
 }
 
