@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B0A8EC52A9B5AC800943C2B /* ShoppingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0A8EC42A9B5AC800943C2B /* ShoppingListView.swift */; };
+		9B0A8EC72A9B5BF400943C2B /* ShoppingListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0A8EC62A9B5BF400943C2B /* ShoppingListRowView.swift */; };
+		9B0A8EC92A9B724000943C2B /* RemindersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0A8EC82A9B724000943C2B /* RemindersViewModel.swift */; };
 		9B17BF072A95BBE7007516C6 /* HomeHQApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF062A95BBE7007516C6 /* HomeHQApp.swift */; };
 		9B17BF0B2A95BBE8007516C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B17BF0A2A95BBE8007516C6 /* Assets.xcassets */; };
 		9B17BF0E2A95BBE8007516C6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B17BF0D2A95BBE8007516C6 /* Preview Assets.xcassets */; };
@@ -23,7 +26,7 @@
 		9B17BF2B2A95D4E4007516C6 /* NoticeBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF2A2A95D4E4007516C6 /* NoticeBoardViewModel.swift */; };
 		9B17BF2D2A95D5DC007516C6 /* BillViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF2C2A95D5DC007516C6 /* BillViewModel.swift */; };
 		9B17BF2F2A95D64A007516C6 /* BillWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF2E2A95D64A007516C6 /* BillWidgetView.swift */; };
-		9B17BF312A95D734007516C6 /* RemindersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF302A95D734007516C6 /* RemindersViewModel.swift */; };
+		9B17BF312A95D734007516C6 /* ShoppingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF302A95D734007516C6 /* ShoppingListViewModel.swift */; };
 		9B17BF332A95D752007516C6 /* RemindersWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF322A95D752007516C6 /* RemindersWidgetView.swift */; };
 		9B17BF352A95DDE6007516C6 /* HouseDutiesWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF342A95DDE6007516C6 /* HouseDutiesWidgetView.swift */; };
 		9B17BF372A95DE25007516C6 /* HouseDutiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF362A95DE25007516C6 /* HouseDutiesViewModel.swift */; };
@@ -41,6 +44,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B0A8EC42A9B5AC800943C2B /* ShoppingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListView.swift; sourceTree = "<group>"; };
+		9B0A8EC62A9B5BF400943C2B /* ShoppingListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListRowView.swift; sourceTree = "<group>"; };
+		9B0A8EC82A9B724000943C2B /* RemindersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewModel.swift; sourceTree = "<group>"; };
 		9B17BF032A95BBE7007516C6 /* HomeHQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeHQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B17BF062A95BBE7007516C6 /* HomeHQApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHQApp.swift; sourceTree = "<group>"; };
 		9B17BF0A2A95BBE8007516C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,7 +64,7 @@
 		9B17BF2A2A95D4E4007516C6 /* NoticeBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeBoardViewModel.swift; sourceTree = "<group>"; };
 		9B17BF2C2A95D5DC007516C6 /* BillViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillViewModel.swift; sourceTree = "<group>"; };
 		9B17BF2E2A95D64A007516C6 /* BillWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillWidgetView.swift; sourceTree = "<group>"; };
-		9B17BF302A95D734007516C6 /* RemindersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewModel.swift; sourceTree = "<group>"; };
+		9B17BF302A95D734007516C6 /* ShoppingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewModel.swift; sourceTree = "<group>"; };
 		9B17BF322A95D752007516C6 /* RemindersWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersWidgetView.swift; sourceTree = "<group>"; };
 		9B17BF342A95DDE6007516C6 /* HouseDutiesWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseDutiesWidgetView.swift; sourceTree = "<group>"; };
 		9B17BF362A95DE25007516C6 /* HouseDutiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseDutiesViewModel.swift; sourceTree = "<group>"; };
@@ -138,6 +144,8 @@
 				9B17BF2E2A95D64A007516C6 /* BillWidgetView.swift */,
 				9B17BF322A95D752007516C6 /* RemindersWidgetView.swift */,
 				9B17BF342A95DDE6007516C6 /* HouseDutiesWidgetView.swift */,
+				9B0A8EC42A9B5AC800943C2B /* ShoppingListView.swift */,
+				9B0A8EC62A9B5BF400943C2B /* ShoppingListRowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -149,8 +157,9 @@
 				9B17BF262A95C12A007516C6 /* DashboardViewModel.swift */,
 				9B17BF2A2A95D4E4007516C6 /* NoticeBoardViewModel.swift */,
 				9B17BF2C2A95D5DC007516C6 /* BillViewModel.swift */,
-				9B17BF302A95D734007516C6 /* RemindersViewModel.swift */,
+				9B17BF302A95D734007516C6 /* ShoppingListViewModel.swift */,
 				9B17BF362A95DE25007516C6 /* HouseDutiesViewModel.swift */,
+				9B0A8EC82A9B724000943C2B /* RemindersViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -258,14 +267,16 @@
 				9BF66B132A99F19400720241 /* AddNoticeView.swift in Sources */,
 				9B17BF212A95BD87007516C6 /* RemindersView.swift in Sources */,
 				9B17BF2F2A95D64A007516C6 /* BillWidgetView.swift in Sources */,
+				9B0A8EC52A9B5AC800943C2B /* ShoppingListView.swift in Sources */,
 				9BF66B0B2A98BA3C00720241 /* WeekPlannerView.swift in Sources */,
 				9B17BF232A95BD95007516C6 /* HouseDutiesView.swift in Sources */,
 				9B17BF2D2A95D5DC007516C6 /* BillViewModel.swift in Sources */,
+				9B0A8EC92A9B724000943C2B /* RemindersViewModel.swift in Sources */,
 				9B17BF372A95DE25007516C6 /* HouseDutiesViewModel.swift in Sources */,
 				9B17BF352A95DDE6007516C6 /* HouseDutiesWidgetView.swift in Sources */,
 				9B17BF272A95C12A007516C6 /* DashboardViewModel.swift in Sources */,
 				9B17BF452A96289D007516C6 /* NoticeRowView.swift in Sources */,
-				9B17BF312A95D734007516C6 /* RemindersViewModel.swift in Sources */,
+				9B17BF312A95D734007516C6 /* ShoppingListViewModel.swift in Sources */,
 				9BF66B112A98D1AE00720241 /* BulletinView.swift in Sources */,
 				9B17BF332A95D752007516C6 /* RemindersWidgetView.swift in Sources */,
 				9B17BF252A95BD9D007516C6 /* SettingsView.swift in Sources */,
@@ -273,6 +284,7 @@
 				9B17BF182A95BCB6007516C6 /* TabBarView.swift in Sources */,
 				9B17BF072A95BBE7007516C6 /* HomeHQApp.swift in Sources */,
 				9B17BF482A9639C6007516C6 /* ImportanceView.swift in Sources */,
+				9B0A8EC72A9B5BF400943C2B /* ShoppingListRowView.swift in Sources */,
 				9B17BF1D2A95BD4D007516C6 /* BillView.swift in Sources */,
 				9B17BF292A95D466007516C6 /* NoticeBoardWidgetView.swift in Sources */,
 			);
