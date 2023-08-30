@@ -10,7 +10,7 @@ import SwiftUI
 struct DashboardView: View {
     
     @StateObject var viewModel = DashboardViewModel()
-    @ObservedObject var tabBarViewModel: TabBarViewModel
+    @EnvironmentObject var tabBarViewModel: TabBarViewModel
     
     var body: some View {
         ZStack {

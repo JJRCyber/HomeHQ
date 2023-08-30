@@ -54,6 +54,6 @@ struct NoticeBoardView_Previews: PreviewProvider {
     }()
     
     static var previews: some View {
-        TabBarView(showSignInView: .constant(false), viewModel: viewModel)
+        TabBarView(showSignInView: .constant(false), tabBarViewModel: viewModel)
     }
 }
