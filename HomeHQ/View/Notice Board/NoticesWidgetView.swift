@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NoticesWidgetView: View {
     
-    @StateObject var viewModel = NoticeBoardViewModel()
+    @StateObject var viewModel = NoticePageViewModel()
     
     // Notice widget view that is seen on dashboard
     var body: some View {

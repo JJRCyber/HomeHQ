@@ -27,21 +27,23 @@ final class AuthenticationViewModel: ObservableObject {
         let helper = GoogleSignInHelper()
         let tokens = try await helper.signInGoogle()
         let authDataResult = try await AuthenticationManager.shared.signInWithGoogle(tokens: tokens)
-        //        let user = UserProfile(auth: authDataResult)
-        //        let userDocument = try? await UserManager.shared.getUser(email: user.email)
-        //        if userDocument == nil {
-        //            try await UserManager.shared.createNewUser(user: user)
+        let user = UserProfile(auth: authDataResult)
+        let userDocument = try? await UserManager.shared.getUser(userId: user.userId)
+        if userDocument == nil {
+            try await UserManager.shared.createNewUser(user: user)
+        }
     }
     
     // Launches Apple Sign In dialog and then signs user in through Firebase Auth
     func signInApple() async throws {
         let helper = AppleSignInHelper()
         let tokens = try await helper.startSignInWithAppleFlow()
-        try await AuthenticationManager.shared.signInWithApple(tokens: tokens)
-        //        let user = UserProfile(auth: authDataResult)
-        //        let userDocument = try? await UserManager.shared.getUser(email: user.email)
-        //        if userDocument == nil {
-        //            try await UserManager.shared.createNewUser(user: user)
+        let authDataResult = try await AuthenticationManager.shared.signInWithApple(tokens: tokens)
+        let user = UserProfile(auth: authDataResult)
+        let userDocument = try? await UserManager.shared.getUser(userId: user.userId)
+        if userDocument == nil {
+            try await UserManager.shared.createNewUser(user: user)
+        }
     }
     
     

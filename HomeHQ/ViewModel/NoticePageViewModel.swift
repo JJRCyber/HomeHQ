@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 // View Model for notice board view and subviews
-class NoticeBoardViewModel: ObservableObject {
+class NoticePageViewModel: ObservableObject {
     
     // Stores array of notices that is displayed on view
     // Currently does not persist will add persistence later

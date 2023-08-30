@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddNoticeView: View {
 
-    @ObservedObject var viewModel: NoticeBoardViewModel
+    @ObservedObject var viewModel: NoticePageViewModel
 
     // View displayed as sheet to add notice
     var body: some View {
@@ -93,6 +93,6 @@ struct AddNoticeView: View {
 
 struct AddNoticeView_Previews: PreviewProvider {
     static var previews: some View {
-        AddNoticeView(viewModel: NoticeBoardViewModel())
+        AddNoticeView(viewModel: NoticePageViewModel())
     }
 }

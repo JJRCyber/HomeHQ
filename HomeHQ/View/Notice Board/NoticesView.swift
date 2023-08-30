@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NoticesView: View {
     
-    @ObservedObject var viewModel: NoticeBoardViewModel
+    @ObservedObject var viewModel: NoticePageViewModel
     
     var body: some View {
         VStack(spacing: 0) {
@@ -50,6 +50,6 @@ struct NoticesView: View {
 
 struct NoticesView_Previews: PreviewProvider {
     static var previews: some View {
-        NoticesView(viewModel: NoticeBoardViewModel())
+        NoticesView(viewModel: NoticePageViewModel())
     }
 }

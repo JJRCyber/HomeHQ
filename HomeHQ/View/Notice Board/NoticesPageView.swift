@@ -10,7 +10,7 @@ import SwiftUI
 struct NoticesPageView: View {
     
     // View model initialised
-    @StateObject var viewModel = NoticeBoardViewModel()
+    @StateObject var viewModel = NoticePageViewModel()
     
     // Displays both Notices and WeekPlanner view
     // Sheet is triggered by create notice button

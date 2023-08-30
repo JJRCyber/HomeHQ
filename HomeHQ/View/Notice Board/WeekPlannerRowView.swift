@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WeekPlannerRowView: View {
     
-    @ObservedObject var viewModel: NoticeBoardViewModel
+    @ObservedObject var viewModel: NoticePageViewModel
     
     var date: Date
     
@@ -30,6 +30,6 @@ struct WeekPlannerRowView: View {
 
 struct WeekPlannerRowView_Previews: PreviewProvider {
     static var previews: some View {
-        WeekPlannerRowView(viewModel: NoticeBoardViewModel(), date: Date())
+        WeekPlannerRowView(viewModel: NoticePageViewModel(), date: Date())
     }
 }

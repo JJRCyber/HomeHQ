@@ -39,8 +39,8 @@ final class EmailSignUpViewModel: ObservableObject {
 
         // Try to create user with given email and password
         let authDatResult = try await AuthenticationManager.shared.createUser(email: email, password: password)
-//        let user = UserProfile(auth: authDatResult)
-//        try await UserManager.shared.createNewUser(user: user)
+        let user = UserProfile(auth: authDatResult)
+        try await UserManager.shared.createNewUser(user: user)
     }
     
     func isValidEmail(email: String) -> Bool {
