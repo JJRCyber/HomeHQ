@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NoticeWidgetRowView: View {
+struct NoticesWidgetRowView: View {
     
     let notice: Notice
     
@@ -22,8 +22,8 @@ struct NoticeWidgetRowView: View {
     }
 }
 
-struct NoticeWidgetRowView_Previews: PreviewProvider {
+struct NoticesWidgetRowView_Previews: PreviewProvider {
     static var previews: some View {
-        NoticeWidgetRowView(notice: Notice(title: "Shower is broken", detail: "", date: Date(), importance: 4, user: "Cooper"))
+        NoticesWidgetRowView(notice: Notice(title: "Shower is broken", detail: "", date: Date(), importance: 4, user: "Cooper"))
     }
 }

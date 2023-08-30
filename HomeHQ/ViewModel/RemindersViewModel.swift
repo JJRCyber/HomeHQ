@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+// View model for RemindersView
 final class RemindersViewModel: ObservableObject {
     
 }

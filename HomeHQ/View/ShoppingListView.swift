@@ -11,6 +11,8 @@ struct ShoppingListView: View {
     
     @StateObject var viewModel = ShoppingListViewModel()
     
+    // Shopping list with text field at the top before list of
+    // items from view model. Buttons allow modification of quantity and completion
     var body: some View {
         VStack(spacing: 0) {
             HStack{

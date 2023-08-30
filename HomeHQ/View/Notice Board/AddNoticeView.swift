@@ -11,53 +11,20 @@ struct AddNoticeView: View {
 
     @ObservedObject var viewModel: NoticeBoardViewModel
 
+    // View displayed as sheet to add notice
     var body: some View {
         ZStack {
             Color("ButtonBackground")
                 .edgesIgnoringSafeArea(.all)
             ScrollView {
                 VStack(alignment: .leading) {
-                    HStack {
-                        Button {
-                            viewModel.showAddNoticeSheet.toggle()
-                        } label: {
-                            Text("Cancel")
-                                .foregroundColor(.red)
-                                .padding()
-                        }
-                        Spacer()
-                        Text("New Notice")
-                            .font(.headline)
-                            .foregroundColor(Color("PrimaryText"))
-                            .padding()
-                        Spacer()
-                        Button {
-                            viewModel.addNotice()
-                        } label: {
-                            Text("Add")
-                                .font(.headline)
-                                .foregroundColor(Color("PrimaryText"))
-                                .padding()
-                        }
-
-                    }
-                    TextField("Title", text: $viewModel.noticeTitle)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background()
-                        .cornerRadius(10)
-                        .padding(.horizontal)
+                    menuBar
+                    titleTextField
                     Text("Description")
                         .font(.callout)
                         .padding(.horizontal)
                         .foregroundColor(Color("PrimaryText"))
-                    TextEditor(text: $viewModel.noticeDescription)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 120)
-                        .background()
-                        .cornerRadius(10)
-                        .padding(.horizontal)
+                    descriptionTextField
                     DatePicker(selection: $viewModel.noticeDate, displayedComponents: .date) {
                         Text("Notice Date")
                     }
@@ -75,6 +42,52 @@ struct AddNoticeView: View {
                 }
             }
         }
+    }
+    
+    var menuBar: some View {
+        HStack {
+            Button {
+                viewModel.showAddNoticeSheet.toggle()
+            } label: {
+                Text("Cancel")
+                    .foregroundColor(.red)
+                    .padding()
+            }
+            Spacer()
+            Text("New Notice")
+                .font(.headline)
+                .foregroundColor(Color("PrimaryText"))
+                .padding()
+            Spacer()
+            Button {
+                viewModel.addNotice()
+            } label: {
+                Text("Add")
+                    .font(.headline)
+                    .foregroundColor(Color("PrimaryText"))
+                    .padding()
+            }
+
+        }
+    }
+    
+    var titleTextField: some View {
+        TextField("Title", text: $viewModel.noticeTitle)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background()
+            .cornerRadius(10)
+            .padding(.horizontal)
+    }
+    
+    var descriptionTextField: some View {
+        TextEditor(text: $viewModel.noticeDescription)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .frame(height: 120)
+            .background()
+            .cornerRadius(10)
+            .padding(.horizontal)
     }
 }
 

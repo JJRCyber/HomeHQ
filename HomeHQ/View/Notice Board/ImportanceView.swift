@@ -10,6 +10,8 @@ import SwiftUI
 struct ImportanceView: View {
     
     let importance: Int
+    
+    // Importance symbol view that is reused across app
     var body: some View {
         HStack(spacing: 5) {
             Capsule()

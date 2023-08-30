@@ -8,6 +8,8 @@
 import Foundation
 import FirebaseAuth
 
+// MARK: DO NOT MARK - WRITTEN PRIOR TO THIS SUBJECT
+
 // Creating a struct to store only the needed data from the returned Firebase user object
 struct AuthDataResultModel {
     let uid: String

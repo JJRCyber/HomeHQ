@@ -12,12 +12,13 @@ struct DashboardView: View {
     @StateObject var viewModel = DashboardViewModel()
     @EnvironmentObject var tabBarViewModel: TabBarViewModel
     
+    // Displays simplified widget views of different app screens
     var body: some View {
         ZStack {
             Color("BackgroundPrimary")
             ScrollView {
                 VStack(spacing: 20) {
-                    NoticeBoardWidgetView()
+                    NoticesWidgetView()
                         .onTapGesture {
                             tabBarViewModel.selectedTab = 2
                         }

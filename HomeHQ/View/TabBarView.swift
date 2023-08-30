@@ -13,6 +13,7 @@ struct TabBarView: View {
     @Binding var showSignInView: Bool
     @StateObject var tabBarViewModel = TabBarViewModel()
 
+    // Tab and header bar that are seen through all tab pages
     var body: some View {
             VStack(spacing: 0) {
                 HStack {
@@ -43,7 +44,7 @@ struct TabBarView: View {
                                 Text("Costs")
                             }
                             .tag(1)
-                        NoticeBoardView()
+                        NoticesPageView()
                             .tabItem {
                                 Image(systemName: "list.clipboard.fill")
                                 Text("Notice Board")

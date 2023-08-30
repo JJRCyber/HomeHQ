@@ -7,20 +7,18 @@
 
 import SwiftUI
 
-struct BulletinView: View {
+struct NoticesView: View {
     
     @ObservedObject var viewModel: NoticeBoardViewModel
     
     var body: some View {
         VStack(spacing: 0) {
-            Text("Notices")
-                .foregroundColor(Color("PrimaryText"))
-                .padding(.vertical)
+            title
             Divider()
             if !viewModel.notices.isEmpty {
                 List {
                     ForEach(viewModel.notices) { notice in
-                        NoticeRowView(notice: notice)
+                        NoticesRowView(notice: notice)
                             .listRowInsets(EdgeInsets())
                             .listRowBackground(Color.clear)
                     }
@@ -42,10 +40,16 @@ struct BulletinView: View {
         .cornerRadius(10)
         .padding()
     }
+    
+    var title: some View {
+        Text("Notices")
+            .foregroundColor(Color("PrimaryText"))
+            .padding(.vertical)
+    }
 }
 
-struct BulletinView_Previews: PreviewProvider {
+struct NoticesView_Previews: PreviewProvider {
     static var previews: some View {
-        BulletinView(viewModel: NoticeBoardViewModel())
+        NoticesView(viewModel: NoticeBoardViewModel())
     }
 }

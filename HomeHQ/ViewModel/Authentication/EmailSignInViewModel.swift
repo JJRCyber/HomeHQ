@@ -5,9 +5,11 @@
 //  Created by Cooper Jacob on 30/8/2023.
 //
 
+// MARK: DO NOT MARK - WRITTEN PRIOR TO THIS SUBJECT
+
 import Foundation
 
-
+// View model for EmailSignInView
 final class EmailSignInViewModel: ObservableObject {
     
     @Published var email = ""

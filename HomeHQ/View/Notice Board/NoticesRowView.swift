@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NoticeRowView: View {
+struct NoticesRowView: View {
     
     let notice: Notice
     
@@ -19,14 +19,8 @@ struct NoticeRowView: View {
                 .clipped()
             Spacer()
             VStack(alignment: .leading,  spacing: 3) {
-                Text(notice.title)
-                    .font(.callout)
-                    .foregroundColor(Color("PrimaryText"))
-                    .padding(.top, 3)
-                Text(notice.detail)
-                    .font(.caption2)
-                    .multilineTextAlignment(.leading)
-                    .padding(.trailing)
+                title
+                detail
                 Spacer()
                 HStack {
                     ImportanceView(importance: notice.importance)
@@ -38,14 +32,27 @@ struct NoticeRowView: View {
                 .padding(.trailing)
             }
         }
-        
         .frame(maxWidth: .infinity)
         .frame(maxHeight: 100)
     }
+    
+    var title: some View {
+        Text(notice.title)
+            .font(.callout)
+            .foregroundColor(Color("PrimaryText"))
+            .padding(.top, 3)
+    }
+    
+    var detail: some View {
+        Text(notice.detail)
+            .font(.caption2)
+            .multilineTextAlignment(.leading)
+            .padding(.trailing)
+    }
 }
 
-struct NoticeRowView_Previews: PreviewProvider {
+struct NoticesRowView_Previews: PreviewProvider {
     static var previews: some View {
-        NoticeRowView(notice: Notice(title: "Shower is broken", detail: "The hot water is not working properly and needs to be fixed", date: Date(), importance: 4, user: "Cooper"))
+        NoticesRowView(notice: Notice(title: "Shower is broken", detail: "The hot water is not working properly and needs to be fixed", date: Date(), importance: 4, user: "Cooper"))
     }
 }

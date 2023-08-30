@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct NoticeBoardWidgetView: View {
+struct NoticesWidgetView: View {
     
     @StateObject var viewModel = NoticeBoardViewModel()
     
+    // Notice widget view that is seen on dashboard
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .top) {
@@ -21,7 +22,7 @@ struct NoticeBoardWidgetView: View {
             }
             List {
                 ForEach(viewModel.notices) { notice in
-                    NoticeWidgetRowView(notice: notice)
+                    NoticesWidgetRowView(notice: notice)
                 }
                 .listRowBackground(Color.clear)
             }
@@ -37,8 +38,8 @@ struct NoticeBoardWidgetView: View {
     }
 }
 
-struct NoticeBoardWidgetView_Previews: PreviewProvider {
+struct NoticesWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        NoticeBoardWidgetView()
+        NoticesWidgetView()
     }
 }

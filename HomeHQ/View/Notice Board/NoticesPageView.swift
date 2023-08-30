@@ -7,18 +7,19 @@
 
 import SwiftUI
 
-struct NoticeBoardView: View {
+struct NoticesPageView: View {
     
     // View model initialised
     @StateObject var viewModel = NoticeBoardViewModel()
     
-    
+    // Displays both Notices and WeekPlanner view
+    // Sheet is triggered by create notice button
     var body: some View {
         ZStack {
             Color("BackgroundPrimary")
                 .edgesIgnoringSafeArea(.all)
             VStack(spacing: 0) {
-                BulletinView(viewModel: viewModel)
+                NoticesView(viewModel: viewModel)
                 WeekPlannerView(viewModel: viewModel)
                 createNoticeButton
             }
@@ -46,7 +47,8 @@ struct NoticeBoardView: View {
     }
 }
 
-struct NoticeBoardView_Previews: PreviewProvider {
+// Custom preview viewModel so can be previewed with tab bar
+struct NoticesPageView_Previews: PreviewProvider {
     static var viewModel: TabBarViewModel = {
         let vm = TabBarViewModel()
         vm.selectedTab = 2

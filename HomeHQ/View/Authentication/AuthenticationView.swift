@@ -5,6 +5,9 @@
 //  Created by Cooper Jacob on 30/8/2023.
 //
 
+
+// MARK: DO NOT MARK - WRITTEN PRIOR TO THIS SUBJECT
+
 import SwiftUI
 
 // Main authentication view with options for sign in with google

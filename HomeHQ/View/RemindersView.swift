@@ -9,7 +9,6 @@ import SwiftUI
 
 struct RemindersView: View {
 
-    // View model initialised
     @StateObject var viewModel = RemindersViewModel()
 
 

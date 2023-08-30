@@ -63,6 +63,7 @@ class NoticeBoardViewModel: ObservableObject {
         noticeDate = Date()
     }
     
+    // Deletes notice at given index
     func deleteNotice(at offsets: IndexSet) {
             notices.remove(atOffsets: offsets)
         }
