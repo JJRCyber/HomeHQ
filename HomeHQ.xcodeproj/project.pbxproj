@@ -39,6 +39,8 @@
 		9B17BF482A9639C6007516C6 /* ImportanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF472A9639C6007516C6 /* ImportanceView.swift */; };
 		9B9110FA2A9C5BCD0020530B /* ShoppingListItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9110F92A9C5BCD0020530B /* ShoppingListItemModel.swift */; };
 		9B95C8B02A9EBD0400F61C8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B95C8AF2A9EBD0400F61C8B /* LaunchScreen.storyboard */; };
+		9B95C8B22A9ECF9200F61C8B /* ShoppingListWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B95C8B12A9ECF9200F61C8B /* ShoppingListWidgetView.swift */; };
+		9B95C8B42A9ED0E300F61C8B /* ShoppingListWidgetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B95C8B32A9ED0E300F61C8B /* ShoppingListWidgetRowView.swift */; };
 		9BF66B0B2A98BA3C00720241 /* WeekPlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */; };
 		9BF66B0D2A98C04C00720241 /* WeekPlannerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */; };
 		9BF66B112A98D1AE00720241 /* BulletinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B102A98D1AE00720241 /* BulletinView.swift */; };
@@ -77,6 +79,8 @@
 		9B17BF472A9639C6007516C6 /* ImportanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportanceView.swift; sourceTree = "<group>"; };
 		9B9110F92A9C5BCD0020530B /* ShoppingListItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListItemModel.swift; sourceTree = "<group>"; };
 		9B95C8AF2A9EBD0400F61C8B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9B95C8B12A9ECF9200F61C8B /* ShoppingListWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListWidgetView.swift; sourceTree = "<group>"; };
+		9B95C8B32A9ED0E300F61C8B /* ShoppingListWidgetRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListWidgetRowView.swift; sourceTree = "<group>"; };
 		9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPlannerView.swift; sourceTree = "<group>"; };
 		9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPlannerRowView.swift; sourceTree = "<group>"; };
 		9BF66B102A98D1AE00720241 /* BulletinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinView.swift; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 				9B0A8EC42A9B5AC800943C2B /* ShoppingListView.swift */,
 				9B0A8EC62A9B5BF400943C2B /* ShoppingListRowView.swift */,
 				9B95C8AF2A9EBD0400F61C8B /* LaunchScreen.storyboard */,
+				9B95C8B12A9ECF9200F61C8B /* ShoppingListWidgetView.swift */,
+				9B95C8B32A9ED0E300F61C8B /* ShoppingListWidgetRowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -284,6 +290,7 @@
 				9B9110FA2A9C5BCD0020530B /* ShoppingListItemModel.swift in Sources */,
 				9B17BF2F2A95D64A007516C6 /* BillWidgetView.swift in Sources */,
 				9B0A8EC52A9B5AC800943C2B /* ShoppingListView.swift in Sources */,
+				9B95C8B22A9ECF9200F61C8B /* ShoppingListWidgetView.swift in Sources */,
 				9BF66B0B2A98BA3C00720241 /* WeekPlannerView.swift in Sources */,
 				9B17BF232A95BD95007516C6 /* HouseDutiesView.swift in Sources */,
 				9B17BF2D2A95D5DC007516C6 /* BillViewModel.swift in Sources */,
@@ -291,6 +298,7 @@
 				9B17BF372A95DE25007516C6 /* HouseDutiesViewModel.swift in Sources */,
 				9B17BF352A95DDE6007516C6 /* HouseDutiesWidgetView.swift in Sources */,
 				9B17BF272A95C12A007516C6 /* DashboardViewModel.swift in Sources */,
+				9B95C8B42A9ED0E300F61C8B /* ShoppingListWidgetRowView.swift in Sources */,
 				9B17BF452A96289D007516C6 /* NoticeRowView.swift in Sources */,
 				9B17BF312A95D734007516C6 /* ShoppingListViewModel.swift in Sources */,
 				9BF66B112A98D1AE00720241 /* BulletinView.swift in Sources */,

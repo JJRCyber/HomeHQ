@@ -14,7 +14,11 @@ class ShoppingListViewModel: ObservableObject {
     
     @Published var shoppingList:[ShoppingListItem] = [
         ShoppingListItem(name: "Test", quantity: 5),
-        ShoppingListItem(name: "Test2", quantity: 3)
+        ShoppingListItem(name: "Test2", quantity: 3),
+        ShoppingListItem(name: "Test", quantity: 5),
+        ShoppingListItem(name: "Test2", quantity: 3),
+        ShoppingListItem(name: "Test2", quantity: 3),
+        ShoppingListItem(name: "Test", quantity: 5)
     ]
     
     func deleteItem(at offsets: IndexSet) {

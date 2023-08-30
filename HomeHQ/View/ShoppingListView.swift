@@ -28,6 +28,11 @@ struct ShoppingListView: View {
                     .listRowBackground(Color.clear)
                     .foregroundColor(Color("PrimaryText"))
                     .font(.callout)
+                    .overlay(alignment: .trailing, content: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.red)
+                            .opacity(viewModel.isValidEntry() ? 0.0 : 1.0)
+                    })
                     .onSubmit {
                         viewModel.addItem()
                     }

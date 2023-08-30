@@ -21,10 +21,17 @@ struct DashboardView: View {
                         .onTapGesture {
                             tabBarViewModel.selectedTab = 2
                         }
-                    RemindersWidgetView()
-                        .onTapGesture {
-                            tabBarViewModel.selectedTab = 3
-                        }
+                    HStack(spacing: 15) {
+                        RemindersWidgetView()
+                            .onTapGesture {
+                                tabBarViewModel.selectedTab = 3
+                            }
+                        ShoppingListWidgetView()
+                            .onTapGesture {
+                                tabBarViewModel.selectedTab = 3
+                            }
+                    }
+
                     BillWidgetView()
                         .onTapGesture {
                             tabBarViewModel.selectedTab = 1
