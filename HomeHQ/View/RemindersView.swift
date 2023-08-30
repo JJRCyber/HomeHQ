@@ -8,13 +8,31 @@
 import SwiftUI
 
 struct RemindersView: View {
+
+    // View model initialised
+    @StateObject var viewModel = RemindersViewModel()
+
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Color("BackgroundPrimary")
+            VStack(spacing: 0) {
+                ShoppingListView()
+                Spacer()
+            }
+        }
     }
+
 }
 
 struct RemindersView_Previews: PreviewProvider {
+    static var viewModel: TabBarViewModel = {
+        let vm = TabBarViewModel()
+        vm.selectedTab = 3
+        return vm
+    }()
+    
     static var previews: some View {
-        RemindersView()
+        TabBarView(showSignInView: .constant(false), tabBarViewModel: viewModel)
     }
 }

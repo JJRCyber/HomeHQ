@@ -11,19 +11,6 @@ struct RemindersWidgetView: View {
     var body: some View {
         HStack(spacing: 20) {
             VStack() {
-                Text("Shopping List")
-                    .font(.headline)
-                    .padding(.top)
-                Spacer()
-            }
-            .frame(height: 150)
-            .frame(maxWidth: .infinity)
-            .background(Color("ButtonBackground"))
-            .cornerRadius(10)
-            .shadow(color: Color("AccentColor"), radius: 5, x: 0, y: 5)
-            .padding(.leading)
-            .foregroundColor(Color("PrimaryText"))
-            VStack() {
                 Text("Reminders")
                     .font(.headline)
                     .padding(.top)
@@ -33,8 +20,7 @@ struct RemindersWidgetView: View {
             .frame(maxWidth: .infinity)
             .background(Color("Highlight"))
             .cornerRadius(10)
-            .shadow(color: Color("Highlight"), radius: 5, x: 0, y: 5)
-            .padding(.trailing)
+            .padding(.leading)
             .foregroundColor(Color("SecondaryText"))
         }
         

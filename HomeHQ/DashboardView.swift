@@ -10,7 +10,7 @@ import SwiftUI
 struct DashboardView: View {
     
     @StateObject var viewModel = DashboardViewModel()
-    @ObservedObject var tabBarViewModel: TabBarViewModel
+    @EnvironmentObject var tabBarViewModel: TabBarViewModel
     
     var body: some View {
         ZStack {
@@ -21,10 +21,17 @@ struct DashboardView: View {
                         .onTapGesture {
                             tabBarViewModel.selectedTab = 2
                         }
-                    RemindersWidgetView()
-                        .onTapGesture {
-                            tabBarViewModel.selectedTab = 3
-                        }
+                    HStack(spacing: 15) {
+                        RemindersWidgetView()
+                            .onTapGesture {
+                                tabBarViewModel.selectedTab = 3
+                            }
+                        ShoppingListWidgetView()
+                            .onTapGesture {
+                                tabBarViewModel.selectedTab = 3
+                            }
+                    }
+
                     BillWidgetView()
                         .onTapGesture {
                             tabBarViewModel.selectedTab = 1

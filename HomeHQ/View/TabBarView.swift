@@ -11,13 +11,13 @@ struct TabBarView: View {
 
 
     @Binding var showSignInView: Bool
-    @StateObject var viewModel = TabBarViewModel()
+    @StateObject var tabBarViewModel = TabBarViewModel()
 
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
                 HStack {
-                    Text(viewModel.homeName)
+                    Text(tabBarViewModel.homeName)
                         .padding()
                     Spacer()
                     Image(systemName: "house.fill")
@@ -31,9 +31,9 @@ struct TabBarView: View {
                 .background(Color("AlternateBackground"))
                 .font(.title)
                 .foregroundColor(Color("PrimaryText"))
-                TabView(selection: $viewModel.selectedTab) {
+                TabView(selection: $tabBarViewModel.selectedTab) {
                     Group {
-                        DashboardView(tabBarViewModel: viewModel)
+                        DashboardView()
                             .tabItem {
                                 Image(systemName: "square.grid.2x2")
                                 Text("Dashboard")                        }
@@ -68,6 +68,7 @@ struct TabBarView: View {
                     }
             }
         }
+        .environmentObject(tabBarViewModel)
     }
 
 }
