@@ -25,6 +25,10 @@ class ShoppingListViewModel: ObservableObject {
         item.toggleCompleted()
     }
     
+    func isValidEntry() -> Bool {
+        return newItemName.count > 0
+    }
+    
     func updateItemQuantity(item: ShoppingListItem, newQuantity: Int) {
         if newQuantity > 0 && newQuantity < 100 {
             item.updateQuantity(newQuantity: newQuantity)
@@ -32,8 +36,10 @@ class ShoppingListViewModel: ObservableObject {
     }
 
     func addItem() {
-        let item = ShoppingListItem(name: newItemName)
-        shoppingList.insert(item, at: 0)
-        newItemName = ""
+        if isValidEntry() {
+            let item = ShoppingListItem(name: newItemName)
+            shoppingList.insert(item, at: 0)
+            newItemName = ""
+        }
     }
 }
