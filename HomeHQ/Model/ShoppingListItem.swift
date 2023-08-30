@@ -7,11 +7,11 @@
 
 import Foundation
 
-class ShoppingListItem: ObservableObject, Identifiable {
+struct ShoppingListItem: Identifiable {
     let id: String
     let name: String
-    @Published var quantity: Int
-    @Published var completed: Bool
+    let quantity: Int
+    let completed: Bool
     
     init(id: String = UUID().uuidString, name: String, quantity: Int = 1, completed: Bool = false) {
         self.id = id
@@ -20,11 +20,11 @@ class ShoppingListItem: ObservableObject, Identifiable {
         self.completed = completed
     }
     
-    func toggleCompleted() {
-        self.completed.toggle()
+    func toggleCompleted() -> ShoppingListItem {
+        return ShoppingListItem(id: id, name: name, quantity: quantity, completed: !completed)
     }
     
-    func updateQuantity(newQuantity: Int) {
-        self.quantity = newQuantity
+    func updateQuantity(newQuantity: Int) -> ShoppingListItem {
+        return ShoppingListItem(id: id, name: name, quantity: newQuantity, completed: completed)
     }
 }

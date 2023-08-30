@@ -26,7 +26,9 @@ class ShoppingListViewModel: ObservableObject {
         }
     
     func updateItemCompletion(item: ShoppingListItem) {
-        item.toggleCompleted()
+        if let index = shoppingList.firstIndex(where: {$0.id == item.id}) {
+            shoppingList[index] = item.toggleCompleted()
+        }
     }
     
     func isValidEntry() -> Bool {
@@ -35,7 +37,9 @@ class ShoppingListViewModel: ObservableObject {
     
     func updateItemQuantity(item: ShoppingListItem, newQuantity: Int) {
         if newQuantity > 0 && newQuantity < 100 {
-            item.updateQuantity(newQuantity: newQuantity)
+            if let index = shoppingList.firstIndex(where: {$0.id == item.id}) {
+                shoppingList[index] = item.updateQuantity(newQuantity: newQuantity)
+            }
         }
     }
 

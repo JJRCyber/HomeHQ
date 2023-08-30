@@ -37,8 +37,8 @@
 		9B17BF432A96222B007516C6 /* NoticeWidgetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF422A96222B007516C6 /* NoticeWidgetRowView.swift */; };
 		9B17BF452A96289D007516C6 /* NoticeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF442A96289D007516C6 /* NoticeRowView.swift */; };
 		9B17BF482A9639C6007516C6 /* ImportanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF472A9639C6007516C6 /* ImportanceView.swift */; };
-		9B7C7FC52A9EEC65009B53E6 /* NoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C7FC42A9EEC65009B53E6 /* NoticeModel.swift */; };
-		9B9110FA2A9C5BCD0020530B /* ShoppingListItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9110F92A9C5BCD0020530B /* ShoppingListItemModel.swift */; };
+		9B7C7FC52A9EEC65009B53E6 /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C7FC42A9EEC65009B53E6 /* Notice.swift */; };
+		9B9110FA2A9C5BCD0020530B /* ShoppingListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9110F92A9C5BCD0020530B /* ShoppingListItem.swift */; };
 		9B95C8B02A9EBD0400F61C8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B95C8AF2A9EBD0400F61C8B /* LaunchScreen.storyboard */; };
 		9B95C8B22A9ECF9200F61C8B /* ShoppingListWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B95C8B12A9ECF9200F61C8B /* ShoppingListWidgetView.swift */; };
 		9B95C8B42A9ED0E300F61C8B /* ShoppingListWidgetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B95C8B32A9ED0E300F61C8B /* ShoppingListWidgetRowView.swift */; };
@@ -78,8 +78,8 @@
 		9B17BF422A96222B007516C6 /* NoticeWidgetRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeWidgetRowView.swift; sourceTree = "<group>"; };
 		9B17BF442A96289D007516C6 /* NoticeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeRowView.swift; sourceTree = "<group>"; };
 		9B17BF472A9639C6007516C6 /* ImportanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportanceView.swift; sourceTree = "<group>"; };
-		9B7C7FC42A9EEC65009B53E6 /* NoticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeModel.swift; sourceTree = "<group>"; };
-		9B9110F92A9C5BCD0020530B /* ShoppingListItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListItemModel.swift; sourceTree = "<group>"; };
+		9B7C7FC42A9EEC65009B53E6 /* Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
+		9B9110F92A9C5BCD0020530B /* ShoppingListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListItem.swift; sourceTree = "<group>"; };
 		9B95C8AF2A9EBD0400F61C8B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B95C8B12A9ECF9200F61C8B /* ShoppingListWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListWidgetView.swift; sourceTree = "<group>"; };
 		9B95C8B32A9ED0E300F61C8B /* ShoppingListWidgetRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListWidgetRowView.swift; sourceTree = "<group>"; };
@@ -197,8 +197,8 @@
 		9B9110FB2A9C62230020530B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9B9110F92A9C5BCD0020530B /* ShoppingListItemModel.swift */,
-				9B7C7FC42A9EEC65009B53E6 /* NoticeModel.swift */,
+				9B9110F92A9C5BCD0020530B /* ShoppingListItem.swift */,
+				9B7C7FC42A9EEC65009B53E6 /* Notice.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,7 +290,7 @@
 				9B17BF432A96222B007516C6 /* NoticeWidgetRowView.swift in Sources */,
 				9BF66B132A99F19400720241 /* AddNoticeView.swift in Sources */,
 				9B17BF212A95BD87007516C6 /* RemindersView.swift in Sources */,
-				9B9110FA2A9C5BCD0020530B /* ShoppingListItemModel.swift in Sources */,
+				9B9110FA2A9C5BCD0020530B /* ShoppingListItem.swift in Sources */,
 				9B17BF2F2A95D64A007516C6 /* BillWidgetView.swift in Sources */,
 				9B0A8EC52A9B5AC800943C2B /* ShoppingListView.swift in Sources */,
 				9B95C8B22A9ECF9200F61C8B /* ShoppingListWidgetView.swift in Sources */,
@@ -314,7 +314,7 @@
 				9B0A8EC72A9B5BF400943C2B /* ShoppingListRowView.swift in Sources */,
 				9B17BF1D2A95BD4D007516C6 /* BillView.swift in Sources */,
 				9B17BF292A95D466007516C6 /* NoticeBoardWidgetView.swift in Sources */,
-				9B7C7FC52A9EEC65009B53E6 /* NoticeModel.swift in Sources */,
+				9B7C7FC52A9EEC65009B53E6 /* Notice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

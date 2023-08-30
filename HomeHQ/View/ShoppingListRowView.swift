@@ -10,7 +10,7 @@ import SwiftUI
 struct ShoppingListRowView: View {
     
     @ObservedObject var viewModel: ShoppingListViewModel
-    @ObservedObject var item: ShoppingListItem
+    let item: ShoppingListItem
     
     var body: some View {
         HStack(spacing: 0) {
