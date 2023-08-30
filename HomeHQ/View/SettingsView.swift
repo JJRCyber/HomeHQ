@@ -32,6 +32,9 @@ struct SettingsView: View {
                         .padding()
                     Spacer()
                     TextField("Display Name", text: $viewModel.name)
+                        .onSubmit {
+                            viewModel.updateName()
+                        }
                 }
                 Divider()
                 HStack {

@@ -34,12 +34,13 @@ final class SettingsViewModel: ObservableObject {
         }
     }
     
-    func updateUserDeatils() {
-        if var user = self.user {
-            user.updateName(name: name)
-            user.updateMobile(mobile: mobile)
-            user.updateUserName(userName: userName)
+    func updateName() {
+        guard let user else { return }
+        Task {
+            try await UserManager.shared.updateName(userId: user.userId, name:name)
+            self.user = try await UserManager.shared.getUser(userId: user.userId)
         }
+        
     }
     
     // Signs out the currently logged in user

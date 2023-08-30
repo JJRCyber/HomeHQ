@@ -11,11 +11,11 @@ import FirebaseFirestoreSwift
 
 struct UserProfile: Codable {
     let userId: String
-    var userName: String?
+    let userName: String?
     let email: String?
-    var mobile: String?
-    var name: String?
-    var birthday: Date?
+    let mobile: String?
+    let name: String?
+    let birthday: Date?
     let photoUrl: String?
     let dateCreated: Date?
     
@@ -50,17 +50,46 @@ struct UserProfile: Codable {
         self.dateCreated = dateCreated
     }
     
-    mutating func updateName(name: String) {
-        self.name = name
+    enum CodingKeys: String, CodingKey {
+        case userId = "user_id"
+        case userName = "user_name"
+        case email = "email"
+        case mobile = "mobile"
+        case name = "name"
+        case birthday = "birthday"
+        case photoUrl = "photo_url"
+        case dateCreated = "date_created"
     }
     
-    mutating func updateMobile(mobile: String) {
-        self.mobile = mobile
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.userId = try container.decode(String.self, forKey: .userId)
+        self.userName = try container.decodeIfPresent(String.self, forKey: .userName)
+        self.email = try container.decodeIfPresent(String.self, forKey: .email)
+        self.mobile = try container.decodeIfPresent(String.self, forKey: .mobile)
+        self.name = try container.decodeIfPresent(String.self, forKey: .name)
+        self.birthday = try container.decodeIfPresent(Date.self, forKey: .birthday)
+        self.photoUrl = try container.decodeIfPresent(String.self, forKey: .photoUrl)
+        self.dateCreated = try container.decodeIfPresent(Date.self, forKey: .dateCreated)
     }
     
-    mutating func updateUserName(userName: String) {
-        self.userName = userName
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.userId, forKey: .userId)
+        try container.encodeIfPresent(self.userName, forKey: .userName)
+        try container.encodeIfPresent(self.email, forKey: .email)
+        try container.encodeIfPresent(self.mobile, forKey: .mobile)
+        try container.encodeIfPresent(self.name, forKey: .name)
+        try container.encodeIfPresent(self.birthday, forKey: .birthday)
+        try container.encodeIfPresent(self.photoUrl, forKey: .photoUrl)
+        try container.encodeIfPresent(self.dateCreated, forKey: .dateCreated)
     }
+    
+
+    
+//    mutating func updateName(name: String) {
+//        self.name = name
+//    }
 }
 
 
@@ -71,32 +100,23 @@ final class UserManager {
     
     private let userCollection = Firestore.firestore().collection("users")
     
-    private let encoder: Firestore.Encoder = {
-        let encoder = Firestore.Encoder()
-        encoder.keyEncodingStrategy = .convertToSnakeCase
-        return encoder
-    }()
-    
-    private let decoder: Firestore.Decoder = {
-        let decoder = Firestore.Decoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        return decoder
-    }()
-    
     private func userDocument(userId: String) -> DocumentReference {
         userCollection.document(userId)
     }
     
     func createNewUser(user: UserProfile) async throws {
-        try userDocument(userId: user.userId).setData(from: user, encoder: encoder)
+        try userDocument(userId: user.userId).setData(from: user, merge: false)
     }
     
     func getUser(userId: String) async throws -> UserProfile {
-        try await userDocument(userId: userId).getDocument(as: UserProfile.self, decoder: decoder)
+        try await userDocument(userId: userId).getDocument(as: UserProfile.self)
     }
     
-    func updateUser(user: UserProfile) async throws {
-        try userDocument(userId: user.userId).setData(from: user, merge: true, encoder: encoder)
+    func updateName(userId: String, name: String) async throws {
+        let data: [String:Any] = [
+            UserProfile.CodingKeys.name.rawValue : name
+        ]
+        try await userDocument(userId: userId).updateData(data)
     }
     
     
