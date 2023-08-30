@@ -8,13 +8,31 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    @Binding var showSignInView: Bool
+    @StateObject var viewModel = SettingsViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Spacer()
+            Button {
+                try? viewModel.signOut()
+                showSignInView = true
+            } label: {
+                Text("Sign out")
+                    .frame(height: 55)
+                    .frame(maxWidth: .infinity)
+                    .background(Color("ButtonBackgroundSecondary"))
+                    .cornerRadius(10)
+                    .padding()
+                    .foregroundColor(Color("PrimaryText"))
+            }
+        }
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(showSignInView: .constant(false))
     }
 }

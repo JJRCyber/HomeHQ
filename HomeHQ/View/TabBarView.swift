@@ -14,7 +14,6 @@ struct TabBarView: View {
     @StateObject var tabBarViewModel = TabBarViewModel()
 
     var body: some View {
-        NavigationStack {
             VStack(spacing: 0) {
                 HStack {
                     Text(tabBarViewModel.homeName)
@@ -22,7 +21,7 @@ struct TabBarView: View {
                     Spacer()
                     Image(systemName: "house.fill")
                     NavigationLink {
-                        SettingsView()
+                        SettingsView(showSignInView: $showSignInView)
                     } label: {
                         Image(systemName: "gearshape.fill")
                             .padding()
@@ -67,7 +66,6 @@ struct TabBarView: View {
                     .font(.headline)
                     }
             }
-        }
         .environmentObject(tabBarViewModel)
     }
 
