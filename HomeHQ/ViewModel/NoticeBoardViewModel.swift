@@ -8,16 +8,6 @@
 import Foundation
 import SwiftUI
 
-// Struct for notice
-struct Notice: Identifiable {
-    let id = UUID()
-    let title: String
-    let detail: String
-    let date: Date
-    let importance: Int
-    let user: String
-}
-
 // View Model for notice board view and subviews
 class NoticeBoardViewModel: ObservableObject {
     
