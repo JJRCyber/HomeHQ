@@ -57,6 +57,7 @@
 		9B7C7FF22A9F4A90009B53E6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9B7C7FF12A9F4A90009B53E6 /* FirebaseFirestore */; };
 		9B7C7FF42A9F4A90009B53E6 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9B7C7FF32A9F4A90009B53E6 /* FirebaseFirestoreSwift */; };
 		9B7C7FF82A9F4CC2009B53E6 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C7FF72A9F4CC2009B53E6 /* UserManager.swift */; };
+		9B7C7FFA2AA00061009B53E6 /* HomeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C7FF92AA00061009B53E6 /* HomeManager.swift */; };
 		9B9110FA2A9C5BCD0020530B /* ShoppingListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9110F92A9C5BCD0020530B /* ShoppingListItem.swift */; };
 		9B95C8B02A9EBD0400F61C8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B95C8AF2A9EBD0400F61C8B /* LaunchScreen.storyboard */; };
 		9B95C8B22A9ECF9200F61C8B /* ShoppingListWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B95C8B12A9ECF9200F61C8B /* ShoppingListWidgetView.swift */; };
@@ -114,6 +115,7 @@
 		9B7C7FEC2A9EF895009B53E6 /* ViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtils.swift; sourceTree = "<group>"; };
 		9B7C7FEE2A9EFFA0009B53E6 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		9B7C7FF72A9F4CC2009B53E6 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		9B7C7FF92AA00061009B53E6 /* HomeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeManager.swift; sourceTree = "<group>"; };
 		9B9110F92A9C5BCD0020530B /* ShoppingListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListItem.swift; sourceTree = "<group>"; };
 		9B95C8AF2A9EBD0400F61C8B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B95C8B12A9ECF9200F61C8B /* ShoppingListWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListWidgetView.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				9B7C7FF72A9F4CC2009B53E6 /* UserManager.swift */,
+				9B7C7FF92AA00061009B53E6 /* HomeManager.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 				9B7C7FDD2A9EF741009B53E6 /* ForgotPasswordView.swift in Sources */,
 				9B7C7FE62A9EF7CE009B53E6 /* ApplicationError.swift in Sources */,
 				9B17BF2F2A95D64A007516C6 /* BillWidgetView.swift in Sources */,
+				9B7C7FFA2AA00061009B53E6 /* HomeManager.swift in Sources */,
 				9B0A8EC52A9B5AC800943C2B /* ShoppingListView.swift in Sources */,
 				9B95C8B22A9ECF9200F61C8B /* ShoppingListWidgetView.swift in Sources */,
 				9B7C7FDB2A9EF713009B53E6 /* AuthenticationView.swift in Sources */,
