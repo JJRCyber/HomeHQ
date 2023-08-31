@@ -18,6 +18,7 @@ struct UserProfile: Codable {
     let birthday: Date?
     let photoUrl: String?
     let dateCreated: Date?
+    let homeId: String?
     
     init(auth: AuthDataResultModel) {
         self.userId = auth.uid
@@ -28,6 +29,7 @@ struct UserProfile: Codable {
         self.birthday = nil
         self.photoUrl = auth.photoUrl
         self.dateCreated = Date()
+        self.homeId = nil
     }
     
     init(
@@ -38,7 +40,8 @@ struct UserProfile: Codable {
         name: String? = nil,
         birthday: Date? = nil,
         photoUrl: String? = nil,
-        dateCreated: Date? = nil
+        dateCreated: Date? = nil,
+        homeId: String? = nil
     ) {
         self.userId = userId
         self.userName = userName
@@ -48,6 +51,7 @@ struct UserProfile: Codable {
         self.birthday = birthday
         self.photoUrl = photoUrl
         self.dateCreated = dateCreated
+        self.homeId = homeId
     }
     
     enum CodingKeys: String, CodingKey {
@@ -59,6 +63,7 @@ struct UserProfile: Codable {
         case birthday = "birthday"
         case photoUrl = "photo_url"
         case dateCreated = "date_created"
+        case homeId = "home_id"
     }
     
     init(from decoder: Decoder) throws {
@@ -71,6 +76,7 @@ struct UserProfile: Codable {
         self.birthday = try container.decodeIfPresent(Date.self, forKey: .birthday)
         self.photoUrl = try container.decodeIfPresent(String.self, forKey: .photoUrl)
         self.dateCreated = try container.decodeIfPresent(Date.self, forKey: .dateCreated)
+        self.homeId = try container.decodeIfPresent(homeId.self, forKey: .homeId)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -83,6 +89,7 @@ struct UserProfile: Codable {
         try container.encodeIfPresent(self.birthday, forKey: .birthday)
         try container.encodeIfPresent(self.photoUrl, forKey: .photoUrl)
         try container.encodeIfPresent(self.dateCreated, forKey: .dateCreated)
+        try container.encodeIfPresent(self.homeId, forKey: .homeId)
     }
     
 
