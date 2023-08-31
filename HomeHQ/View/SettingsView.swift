@@ -15,42 +15,51 @@ struct SettingsView: View {
     var body: some View {
         VStack {
             if let user = viewModel.user {
-                Text("Account Details")
-                    .font(.headline)
-                    .foregroundColor(Color("PrimaryText"))
-                    .padding()
-                Divider()
-                HStack {
-                    Text("User Name:")
-                        .padding()
-                    Spacer()
-                    TextField("Username", text: $viewModel.userName)
-                }
-                Divider()
-                HStack {
-                    Text("Display Name:")
-                        .padding()
-                    Spacer()
-                    TextField("Display Name", text: $viewModel.name)
-                        .onSubmit {
-                            viewModel.updateName()
+
+                List {
+                    Section(header: Text("User Details")) {
+                        Text("User ID: \(user.userId)")
+                        VStack(alignment: .leading) {
+                            Text("Username")
+                                .font(.caption)
+                            TextField("Enter your username", text: $viewModel.userName)
                         }
+                        VStack(alignment: .leading) {
+                            Text("Name")
+                                .font(.caption)
+                            TextField("Enter your name", text: $viewModel.name)
+                        }
+                        VStack(alignment: .leading) {
+                            Text("Email")
+                                .font(.caption)
+                            TextField("Enter your email", text: $viewModel.email)
+                        }
+                        VStack(alignment: .leading) {
+                            Text("Mobile")
+                                .font(.caption)
+                            TextField("Enter your email", text: $viewModel.mobile)
+                        }
+                    }
+                    Section(header: Text("House Details")) {
+                        if let homeId = user.homeId {
+                            Text("\(homeId)")
+                        } else {
+                            Button {
+                                viewModel.createHome()
+                            } label: {
+                                Text("Create a Home")
+                                    .frame(height: 55)
+                                    .frame(maxWidth: .infinity)
+                                    .foregroundColor(Color("PrimaryText"))
+                                    .background(Color("Highlight"))
+                                    .cornerRadius(10)
+                            }
+                            .listRowBackground(Color.clear)
+                        }
+                    }
+
+                    
                 }
-                Divider()
-                HStack {
-                    Text("Email:")
-                        .padding()
-                    Spacer()
-                    TextField("Email", text: $viewModel.email)
-                }
-                Divider()
-                HStack {
-                    Text("Mobile:")
-                        .padding()
-                    Spacer()
-                    TextField("Mobile", text: $viewModel.mobile)
-                }
-                Divider()
                 .task {
                     viewModel.updateValues()
 

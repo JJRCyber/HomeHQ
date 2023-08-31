@@ -76,7 +76,7 @@ struct UserProfile: Codable {
         self.birthday = try container.decodeIfPresent(Date.self, forKey: .birthday)
         self.photoUrl = try container.decodeIfPresent(String.self, forKey: .photoUrl)
         self.dateCreated = try container.decodeIfPresent(Date.self, forKey: .dateCreated)
-        self.homeId = try container.decodeIfPresent(homeId.self, forKey: .homeId)
+        self.homeId = try container.decodeIfPresent(String.self, forKey: .homeId)
     }
     
     func encode(to encoder: Encoder) throws {
@@ -125,6 +125,15 @@ final class UserManager {
         ]
         try await userDocument(userId: userId).updateData(data)
     }
+    
+    func updateHomeId(userId: String, homeId: String) async throws {
+        let data: [String:Any] = [
+            UserProfile.CodingKeys.homeId.rawValue : homeId
+        ]
+        try await userDocument(userId: userId).updateData(data)
+    }
+
+    
     
     
     

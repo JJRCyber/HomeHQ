@@ -40,6 +40,24 @@ final class SettingsViewModel: ObservableObject {
             try await UserManager.shared.updateName(userId: user.userId, name:name)
             self.user = try await UserManager.shared.getUser(userId: user.userId)
         }
+    }
+    
+    func updateHomeId() {
+        guard let user else { return }
+        Task {
+            try await UserManager.shared.updateName(userId: user.userId, name:name)
+            self.user = try await UserManager.shared.getUser(userId: user.userId)
+        }
+    }
+    
+    func createHome() {
+        guard let user else { return }
+        let home = HomeProfile(name: "Rickard St", address: nil, owner: user.userId)
+        Task {
+            try await HomeManager.shared.createNewHome(home: home)
+            try await UserManager.shared.updateHomeId(userId: user.userId, homeId: home.homeId)
+            self.user = try await UserManager.shared.getUser(userId: user.userId)
+        }
         
     }
     
