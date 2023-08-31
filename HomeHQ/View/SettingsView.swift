@@ -15,7 +15,6 @@ struct SettingsView: View {
     var body: some View {
         VStack {
             if let user = viewModel.user {
-
                 List {
                     Section(header: Text("User Details")) {
                         Text("User ID: \(user.userId)")
@@ -37,7 +36,7 @@ struct SettingsView: View {
                         VStack(alignment: .leading) {
                             Text("Mobile")
                                 .font(.caption)
-                            TextField("Enter your email", text: $viewModel.mobile)
+                            TextField("Enter your mobile", text: $viewModel.mobile)
                         }
                     }
                     Section(header: Text("House Details")) {
@@ -55,9 +54,44 @@ struct SettingsView: View {
                                     .cornerRadius(10)
                             }
                             .listRowBackground(Color.clear)
+                            Button {
+                                viewModel.showJoinHomeSheet.toggle()
+                            } label: {
+                                Text("Join a Home")
+                                    .frame(height: 55)
+                                    .frame(maxWidth: .infinity)
+                                    .foregroundColor(Color("PrimaryText"))
+                                    .background(Color("ButtonBackgroundSecondary"))
+                                    .cornerRadius(10)
+                            }
+                            .listRowSeparator(.hidden)
+                            .listRowBackground(Color.clear)
                         }
                     }
 
+                    
+                }
+                .sheet(isPresented: $viewModel.showJoinHomeSheet) {
+                    VStack(alignment: .leading) {
+                        Text("Home ID")
+                            .font(.caption)
+                        TextField("Enter Home ID", text: $viewModel.homeId)
+                            .padding()
+                        Button {
+                            viewModel.joinHome()
+                        } label: {
+                            Text("Join Home")
+                                .frame(height: 55)
+                                .frame(maxWidth: .infinity)
+                                .foregroundColor(Color("PrimaryText"))
+                                .background(Color("Highlight"))
+                                .cornerRadius(10)
+                        }
+                        Spacer()
+                    }
+                    .padding()
+                    .background(Color("ButtonBackground"))
+                    .edgesIgnoringSafeArea(.all)
                     
                 }
                 .task {

@@ -19,6 +19,9 @@ final class SettingsViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var mobile: String = ""
     
+    @Published var showJoinHomeSheet: Bool = false
+    @Published var homeId: String = ""
+    
     func loadCurrentUser() async throws {
         let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
         self.user = try await UserManager.shared.getUser(userId: authDataResult.uid)
@@ -52,13 +55,22 @@ final class SettingsViewModel: ObservableObject {
     
     func createHome() {
         guard let user else { return }
-        let home = HomeProfile(name: "Rickard St", address: nil, owner: user.userId)
+        let members = [user.userId]
+        let home = HomeProfile(name: "Rickard St", address: nil, owner: user.userId, members: members)
         Task {
             try await HomeManager.shared.createNewHome(home: home)
             try await UserManager.shared.updateHomeId(userId: user.userId, homeId: home.homeId)
             self.user = try await UserManager.shared.getUser(userId: user.userId)
         }
-        
+    }
+    
+    func joinHome() {
+        guard let user else { return }
+        Task {
+            try await HomeManager.shared.addHomeMember(homeId: homeId, userId: user.userId)
+            try await UserManager.shared.updateHomeId(userId: user.userId, homeId: homeId)
+            self.user = try await UserManager.shared.getUser(userId: user.userId)
+        }
     }
     
     // Signs out the currently logged in user

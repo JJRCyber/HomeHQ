@@ -66,4 +66,18 @@ final class HomeManager {
     func createNewHome(home: HomeProfile) async throws {
         try homeDocument(homeId: home.homeId).setData(from: home, merge: false)
     }
+    
+    func addHomeMember(homeId: String, userId: String) async throws {
+        let data: [String: Any] = [
+            HomeProfile.CodingKeys.members.rawValue : FieldValue.arrayUnion([userId])
+        ]
+        try await homeDocument(homeId: homeId).updateData(data)
+    }
+    
+    func removeHomeMember(homeId: String, userId: String) async throws {
+        let data: [String: Any] = [
+            HomeProfile.CodingKeys.members.rawValue : FieldValue.arrayRemove([userId])
+        ]
+        try await homeDocument(homeId: homeId).updateData(data)
+    }
 }
