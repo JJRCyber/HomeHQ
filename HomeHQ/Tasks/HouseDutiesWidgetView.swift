@@ -1,5 +1,5 @@
 //
-//  BillWidgetView.swift
+//  HouseDutiesWidgetView.swift
 //  HomeHQ
 //
 //  Created by Cooper Jacob on 23/8/2023.
@@ -7,16 +7,15 @@
 
 import SwiftUI
 
-struct BillWidgetView: View {
+struct HouseDutiesWidgetView: View {
     
-    @StateObject var viewModel = BillViewModel()
     
     var body: some View {
         HStack(alignment: .top) {
-            Text("Upcoming Bills")
+            Text("Today's Tasks")
                 .font(.headline)
         }
-        .frame(height: 150)
+        .frame(height: 80)
         .frame(maxWidth: .infinity)
         .background(Color("ButtonBackground"))
         .cornerRadius(10)
@@ -25,8 +24,8 @@ struct BillWidgetView: View {
     }
 }
 
-struct BillWidgetView_Previews: PreviewProvider {
+struct HouseDutiesWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        BillWidgetView()
+        HouseDutiesWidgetView()
     }
 }
