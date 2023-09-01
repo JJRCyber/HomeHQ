@@ -47,6 +47,9 @@ struct ShoppingListView: View {
             }
             .listStyle(.plain)
         }
+        .task {
+            try? await viewModel.loadCurrentHome()
+        }
         .frame(maxHeight: 250)
         .frame(maxWidth: .infinity)
         .background(Color("ButtonBackground"))

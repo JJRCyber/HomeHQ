@@ -8,20 +8,23 @@
 import Foundation
 
 // View model for reminders view
+@MainActor
 class ShoppingListViewModel: ObservableObject {
+    
+    @Published var home: HomeProfile? = nil
     
     // Bound to text field to add new item
     @Published var newItemName: String = ""
     
     // Array of ShoppingListItem
-    @Published var shoppingList:[ShoppingListItem] = [
-        ShoppingListItem(name: "Test", quantity: 5),
-        ShoppingListItem(name: "Test2", quantity: 3),
-        ShoppingListItem(name: "Test", quantity: 5),
-        ShoppingListItem(name: "Test2", quantity: 3),
-        ShoppingListItem(name: "Test2", quantity: 3),
-        ShoppingListItem(name: "Test", quantity: 5)
-    ]
+    @Published var shoppingList:[ShoppingListItem] = []
+    
+    func loadCurrentHome() async throws {
+        let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
+        let user = try await UserManager.shared.getUser(userId: authDataResult.uid)
+        guard let homeId = user.homeId else { return }
+        self.home = try await HomeManager.shared.getHome(homeId: homeId)
+    }
     
     // Deletes item from array at specified index
     func deleteItem(at offsets: IndexSet) {
@@ -50,10 +53,22 @@ class ShoppingListViewModel: ObservableObject {
     }
 
     // Adds item to shoppingList if input is valid 
+//    func addItem() {
+//        if isValidEntry() {
+//            let item = ShoppingListItem(name: newItemName)
+//            shoppingList.insert(item, at: 0)
+//            newItemName = ""
+//        }
+//    }
+    
     func addItem() {
         if isValidEntry() {
+            guard let home else { return }
             let item = ShoppingListItem(name: newItemName)
-            shoppingList.insert(item, at: 0)
+            Task {
+                try await HomeManager.shared.addShoppingListItem(homeId: home.homeId, shopppingListItem: item)
+            }
+
             newItemName = ""
         }
     }

@@ -63,6 +63,22 @@ final class HomeManager {
         homeCollection.document(homeId)
     }
     
+    private func shoppingListCollection(homeId: String) -> CollectionReference {
+        homeDocument(homeId: homeId).collection("shopping_list")
+    }
+    
+    private func shoppingListCollectionDocument(homeId: String, shoppingListItemId: String) -> DocumentReference {
+        shoppingListCollection(homeId: homeId).document(shoppingListItemId)
+    }
+    
+    func getHome(homeId: String) async throws -> HomeProfile {
+        try await homeDocument(homeId: homeId).getDocument(as: HomeProfile.self)
+    }
+    
+//    func getShoppingList(homeId: String) async throws -> [ShoppingListItem] {
+//        let snapshot = try await shoppingListCollection(homeId: homeId).getDocuments()
+//    }
+    
     func createNewHome(home: HomeProfile) async throws {
         try homeDocument(homeId: home.homeId).setData(from: home, merge: false)
     }
@@ -79,5 +95,13 @@ final class HomeManager {
             HomeProfile.CodingKeys.members.rawValue : FieldValue.arrayRemove([userId])
         ]
         try await homeDocument(homeId: homeId).updateData(data)
+    }
+    
+    func addShoppingListItem(homeId: String, shopppingListItem: ShoppingListItem) async throws {
+        try shoppingListCollectionDocument(homeId: homeId, shoppingListItemId: shopppingListItem.id).setData(from: shopppingListItem, merge: false)
+    }
+    
+    func removeShoppingListItem(homeId: String, shoppingListItemId: String) async throws {
+        try await shoppingListCollectionDocument(homeId: homeId, shoppingListItemId: shoppingListItemId).delete()
     }
 }
