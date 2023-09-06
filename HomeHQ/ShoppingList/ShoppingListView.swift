@@ -48,7 +48,7 @@ struct ShoppingListView: View {
             .listStyle(.plain)
         }
         .task {
-            try? await viewModel.loadCurrentHome()
+            try? await viewModel.loadHome()
         }
         .frame(maxHeight: 250)
         .frame(maxWidth: .infinity)

@@ -119,6 +119,12 @@ final class UserManager {
         try await userDocument(userId: userId).getDocument(as: UserProfile.self)
     }
     
+    func getCurrentUser() async throws -> UserProfile {
+        let userId = try AuthenticationManager.shared.getAuthenticatedUser().uid
+        let userProfile = try await getUser(userId: userId)
+        return userProfile
+    }
+    
     func updateName(userId: String, name: String) async throws {
         let data: [String:Any] = [
             UserProfile.CodingKeys.name.rawValue : name

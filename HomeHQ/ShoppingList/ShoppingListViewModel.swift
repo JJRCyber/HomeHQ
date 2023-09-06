@@ -9,7 +9,7 @@ import Foundation
 
 // View model for reminders view
 @MainActor
-class ShoppingListViewModel: ObservableObject {
+class ShoppingListViewModel: BaseViewModel {
     
     @Published var home: HomeProfile? = nil
     
@@ -19,16 +19,33 @@ class ShoppingListViewModel: ObservableObject {
     // Array of ShoppingListItem
     @Published var shoppingList:[ShoppingListItem] = []
     
-    func loadCurrentHome() async throws {
-        let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
-        let user = try await UserManager.shared.getUser(userId: authDataResult.uid)
-        guard let homeId = user.homeId else { return }
-        self.home = try await HomeManager.shared.getHome(homeId: homeId)
+    func loadHome() async throws {
+        let user = try await dataStore.userManager.getCurrentUser()
+        if let homeId = user.homeId {
+            self.home = try await dataStore.homeManager.getHome(homeId: homeId)
+            try await loadShoppingList()
+        }
     }
+    
+    func loadShoppingList() async throws {
+        let user = try await dataStore.userManager.getCurrentUser()
+        if let homeId = user.homeId {
+            self.shoppingList = try await HomeManager.shared.getShoppingList(homeId: homeId)
+        }
+    }
+    
     
     // Deletes item from array at specified index
     func deleteItem(at offsets: IndexSet) {
-            shoppingList.remove(atOffsets: offsets)
+        guard let home else { return }
+        guard let index = offsets.first else { return }
+        let shoppingListItemId = shoppingList[index].id
+        shoppingList.remove(atOffsets: offsets)
+        Task {
+            try await dataStore.homeManager.removeShoppingListItem(homeId: home.homeId, shoppingListItemId: shoppingListItemId)
+            try await loadShoppingList()
+        }
+
         }
     
     // Finds the item in the array and calls the model function to update completion
@@ -67,9 +84,10 @@ class ShoppingListViewModel: ObservableObject {
             let item = ShoppingListItem(name: newItemName)
             Task {
                 try await HomeManager.shared.addShoppingListItem(homeId: home.homeId, shopppingListItem: item)
+                try await loadShoppingList()
             }
-
             newItemName = ""
+
         }
     }
 }

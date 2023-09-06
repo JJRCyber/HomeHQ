@@ -228,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				9B7C7FF72A9F4CC2009B53E6 /* UserManager.swift */,
+				9B7C7FE02A9EF786009B53E6 /* AuthenticationManager.swift */,
 				9B7C7FF92AA00061009B53E6 /* HomeManager.swift */,
 				9B12B67F2AA2AC96006D11ED /* DataStore.swift */,
 			);
@@ -321,7 +322,6 @@
 				9B7C7FE72A9EF7ED009B53E6 /* EmailSignUpViewModel.swift */,
 				9B7C7FDA2A9EF713009B53E6 /* AuthenticationView.swift */,
 				9B7C7FE92A9EF800009B53E6 /* AuthenticationViewModel.swift */,
-				9B7C7FE02A9EF786009B53E6 /* AuthenticationManager.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";

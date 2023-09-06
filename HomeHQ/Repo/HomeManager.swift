@@ -75,9 +75,17 @@ final class HomeManager {
         try await homeDocument(homeId: homeId).getDocument(as: HomeProfile.self)
     }
     
-//    func getShoppingList(homeId: String) async throws -> [ShoppingListItem] {
-//        let snapshot = try await shoppingListCollection(homeId: homeId).getDocuments()
-//    }
+    func getShoppingList(homeId: String) async throws -> [ShoppingListItem] {
+        var shoppingList:[ShoppingListItem] = []
+        let snapshot = try await shoppingListCollection(homeId: homeId).getDocuments()
+        for document in snapshot.documents {
+            let shoppingListItem = try document.data(as: ShoppingListItem.self)
+            shoppingList.append(shoppingListItem)
+        }
+        return shoppingList
+    }
+    
+    
     
     func createNewHome(home: HomeProfile) async throws {
         try homeDocument(homeId: home.homeId).setData(from: home, merge: false)
