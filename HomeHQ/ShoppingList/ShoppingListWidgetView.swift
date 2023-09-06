@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ShoppingListWidgetView: View {
     
-    @StateObject var viewModel = ShoppingListViewModel()
+    @StateObject var viewModel = ShoppingListWidgetViewModel()
     
     var body: some View {
         VStack(spacing: 0) {
@@ -27,6 +27,9 @@ struct ShoppingListWidgetView: View {
             }
 
             Spacer()
+        }
+        .task {
+            try? await viewModel.loadShoppingList()
         }
         .frame(maxHeight: 150)
         .frame(maxWidth: .infinity)

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ShoppingListWidgetRowView: View {
     
-    @ObservedObject var viewModel: ShoppingListViewModel
+    @ObservedObject var viewModel: ShoppingListWidgetViewModel
     let item: ShoppingListItem
     
     var body: some View {
@@ -46,6 +46,6 @@ struct ShoppingListWidgetRowView: View {
 
 struct ShoppingListWidgetRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ShoppingListWidgetRowView(viewModel: ShoppingListViewModel(), item: ShoppingListItem(name: "Banana", quantity: 10, completed: false))
+        ShoppingListWidgetRowView(viewModel: ShoppingListWidgetViewModel(), item: ShoppingListItem(name: "Banana", quantity: 10, completed: false))
     }
 }

@@ -37,6 +37,7 @@
 		9B17BF432A96222B007516C6 /* NoticesWidgetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF422A96222B007516C6 /* NoticesWidgetRowView.swift */; };
 		9B17BF452A96289D007516C6 /* NoticesRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF442A96289D007516C6 /* NoticesRowView.swift */; };
 		9B17BF482A9639C6007516C6 /* ImportanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF472A9639C6007516C6 /* ImportanceView.swift */; };
+		9B3B748E2AA8326600C36136 /* ShoppingListWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B748D2AA8326600C36136 /* ShoppingListWidgetViewModel.swift */; };
 		9B7C7FC52A9EEC65009B53E6 /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C7FC42A9EEC65009B53E6 /* Notice.swift */; };
 		9B7C7FC82A9EF53D009B53E6 /* AppleSignInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C7FC72A9EF53D009B53E6 /* AppleSignInHelper.swift */; };
 		9B7C7FCB2A9EF587009B53E6 /* GoogleSignInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C7FCA2A9EF587009B53E6 /* GoogleSignInHelper.swift */; };
@@ -98,6 +99,7 @@
 		9B17BF422A96222B007516C6 /* NoticesWidgetRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticesWidgetRowView.swift; sourceTree = "<group>"; };
 		9B17BF442A96289D007516C6 /* NoticesRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticesRowView.swift; sourceTree = "<group>"; };
 		9B17BF472A9639C6007516C6 /* ImportanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportanceView.swift; sourceTree = "<group>"; };
+		9B3B748D2AA8326600C36136 /* ShoppingListWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListWidgetViewModel.swift; sourceTree = "<group>"; };
 		9B7C7FC42A9EEC65009B53E6 /* Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
 		9B7C7FC72A9EF53D009B53E6 /* AppleSignInHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInHelper.swift; sourceTree = "<group>"; };
 		9B7C7FCA2A9EF587009B53E6 /* GoogleSignInHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInHelper.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				9B95C8B12A9ECF9200F61C8B /* ShoppingListWidgetView.swift */,
 				9B95C8B32A9ED0E300F61C8B /* ShoppingListWidgetRowView.swift */,
 				9B17BF302A95D734007516C6 /* ShoppingListViewModel.swift */,
+				9B3B748D2AA8326600C36136 /* ShoppingListWidgetViewModel.swift */,
 			);
 			path = ShoppingList;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B3B748E2AA8326600C36136 /* ShoppingListWidgetViewModel.swift in Sources */,
 				9B17BF2B2A95D4E4007516C6 /* NoticePageViewModel.swift in Sources */,
 				9B7C7FEF2A9EFFA0009B53E6 /* SettingsViewModel.swift in Sources */,
 				9B7C7FD52A9EF6C2009B53E6 /* EmailSignUpView.swift in Sources */,

@@ -48,7 +48,7 @@ struct ShoppingListRowView: View {
     
     var plusButton: some View {
         Image(systemName: "plus.circle.fill")
-            .foregroundColor(.green)
+            .foregroundColor(Color("ButtonBackgroundSecondary"))
             .onTapGesture {
                 viewModel.updateItemQuantity(item: item, newQuantity: item.quantity + 1)
             }
@@ -56,7 +56,7 @@ struct ShoppingListRowView: View {
     
     var minusButton: some View {
         Image(systemName: "minus.circle.fill")
-            .foregroundColor(.red)
+            .foregroundColor(Color("ButtonBackgroundSecondary"))
             .onTapGesture {
                 viewModel.updateItemQuantity(item: item, newQuantity: item.quantity - 1)
             }
