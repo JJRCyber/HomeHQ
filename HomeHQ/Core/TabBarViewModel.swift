@@ -11,6 +11,15 @@ import Foundation
 final class TabBarViewModel: ObservableObject {
     
     @Published var homeName = "Home 1"
+    @Published var user: UserProfile?
     @Published var selectedTab: Int = 0
+    
+    func loadCurrentUser() async throws {
+        let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
+        self.user = try await UserManager.shared.getUser(userId: authDataResult.uid)
+        if let homeId = self.user?.homeId {
+            UserDefaults.standard.set(homeId, forKey: "homeId")
+        }
+    }
     
 }

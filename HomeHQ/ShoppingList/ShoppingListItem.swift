@@ -65,9 +65,8 @@ struct ShoppingListItem: Identifiable, Codable {
     func updateQuantity(newQuantity: Int) -> ShoppingListItem {
         let shoppingListItem = ShoppingListItem(id: id, name: name, quantity: newQuantity, completed: completed)
         Task {
-            HomeManager.shared.updateShoppingListItem(homeId:shoppingListItem:)
+            try await HomeManager.shared.updateShoppingListItem(shoppingListItem: shoppingListItem)
         }
-
         return shoppingListItem
         
     }

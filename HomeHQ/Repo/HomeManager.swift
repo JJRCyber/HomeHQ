@@ -114,7 +114,9 @@ final class HomeManager {
         try await shoppingListCollectionDocument(homeId: homeId, shoppingListItemId: shoppingListItemId).delete()
     }
     
-    func updateShoppingListItem(homeId: String, shoppingListItem: ShoppingListItem) async throws {
-        try shoppingListCollectionDocument(homeId: homeId, shoppingListItemId: shoppingListItem.id).setData(from: shoppingListItem)
+    func updateShoppingListItem(shoppingListItem: ShoppingListItem) async throws {
+        if let homeId {
+            try shoppingListCollectionDocument(homeId: homeId, shoppingListItemId: shoppingListItem.id).setData(from: shoppingListItem)
+        }
     }
 }
