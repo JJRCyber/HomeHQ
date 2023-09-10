@@ -64,29 +64,9 @@ final class HomeManager {
         homeCollection.document(homeId)
     }
     
-    private func shoppingListCollection(homeId: String) -> CollectionReference {
-        homeDocument(homeId: homeId).collection("shopping_list")
-    }
-    
-    private func shoppingListCollectionDocument(homeId: String, shoppingListItemId: String) -> DocumentReference {
-        shoppingListCollection(homeId: homeId).document(shoppingListItemId)
-    }
-    
     func getHome(homeId: String) async throws -> HomeProfile {
         try await homeDocument(homeId: homeId).getDocument(as: HomeProfile.self)
     }
-    
-    func getShoppingList(homeId: String) async throws -> [ShoppingListItem] {
-        var shoppingList:[ShoppingListItem] = []
-        let snapshot = try await shoppingListCollection(homeId: homeId).getDocuments()
-        for document in snapshot.documents {
-            let shoppingListItem = try document.data(as: ShoppingListItem.self)
-            shoppingList.append(shoppingListItem)
-        }
-        return shoppingList
-    }
-    
-    
     
     func createNewHome(home: HomeProfile) async throws {
         try homeDocument(homeId: home.homeId).setData(from: home, merge: false)
@@ -104,6 +84,29 @@ final class HomeManager {
             HomeProfile.CodingKeys.members.rawValue : FieldValue.arrayRemove([userId])
         ]
         try await homeDocument(homeId: homeId).updateData(data)
+    }
+
+}
+
+//MARK: Shopping List
+extension HomeManager {
+    
+    private func shoppingListCollection(homeId: String) -> CollectionReference {
+        homeDocument(homeId: homeId).collection("shopping_list")
+    }
+    
+    private func shoppingListCollectionDocument(homeId: String, shoppingListItemId: String) -> DocumentReference {
+        shoppingListCollection(homeId: homeId).document(shoppingListItemId)
+    }
+    
+    func getShoppingList(homeId: String) async throws -> [ShoppingListItem] {
+        var shoppingList:[ShoppingListItem] = []
+        let snapshot = try await shoppingListCollection(homeId: homeId).getDocuments()
+        for document in snapshot.documents {
+            let shoppingListItem = try document.data(as: ShoppingListItem.self)
+            shoppingList.append(shoppingListItem)
+        }
+        return shoppingList
     }
     
     func addShoppingListItem(homeId: String, shopppingListItem: ShoppingListItem) async throws {

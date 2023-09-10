@@ -12,6 +12,7 @@ import Foundation
 enum ApplicationError: Error {
     case userNotRetrieved
     case cannotGetTopView
+    case homeIdNotRetrieved
 }
 
 // Custom errors for sign in and sign up functions
