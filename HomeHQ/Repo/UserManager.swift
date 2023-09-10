@@ -137,6 +137,7 @@ final class UserManager {
             UserProfile.CodingKeys.homeId.rawValue : homeId
         ]
         try await userDocument(userId: userId).updateData(data)
+        UserDefaults.standard.set(homeId, forKey: "homeId")
     }
 
     

@@ -63,6 +63,12 @@ struct ShoppingListItem: Identifiable, Codable {
     
     // Updates quantity on an object by returning a new object
     func updateQuantity(newQuantity: Int) -> ShoppingListItem {
-        return ShoppingListItem(id: id, name: name, quantity: newQuantity, completed: completed)
+        let shoppingListItem = ShoppingListItem(id: id, name: name, quantity: newQuantity, completed: completed)
+        Task {
+            HomeManager.shared.updateShoppingListItem(homeId:shoppingListItem:)
+        }
+
+        return shoppingListItem
+        
     }
 }

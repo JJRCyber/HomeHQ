@@ -3,4 +3,99 @@
    uuid = "CB382E63-8A90-4DF2-B322-EE01A5E477E1"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "27B76F05-FE6F-4365-B394-F27D85EA7BCF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HomeHQ/ShoppingList/ShoppingListViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "updateItemCompletion(item:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "27B76F05-FE6F-4365-B394-F27D85EA7BCF - 1e155a3328884fe0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HomeHQ.ShoppingListViewModel.updateItemCompletion(item: HomeHQ.ShoppingListItem) -&gt; ()"
+                  moduleName = "HomeHQ"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cooperjacob/GitHub/HomeHQ/HomeHQ/HomeHQ/ShoppingList/ShoppingListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "416">
+               </Location>
+               <Location
+                  uuid = "27B76F05-FE6F-4365-B394-F27D85EA7BCF - 1e155a3328884fe0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HomeHQ.ShoppingListViewModel.updateItemCompletion(item: HomeHQ.ShoppingListItem) -&gt; ()"
+                  moduleName = "HomeHQ"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cooperjacob/GitHub/HomeHQ/HomeHQ/HomeHQ/ShoppingList/ShoppingListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "592">
+               </Location>
+               <Location
+                  uuid = "27B76F05-FE6F-4365-B394-F27D85EA7BCF - 42b15bb9de962952"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (HomeHQ.ShoppingListItem) -&gt; Swift.Bool in HomeHQ.ShoppingListViewModel.updateItemCompletion(item: HomeHQ.ShoppingListItem) -&gt; ()"
+                  moduleName = "HomeHQ"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cooperjacob/GitHub/HomeHQ/HomeHQ/HomeHQ/ShoppingList/ShoppingListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "27B76F05-FE6F-4365-B394-F27D85EA7BCF - 1e155a3328884fe0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HomeHQ.ShoppingListViewModel.updateItemCompletion(item: HomeHQ.ShoppingListItem) -&gt; ()"
+                  moduleName = "HomeHQ"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cooperjacob/GitHub/HomeHQ/HomeHQ/HomeHQ/ShoppingList/ShoppingListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "400">
+               </Location>
+               <Location
+                  uuid = "27B76F05-FE6F-4365-B394-F27D85EA7BCF - 1e155a3328884fe0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HomeHQ.ShoppingListViewModel.updateItemCompletion(item: HomeHQ.ShoppingListItem) -&gt; ()"
+                  moduleName = "HomeHQ"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cooperjacob/GitHub/HomeHQ/HomeHQ/HomeHQ/ShoppingList/ShoppingListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "576">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

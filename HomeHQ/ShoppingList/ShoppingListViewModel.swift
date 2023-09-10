@@ -11,6 +11,8 @@ import Foundation
 @MainActor
 class ShoppingListViewModel: BaseViewModel {
     
+    @Published var loadingState: LoadingState = .idle
+    
     @Published var home: HomeProfile? = nil
     
     // Bound to text field to add new item
@@ -20,10 +22,12 @@ class ShoppingListViewModel: BaseViewModel {
     @Published var shoppingList:[ShoppingListItem] = []
     
     func loadHome() async throws {
+        loadingState = .loading
         let user = try await dataStore.userManager.getCurrentUser()
         if let homeId = user.homeId {
             self.home = try await dataStore.homeManager.getHome(homeId: homeId)
             try await loadShoppingList()
+            loadingState = .loaded
         }
     }
     
@@ -45,13 +49,27 @@ class ShoppingListViewModel: BaseViewModel {
             try await dataStore.homeManager.removeShoppingListItem(homeId: home.homeId, shoppingListItemId: shoppingListItemId)
             try await loadShoppingList()
         }
-
+        }
+    
+    func deleteItem(at index: Int) {
+        guard let home else { return }
+        let shoppingListItemId = shoppingList[index].id
+        shoppingList.remove(at: index)
+        Task {
+            try await dataStore.homeManager.removeShoppingListItem(homeId: home.homeId, shoppingListItemId: shoppingListItemId)
+            try await loadShoppingList()
+        }
         }
     
     // Finds the item in the array and calls the model function to update completion
     func updateItemCompletion(item: ShoppingListItem) {
         if let index = shoppingList.firstIndex(where: {$0.id == item.id}) {
             shoppingList[index] = item.toggleCompleted()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                if self.shoppingList[index].completed {
+                    self.deleteItem(at: index)
+                }
+            }
         }
     }
     

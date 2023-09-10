@@ -24,11 +24,21 @@ struct ShoppingListRowView: View {
                 .foregroundColor(item.completed ? .green: Color("PrimaryText"))
                 .padding()
                 .onTapGesture {
-                    withAnimation(.linear) {
+                    withAnimation(.easeInOut(duration: 2.0)) {
                         viewModel.updateItemCompletion(item: item)
                     }
                 }
         }
+        .contentShape(Rectangle())  // This allows the HStack to respond to tap events
+        .overlay(
+            HStack {
+                Color.green
+                    .opacity(0.3)
+                    .frame(maxWidth: item.completed ? .infinity : 0)
+                Spacer()
+            }
+            .allowsHitTesting(false) // This disables taps for the overlay
+        )
         .frame(maxWidth: .infinity)
     }
     

@@ -38,12 +38,26 @@ struct ShoppingListView: View {
                     .onSubmit {
                         viewModel.addItem()
                     }
-                ForEach(viewModel.shoppingList) { item in
-                    ShoppingListRowView(viewModel: viewModel, item: item)
-                        .listRowInsets(EdgeInsets())
-                        .listRowBackground(Color.clear)
+                switch viewModel.loadingState {
+                case .idle, .loaded:
+                    ForEach(viewModel.shoppingList) { item in
+                        ShoppingListRowView(viewModel: viewModel, item: item)
+                            .listRowInsets(EdgeInsets())
+                            .listRowBackground(Color.clear)
+                    }
+                    .onDelete(perform: viewModel.deleteItem)
+                case .loading, .error:
+                    HStack(alignment: .center) {
+                        Spacer()
+                        ProgressView("Loading...")
+                            .listRowInsets(EdgeInsets())
+                            .padding()
+                        Spacer()
+                    }
+                    .listRowBackground(Color.clear)
+
                 }
-                .onDelete(perform: viewModel.deleteItem)
+
             }
             .listStyle(.plain)
         }

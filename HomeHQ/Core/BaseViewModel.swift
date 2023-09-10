@@ -8,9 +8,16 @@
 import SwiftUI
 
 open class BaseViewModel: ObservableObject {
+    
+    enum LoadingState {
+        case idle
+        case loading
+        case loaded
+        case error(Error)
+    }
+    
     let authManager = AuthenticationManager.shared
     let dataStore = DataStore.shared
-    
-    @AppStorage("homeId") var homeId = ""
+    let homeId = UserDefaults.standard.string(forKey: "homeId")
     
 }

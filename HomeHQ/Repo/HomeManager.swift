@@ -58,6 +58,7 @@ final class HomeManager {
     private init() { }
     
     private let homeCollection = Firestore.firestore().collection("homes")
+    private let homeId = UserDefaults.standard.string(forKey: "homeId")
     
     private func homeDocument(homeId: String) -> DocumentReference {
         homeCollection.document(homeId)
@@ -111,5 +112,9 @@ final class HomeManager {
     
     func removeShoppingListItem(homeId: String, shoppingListItemId: String) async throws {
         try await shoppingListCollectionDocument(homeId: homeId, shoppingListItemId: shoppingListItemId).delete()
+    }
+    
+    func updateShoppingListItem(homeId: String, shoppingListItem: ShoppingListItem) async throws {
+        try shoppingListCollectionDocument(homeId: homeId, shoppingListItemId: shoppingListItem.id).setData(from: shoppingListItem)
     }
 }
