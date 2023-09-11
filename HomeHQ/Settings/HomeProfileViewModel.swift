@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreImage.CIFilterBuiltins
+import CodeScanner
 
 @MainActor
 final class HomeProfileViewModel: BaseViewModel {
@@ -22,6 +23,7 @@ final class HomeProfileViewModel: BaseViewModel {
     // Shows sheet to join a new home
     @Published var showJoinHomeSheet: Bool = false
     @Published var showAddMemberSheet: Bool = false
+    @Published var showQRScannerSheet: Bool = false
     // Bound to text field in displayed
     @Published var homeIdText: String = ""
     
@@ -29,21 +31,25 @@ final class HomeProfileViewModel: BaseViewModel {
     @Published var homeMembers: [String] = []
     
     func loadHome() async {
-        loadingState = .loading
-        guard let homeId else { return }
-        do {
-            self.home = try await dataStore.homeManager.getHome(homeId: homeId)
-            loadingState = .loaded
-            if self.home != nil {
-                getHomeOwner()
-                getHomeMembers()
-                loadValues()
+        if let homeId {
+            loadingState = .loading
+            do {
+                self.home = try await dataStore.homeManager.getHome(homeId: homeId)
+                loadingState = .loaded
+                if self.home != nil {
+                    getHomeOwner()
+                    getHomeMembers()
+                    loadValues()
+                }
+            } catch {
+                showError = true
+                errorMessage = error.localizedDescription
+                loadingState = .error
             }
-        } catch {
-            showError = true
-            errorMessage = error.localizedDescription
-            loadingState = .error
+        } else {
+            loadingState = .loaded
         }
+
     }
     
     func loadValues() {
@@ -52,7 +58,7 @@ final class HomeProfileViewModel: BaseViewModel {
         address = home.address ?? ""
     }
     
-    func joinHome() {
+    func joinHome(homeId: String) {
         guard let userId else {
             showError = true
             errorMessage = "User could not be retrieved"
@@ -61,8 +67,10 @@ final class HomeProfileViewModel: BaseViewModel {
         
         Task {
             do {
-                try await dataStore.homeManager.addHomeMember(homeId: homeIdText, userId: userId)
-                try await dataStore.userManager.updateHomeId(userId: userId, homeId: homeIdText)
+                try await dataStore.homeManager.addHomeMember(homeId: homeId, userId: userId)
+                try await dataStore.userManager.updateHomeId(userId: userId, homeId: homeId)
+                self.homeId = homeId
+                self.home = try await dataStore.homeManager.getHome(homeId: homeId)
                 await loadHome()
             } catch {
                 showError = true
@@ -104,6 +112,18 @@ final class HomeProfileViewModel: BaseViewModel {
         }
     }
     
+    func handleQRScan(result: Result<ScanResult, ScanError>) {
+        showQRScannerSheet.toggle()
+        switch result {
+        case .success(let result):
+            let homeId = result.string
+            joinHome(homeId: homeId)
+        case .failure(let error):
+            showError = true
+            errorMessage = error.localizedDescription
+        }
+    }
+    
     func getHomeOwner() {
         guard let home else { return }
         Task {
@@ -130,6 +150,8 @@ final class HomeProfileViewModel: BaseViewModel {
         guard let userId else { return }
         Task {
             do {
+                self.home = nil
+                self.homeId = nil
                 try await dataStore.homeManager.removeHomeMember(homeId: home.homeId, userId: userId)
                 await loadHome()
             } catch {

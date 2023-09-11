@@ -27,6 +27,7 @@ struct ProfileView: View {
                                 Text("User ID: \(user.userId)")
                                 Text("Email: \(user.email ?? "")")
                             }
+                            .listRowBackground(Color.clear)
                             Section(header: Text("User Profile")) {
                                 VStack(alignment: .leading) {
                                     Text("Username")
@@ -44,8 +45,9 @@ struct ProfileView: View {
                                     TextField("Enter your mobile", text: $viewModel.mobile)
                                 }
                             }
-                            
+                            .listRowBackground(Color.clear)
                         }
+                        .listStyle(.plain)
                         Button {
                             viewModel.updateUserProfile()
                         } label: {
@@ -83,6 +85,7 @@ struct ProfileView: View {
                             .foregroundColor(Color("PrimaryText"))
                     }
                 }
+                .ignoresSafeArea(.keyboard)
             case .error:
                 MissingHomeView()
             }

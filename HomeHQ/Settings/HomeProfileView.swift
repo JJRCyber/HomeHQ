@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CodeScanner
 
 struct HomeProfileView: View {
     
@@ -43,12 +44,17 @@ struct HomeProfileView: View {
                                             .padding(.horizontal)
                                     }
                                 }
+                                .listRowBackground(Color.clear)
                                 Section(header: Text("Home Members")) {
                                     ForEach(viewModel.homeMembers, id: \.self) { member in
                                         Text(member)
+
                                     }
+
                                 }
+                                .listRowBackground(Color.clear)
                             }
+                            .listStyle(.plain)
                             Button {
                                 viewModel.showAddMemberSheet.toggle()
                             } label: {
@@ -99,7 +105,8 @@ struct HomeProfileView: View {
                                     .padding(.horizontal)
                             }
                             Button {
-                                viewModel.showJoinHomeSheet.toggle()
+//                                viewModel.showJoinHomeSheet.toggle()
+                                viewModel.showQRScannerSheet.toggle()
                             } label: {
                                 Text("Join a Home")
                                     .frame(height: 55)
@@ -113,25 +120,9 @@ struct HomeProfileView: View {
 
                     }
                 }
-                .sheet(isPresented: $viewModel.showJoinHomeSheet) {
-                    VStack(alignment: .leading) {
-                        Text("Home ID")
-                            .font(.caption)
-                        TextField("Enter Home ID", text: $viewModel.homeIdText)
-                            .padding()
-                        Button {
-                            viewModel.joinHome()
-                        } label: {
-                            Text("Join Home")
-                                .frame(height: 55)
-                                .frame(maxWidth: .infinity)
-                                .foregroundColor(Color("PrimaryText"))
-                                .background(Color("Highlight"))
-                                .cornerRadius(10)
-                        }
-                        Spacer()
-                    }
-                    .padding()
+                .ignoresSafeArea(.keyboard)
+                .sheet(isPresented: $viewModel.showQRScannerSheet) {
+                    CodeScannerView(codeTypes: [.qr], completion: viewModel.handleQRScan)
                 }
             case .error:
                 MissingHomeView()

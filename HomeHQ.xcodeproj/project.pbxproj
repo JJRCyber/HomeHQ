@@ -70,6 +70,7 @@
 		9BCA633D2AAECDAE00A132F3 /* HomeProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA633C2AAECDAE00A132F3 /* HomeProfileViewModel.swift */; };
 		9BCA633F2AAEE3EF00A132F3 /* AddMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA633E2AAEE3EF00A132F3 /* AddMemberView.swift */; };
 		9BCA63412AAEEABE00A132F3 /* JoinHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA63402AAEEABE00A132F3 /* JoinHomeView.swift */; };
+		9BCA63442AAEF14400A132F3 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 9BCA63432AAEF14400A132F3 /* CodeScanner */; };
 		9BF66B0B2A98BA3C00720241 /* WeekPlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */; };
 		9BF66B0D2A98C04C00720241 /* WeekPlannerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */; };
 		9BF66B112A98D1AE00720241 /* NoticesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B102A98D1AE00720241 /* NoticesView.swift */; };
@@ -147,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BCA63442AAEF14400A132F3 /* CodeScanner in Frameworks */,
 				9B7C7FD02A9EF5FB009B53E6 /* GoogleSignInSwift in Frameworks */,
 				9B17BF3E2A96096B007516C6 /* FirebaseAnalyticsSwift in Frameworks */,
 				9B7C7FCE2A9EF5FB009B53E6 /* GoogleSignIn in Frameworks */,
@@ -413,6 +415,7 @@
 				9B7C7FCF2A9EF5FB009B53E6 /* GoogleSignInSwift */,
 				9B7C7FF12A9F4A90009B53E6 /* FirebaseFirestore */,
 				9B7C7FF32A9F4A90009B53E6 /* FirebaseFirestoreSwift */,
+				9BCA63432AAEF14400A132F3 /* CodeScanner */,
 			);
 			productName = HomeHQ;
 			productReference = 9B17BF032A95BBE7007516C6 /* HomeHQ.app */;
@@ -445,6 +448,7 @@
 			packageReferences = (
 				9B17BF3A2A96096B007516C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				9B7C7FCC2A9EF5FB009B53E6 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				9BCA63422AAEF14400A132F3 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = 9B17BF042A95BBE7007516C6 /* Products */;
 			projectDirPath = "";
@@ -664,6 +668,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HomeHQ/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCameraUsageDescription = "The camera is used to scan QR codes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -698,6 +703,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HomeHQ/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCameraUsageDescription = "The camera is used to scan QR codes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -758,6 +764,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		9BCA63422AAEF14400A132F3 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -795,6 +809,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9B17BF3A2A96096B007516C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		9BCA63432AAEF14400A132F3 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9BCA63422AAEF14400A132F3 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

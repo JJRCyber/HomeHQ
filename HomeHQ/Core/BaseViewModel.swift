@@ -22,7 +22,7 @@ open class BaseViewModel: ObservableObject {
     let dataStore = DataStore.shared
     
     // Retrieve homeId from UserDefaults
-    let homeId = UserDefaults.standard.string(forKey: "homeId")
+    var homeId = UserDefaults.standard.string(forKey: "homeId")
     let userId = UserDefaults.standard.string(forKey: "userId")
     
     // Default loading state set to idle
