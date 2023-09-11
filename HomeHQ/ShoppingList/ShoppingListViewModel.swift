@@ -21,7 +21,7 @@ class ShoppingListViewModel: BaseViewModel {
     func loadShoppingList() async {
         loadingState = .loading
         do {
-            self.shoppingList = try await HomeManager.shared.getShoppingList()
+            self.shoppingList = try await dataStore.homeManager.getShoppingList()
             loadingState = .loaded
         } catch {
             loadingState = .error
@@ -99,7 +99,7 @@ class ShoppingListViewModel: BaseViewModel {
             let item = ShoppingListItem(name: newItemName)
             Task {
                 do {
-                    try await HomeManager.shared.addShoppingListItem(shopppingListItem: item)
+                    try await dataStore.homeManager.addShoppingListItem(shopppingListItem: item)
                     await loadShoppingList()
                     newItemName = ""
                 } catch {

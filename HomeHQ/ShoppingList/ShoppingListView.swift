@@ -21,13 +21,13 @@ struct ShoppingListView: View {
             // View switch based on loading state of viewModel
             switch viewModel.loadingState {
             case .idle, .loading:
-                loadingView
+                LoadingView()
             case .loaded:
                 listView
             case .error:
-                errorView
+                MissingHomeView()
             }
-
+            
         }
         .task {
             await viewModel.loadShoppingList()
@@ -54,15 +54,6 @@ struct ShoppingListView: View {
         }
     }
     
-    // Displays a loading spinner
-    var loadingView: some View {
-        VStack {
-            Spacer()
-            ProgressView()
-            Spacer()
-        }
-    }
-    
     // Displays a text field as the first item on list
     // Will add a new item to the shopping list on submit of text field
     // Loops over all items in shopping list with custom view for each
@@ -80,29 +71,14 @@ struct ShoppingListView: View {
                 .onSubmit {
                     viewModel.addItem()
                 }
-                ForEach(viewModel.shoppingList) { item in
-                    ShoppingListRowView(viewModel: viewModel, item: item)
-                        .listRowInsets(EdgeInsets())
-                        .listRowBackground(Color.clear)
-                }
-                .onDelete(perform: viewModel.deleteItem)
+            ForEach(viewModel.shoppingList) { item in
+                ShoppingListRowView(viewModel: viewModel, item: item)
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(Color.clear)
+            }
+            .onDelete(perform: viewModel.deleteItem)
         }
         .listStyle(.plain)
-    }
-    
-    // Error displayed if no homeId connected to user
-    // Prompts user to add or join home
-    var errorView: some View {
-        VStack {
-            Spacer()
-            Image(systemName: "house.lodge.fill")
-                .font(.headline)
-                .foregroundColor(.orange)
-            Text("Please add or join a home")
-                .font(.headline)
-                .foregroundColor(.orange)
-            Spacer()
-        }
     }
 }
 

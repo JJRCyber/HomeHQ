@@ -59,6 +59,11 @@ struct HomeProfile: Codable {
 //MARK: Home
 final class HomeManager {
     
+    enum CollectionType: String {
+        case shoppingList = "shopping_list"
+        case notices = "notices"
+    }
+    
     // Singleton pattern - Single Source of Truth
     static let shared = HomeManager()
     private init() { }
@@ -70,6 +75,11 @@ final class HomeManager {
     // Returns home document for given homeId
     private func homeDocument(homeId: String) -> DocumentReference {
         homeCollection.document(homeId)
+    }
+    
+    private func subCollection(collectionType: CollectionType) throws -> CollectionReference {
+        guard let homeId = UserDefaults.standard.string(forKey: "homeId") else { throw ApplicationError.homeIdNotRetrieved }
+        return homeDocument(homeId: homeId).collection(collectionType.rawValue)
     }
     
     // Returns HomeProfile when given a homeId
@@ -103,23 +113,16 @@ final class HomeManager {
 //MARK: Shopping List
 extension HomeManager {
     
-    // Path to shoppingListCollection in Firestore
-    // Only retrieves shoppingListCollection for currently in use home
-    private func shoppingListCollection() throws -> CollectionReference {
-        guard let homeId = UserDefaults.standard.string(forKey: "homeId") else { throw ApplicationError.homeIdNotRetrieved }
-        return homeDocument(homeId: homeId).collection("shopping_list")
-    }
-    
     // Returns shoppingList firestore document
     private func shoppingListCollectionDocument(shoppingListItemId: String) throws -> DocumentReference {
-        try shoppingListCollection().document(shoppingListItemId)
+        try subCollection(collectionType: .shoppingList).document(shoppingListItemId)
     }
     
     // Gets all items in shopping list collection for current home
     // Appends to local array and returns this array
     func getShoppingList() async throws -> [ShoppingListItem] {
         var shoppingList:[ShoppingListItem] = []
-        let snapshot = try await shoppingListCollection().getDocuments()
+        let snapshot = try await subCollection(collectionType: .shoppingList).getDocuments()
         for document in snapshot.documents {
             let shoppingListItem = try document.data(as: ShoppingListItem.self)
             shoppingList.append(shoppingListItem)
@@ -141,4 +144,37 @@ extension HomeManager {
     func updateShoppingListItem(shoppingListItem: ShoppingListItem) async throws {
         try shoppingListCollectionDocument(shoppingListItemId: shoppingListItem.id).setData(from: shoppingListItem)
     }
+}
+
+//MARK: Notices
+extension HomeManager {
+    
+    // Returns notice firestore document
+    private func noticeCollectionDocument(noticeId: String) throws -> DocumentReference {
+        try subCollection(collectionType: .notices).document(noticeId)
+    }
+    
+    // Gets all items in notices collection for current home
+    // Appends to local array and returns this array
+    func getNotices() async throws -> [Notice] {
+        var notices:[Notice] = []
+        let snapshot = try await subCollection(collectionType: .notices).getDocuments()
+        for document in snapshot.documents {
+            let notice = try document.data(as: Notice.self)
+            notices.append(notice)
+        }
+        return notices
+    }
+    
+    // Adds a notice to Firestore notice sub collection
+    func addNotice(notice: Notice) async throws {
+        try noticeCollectionDocument(noticeId: notice.id).setData(from: notice, merge: false)
+    }
+    
+    // Removes a notice from Firestore notice sub collection
+    func removeNotice(noticeId: String) async throws {
+        try await noticeCollectionDocument(noticeId: noticeId).delete()
+    }
+    
+    
 }

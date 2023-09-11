@@ -9,14 +9,12 @@ import Foundation
 import SwiftUI
 
 // View Model for notice board view and subviews
-class NoticePageViewModel: ObservableObject {
+@MainActor
+class NoticePageViewModel: BaseViewModel {
     
     // Stores array of notices that is displayed on view
     // Currently does not persist will add persistence later
-    @Published var notices: [Notice] = [
-        Notice(title: "Test", detail: "Test", date: Date(), importance: 3, user: "Cooper"),
-        Notice(title: "Test2", detail: "Test2", date: Date(), importance: 4, user: "Cooper")
-    ]
+    @Published var notices: [Notice] = []
     
     // Is toggled when "Add Notice" button is pressed
     @Published var showAddNoticeSheet: Bool = false
@@ -38,6 +36,16 @@ class NoticePageViewModel: ObservableObject {
         return dates
     }
     
+    func loadNotices() async {
+        loadingState = .loading
+        do {
+            self.notices = try await dataStore.homeManager.getNotices()
+            loadingState = .loaded
+        } catch {
+            loadingState = .error
+        }
+    }
+    
     // Function to return day string when given a date
     func formatDayOfWeek(date: Date) -> String {
         let formatter = DateFormatter()
@@ -50,13 +58,21 @@ class NoticePageViewModel: ObservableObject {
     // 3. Clears all fields associated with create notice view
     func addNotice() {
         let notice = Notice(title: noticeTitle, detail: noticeDescription, date: noticeDate, importance: noticeImportance, user: "Cooper")
-        notices.append(notice)
-        showAddNoticeSheet.toggle()
-        clearAddNoticeFields()
+        Task {
+            do {
+                try await dataStore.homeManager.addNotice(notice: notice)
+                await loadNotices()
+                showAddNoticeSheet.toggle()
+                clearAddNoticeFields()
+            } catch {
+                showError = true
+                errorMessage = error.localizedDescription
+            }
+        }
     }
     
     // Clears all bound values for add notice fields
-    func clearAddNoticeFields() {
+    private func clearAddNoticeFields() {
         noticeTitle = ""
         noticeDescription = ""
         noticeImportance = 1
@@ -65,8 +81,19 @@ class NoticePageViewModel: ObservableObject {
     
     // Deletes notice at given index
     func deleteNotice(at offsets: IndexSet) {
-            notices.remove(atOffsets: offsets)
+        guard let index = offsets.first else { return }
+        let noticeId = notices[index].id
+        notices.remove(atOffsets: offsets)
+        Task {
+            do {
+                try await dataStore.homeManager.removeNotice(noticeId: noticeId)
+                await loadNotices()
+            } catch {
+                showError = true
+                errorMessage = error.localizedDescription
+            }
         }
+    }
     
     
 }

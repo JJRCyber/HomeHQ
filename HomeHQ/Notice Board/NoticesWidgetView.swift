@@ -9,25 +9,36 @@ import SwiftUI
 
 struct NoticesWidgetView: View {
     
-    @StateObject var viewModel = NoticePageViewModel()
+    @StateObject var viewModel = NoticeWidgetViewModel()
     
     // Notice widget view that is seen on dashboard
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .top) {
-                Text("Notices")
+                Text("Notices ‼️")
                     .font(.headline)
                     .padding()
                 Spacer()
             }
-            List {
-                ForEach(viewModel.notices) { notice in
-                    NoticesWidgetRowView(notice: notice)
+            switch viewModel.loadingState {
+            case .idle, .loading:
+                LoadingView()
+            case .loaded:
+                List {
+                    ForEach(viewModel.notices) { notice in
+                        NoticesWidgetRowView(notice: notice)
+                    }
+                    .listRowBackground(Color.clear)
                 }
-                .listRowBackground(Color.clear)
+                .listStyle(.plain)
+                Spacer()
+            case .error:
+                MissingHomeView()
             }
-            .listStyle(.plain)
-            Spacer()
+
+        }
+        .task {
+            await viewModel.loadNotices()
         }
         .frame(height: 150)
         .frame(maxWidth: .infinity)

@@ -15,7 +15,7 @@ struct ShoppingListWidgetView: View {
     // Displays header and then loops over all items in shopping list 
     var body: some View {
         VStack(spacing: 0) {
-            Text("Shopping List")
+            Text("Shopping List ✏️")
                 .foregroundColor(Color("PrimaryText"))
                 .font(.caption)
                 .padding(.vertical, 8)
@@ -24,7 +24,7 @@ struct ShoppingListWidgetView: View {
             // Swich based on loading state
             switch viewModel.loadingState {
             case .idle, .loading:
-                loadingView
+                LoadingView()
             case .loaded:
                 // Uses ScrollView rather than list as list adds too much padding
                 ScrollView {
@@ -36,7 +36,7 @@ struct ShoppingListWidgetView: View {
                 }
                 Spacer()
             case .error:
-                errorView
+                MissingHomeView()
             }
 
         }

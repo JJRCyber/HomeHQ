@@ -63,6 +63,9 @@
 		9B95C8B02A9EBD0400F61C8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B95C8AF2A9EBD0400F61C8B /* LaunchScreen.storyboard */; };
 		9B95C8B22A9ECF9200F61C8B /* ShoppingListWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B95C8B12A9ECF9200F61C8B /* ShoppingListWidgetView.swift */; };
 		9B95C8B42A9ED0E300F61C8B /* ShoppingListWidgetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B95C8B32A9ED0E300F61C8B /* ShoppingListWidgetRowView.swift */; };
+		9BCA63312AAEB47D00A132F3 /* MissingHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA63302AAEB47D00A132F3 /* MissingHomeView.swift */; };
+		9BCA63332AAEB4CC00A132F3 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA63322AAEB4CC00A132F3 /* LoadingView.swift */; };
+		9BCA63352AAEB76C00A132F3 /* NoticeWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA63342AAEB76C00A132F3 /* NoticeWidgetViewModel.swift */; };
 		9BF66B0B2A98BA3C00720241 /* WeekPlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */; };
 		9BF66B0D2A98C04C00720241 /* WeekPlannerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */; };
 		9BF66B112A98D1AE00720241 /* NoticesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B102A98D1AE00720241 /* NoticesView.swift */; };
@@ -122,6 +125,9 @@
 		9B95C8AF2A9EBD0400F61C8B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B95C8B12A9ECF9200F61C8B /* ShoppingListWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListWidgetView.swift; sourceTree = "<group>"; };
 		9B95C8B32A9ED0E300F61C8B /* ShoppingListWidgetRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListWidgetRowView.swift; sourceTree = "<group>"; };
+		9BCA63302AAEB47D00A132F3 /* MissingHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingHomeView.swift; sourceTree = "<group>"; };
+		9BCA63322AAEB4CC00A132F3 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		9BCA63342AAEB76C00A132F3 /* NoticeWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeWidgetViewModel.swift; sourceTree = "<group>"; };
 		9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPlannerView.swift; sourceTree = "<group>"; };
 		9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPlannerRowView.swift; sourceTree = "<group>"; };
 		9BF66B102A98D1AE00720241 /* NoticesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticesView.swift; sourceTree = "<group>"; };
@@ -172,6 +178,8 @@
 				9B17BF262A95C12A007516C6 /* DashboardViewModel.swift */,
 				9B17BF172A95BCB6007516C6 /* TabBarView.swift */,
 				9B17BF192A95BCD2007516C6 /* TabBarViewModel.swift */,
+				9BCA63302AAEB47D00A132F3 /* MissingHomeView.swift */,
+				9BCA63322AAEB4CC00A132F3 /* LoadingView.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -301,6 +309,7 @@
 				9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */,
 				9BF66B102A98D1AE00720241 /* NoticesView.swift */,
 				9BF66B122A99F19400720241 /* AddNoticeView.swift */,
+				9BCA63342AAEB76C00A132F3 /* NoticeWidgetViewModel.swift */,
 			);
 			path = "Notice Board";
 			sourceTree = "<group>";
@@ -423,6 +432,7 @@
 			files = (
 				9B3B748E2AA8326600C36136 /* ShoppingListWidgetViewModel.swift in Sources */,
 				9B17BF2B2A95D4E4007516C6 /* NoticePageViewModel.swift in Sources */,
+				9BCA63352AAEB76C00A132F3 /* NoticeWidgetViewModel.swift in Sources */,
 				9B7C7FEF2A9EFFA0009B53E6 /* SettingsViewModel.swift in Sources */,
 				9B7C7FD52A9EF6C2009B53E6 /* EmailSignUpView.swift in Sources */,
 				9B17BF1A2A95BCD2007516C6 /* TabBarViewModel.swift in Sources */,
@@ -459,8 +469,10 @@
 				9B17BF152A95BBFE007516C6 /* DashboardView.swift in Sources */,
 				9B17BF182A95BCB6007516C6 /* TabBarView.swift in Sources */,
 				9B17BF072A95BBE7007516C6 /* HomeHQApp.swift in Sources */,
+				9BCA63332AAEB4CC00A132F3 /* LoadingView.swift in Sources */,
 				9B7C7FD32A9EF64C009B53E6 /* EmailSignInView.swift in Sources */,
 				9B7C7FCB2A9EF587009B53E6 /* GoogleSignInHelper.swift in Sources */,
+				9BCA63312AAEB47D00A132F3 /* MissingHomeView.swift in Sources */,
 				9B7C7FE12A9EF786009B53E6 /* AuthenticationManager.swift in Sources */,
 				9B17BF482A9639C6007516C6 /* ImportanceView.swift in Sources */,
 				9B12B6802AA2AC96006D11ED /* DataStore.swift in Sources */,

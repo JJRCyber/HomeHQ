@@ -19,13 +19,13 @@ struct ShoppingListWidgetRowView: View {
             Text(item.name)
                 .font(.caption)
                 .foregroundColor(Color("PrimaryText"))
-                .padding(.horizontal)
+                .padding(.horizontal, 5)
             Spacer()
             quantityIndicator
             Image(systemName: item.completed ? "checkmark.circle.fill": "circle")
                 .font(.caption)
                 .foregroundColor(item.completed ? .green: Color("PrimaryText"))
-                .padding(.horizontal)
+                .padding(.horizontal, 8)
                 .onTapGesture {
                     withAnimation(.linear) {
                         viewModel.updateItemCompletion(item: item)
@@ -43,7 +43,7 @@ struct ShoppingListWidgetRowView: View {
                 .font(.caption)
                 .foregroundColor(Color("PrimaryText"))
         }
-        .frame(width: 40)
+        .frame(width: 25)
     }
 }
 

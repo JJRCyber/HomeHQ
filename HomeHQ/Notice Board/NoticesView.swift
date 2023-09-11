@@ -15,24 +15,38 @@ struct NoticesView: View {
         VStack(spacing: 0) {
             title
             Divider()
-            if !viewModel.notices.isEmpty {
-                List {
-                    ForEach(viewModel.notices) { notice in
-                        NoticesRowView(notice: notice)
-                            .listRowInsets(EdgeInsets())
-                            .listRowBackground(Color.clear)
+            switch viewModel.loadingState {
+            case .idle, .loading:
+                LoadingView()
+            case .loaded:
+                if !viewModel.notices.isEmpty {
+                    List {
+                        ForEach(viewModel.notices) { notice in
+                            NoticesRowView(notice: notice)
+                                .listRowInsets(EdgeInsets())
+                                .listRowBackground(Color.clear)
+                        }
+                        .onDelete(perform: viewModel.deleteNotice)
                     }
-                    .onDelete(perform: viewModel.deleteNotice)
+                    .listStyle(.plain)
+                } else {
+                    Spacer()
+                    Text("No Notices!")
+                        .font(.headline)
+                        .foregroundColor(Color("PrimaryText"))
+                    Spacer()
                 }
-                .listStyle(.plain)
-            } else {
-                Spacer()
-                Text("No Notices!")
-                    .font(.headline)
-                    .foregroundColor(Color("PrimaryText"))
-                Spacer()
+            case .error:
+                MissingHomeView()
             }
 
+
+        }
+        .task {
+            await viewModel.loadNotices()
+        }
+        .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {
+            Button("Ok", role: .cancel) { }
         }
         .frame(maxHeight: 250)
         .frame(maxWidth: .infinity)
