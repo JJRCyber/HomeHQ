@@ -38,6 +38,7 @@ struct EmailSignUpView: View {
                     .background(Color("ButtonBackground"))
                     .cornerRadius(10)
                     .padding(.horizontal)
+                    .textContentType(.emailAddress)
                     .overlay(
                         Group(content: {
                         RoundedRectangle(cornerRadius: 10)
@@ -57,6 +58,7 @@ struct EmailSignUpView: View {
                     .background(Color("ButtonBackground"))
                     .cornerRadius(10)
                     .padding(.horizontal)
+                    .textContentType(.newPassword)
                     .overlay(
                         Group(content: {
                         RoundedRectangle(cornerRadius: 10)
@@ -77,6 +79,7 @@ struct EmailSignUpView: View {
                     .background(Color("ButtonBackground"))
                     .cornerRadius(10)
                     .padding(.horizontal)
+                    .textContentType(.password)
                     .overlay(
                         Group(content: {
                         RoundedRectangle(cornerRadius: 10)

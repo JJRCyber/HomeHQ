@@ -68,6 +68,8 @@
 		9BCA63352AAEB76C00A132F3 /* NoticeWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA63342AAEB76C00A132F3 /* NoticeWidgetViewModel.swift */; };
 		9BCA633B2AAECC1500A132F3 /* HomeProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA633A2AAECC1500A132F3 /* HomeProfileView.swift */; };
 		9BCA633D2AAECDAE00A132F3 /* HomeProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA633C2AAECDAE00A132F3 /* HomeProfileViewModel.swift */; };
+		9BCA633F2AAEE3EF00A132F3 /* AddMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA633E2AAEE3EF00A132F3 /* AddMemberView.swift */; };
+		9BCA63412AAEEABE00A132F3 /* JoinHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA63402AAEEABE00A132F3 /* JoinHomeView.swift */; };
 		9BF66B0B2A98BA3C00720241 /* WeekPlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */; };
 		9BF66B0D2A98C04C00720241 /* WeekPlannerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */; };
 		9BF66B112A98D1AE00720241 /* NoticesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B102A98D1AE00720241 /* NoticesView.swift */; };
@@ -132,6 +134,8 @@
 		9BCA63342AAEB76C00A132F3 /* NoticeWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeWidgetViewModel.swift; sourceTree = "<group>"; };
 		9BCA633A2AAECC1500A132F3 /* HomeProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileView.swift; sourceTree = "<group>"; };
 		9BCA633C2AAECDAE00A132F3 /* HomeProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileViewModel.swift; sourceTree = "<group>"; };
+		9BCA633E2AAEE3EF00A132F3 /* AddMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberView.swift; sourceTree = "<group>"; };
+		9BCA63402AAEEABE00A132F3 /* JoinHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinHomeView.swift; sourceTree = "<group>"; };
 		9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPlannerView.swift; sourceTree = "<group>"; };
 		9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPlannerRowView.swift; sourceTree = "<group>"; };
 		9BF66B102A98D1AE00720241 /* NoticesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticesView.swift; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 				9B17BF242A95BD9D007516C6 /* ProfileView.swift */,
 				9BCA633A2AAECC1500A132F3 /* HomeProfileView.swift */,
 				9BCA633C2AAECDAE00A132F3 /* HomeProfileViewModel.swift */,
+				9BCA633E2AAEE3EF00A132F3 /* AddMemberView.swift */,
+				9BCA63402AAEEABE00A132F3 /* JoinHomeView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -484,6 +490,7 @@
 				9B9110FA2A9C5BCD0020530B /* ShoppingListItem.swift in Sources */,
 				9B7C7FED2A9EF895009B53E6 /* ViewUtils.swift in Sources */,
 				9B7C7FDD2A9EF741009B53E6 /* ForgotPasswordView.swift in Sources */,
+				9BCA633F2AAEE3EF00A132F3 /* AddMemberView.swift in Sources */,
 				9B7C7FE62A9EF7CE009B53E6 /* ApplicationError.swift in Sources */,
 				9B17BF2F2A95D64A007516C6 /* BillWidgetView.swift in Sources */,
 				9B7C7FFA2AA00061009B53E6 /* HomeManager.swift in Sources */,
@@ -516,6 +523,7 @@
 				9B7C7FE12A9EF786009B53E6 /* AuthenticationManager.swift in Sources */,
 				9B17BF482A9639C6007516C6 /* ImportanceView.swift in Sources */,
 				9B12B6802AA2AC96006D11ED /* DataStore.swift in Sources */,
+				9BCA63412AAEEABE00A132F3 /* JoinHomeView.swift in Sources */,
 				9B0A8EC72A9B5BF400943C2B /* ShoppingListRowView.swift in Sources */,
 				9B7C7FDF2A9EF75D009B53E6 /* RootView.swift in Sources */,
 				9B17BF1D2A95BD4D007516C6 /* BillView.swift in Sources */,

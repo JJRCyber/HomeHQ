@@ -23,9 +23,18 @@ final class ProfileViewModel: BaseViewModel {
 
     
     // Loads current user from Firestore
-    func loadCurrentUser() async throws {
-        let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
-        self.user = try await UserManager.shared.getUser(userId: authDataResult.uid)
+    func loadCurrentUser() async {
+        loadingState = .loading
+        do {
+            let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
+            self.user = try await UserManager.shared.getUser(userId: authDataResult.uid)
+            loadingState = .loaded
+        } catch {
+            loadingState = .error
+            showError = true
+            errorMessage = error.localizedDescription
+        }
+
     }
     
     // Updates text fields with values from Firestore user profile
@@ -45,7 +54,7 @@ final class ProfileViewModel: BaseViewModel {
         Task {
             do {
                 try await UserManager.shared.updateUserProfile(userId: user.userId, userName: userName, name: name, mobile: mobile)
-                self.user = try await UserManager.shared.getUser(userId: user.userId)
+                await loadCurrentUser()
             } catch {
                 showError = true
                 errorMessage = error.localizedDescription

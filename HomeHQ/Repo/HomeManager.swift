@@ -100,12 +100,20 @@ final class HomeManager {
         try await homeDocument(homeId: homeId).updateData(data)
     }
     
+    func updateHomeName(homeId: String, homeName: String) async throws {
+        let data: [String: Any] = [
+            HomeProfile.CodingKeys.name.rawValue : homeName
+        ]
+        try await homeDocument(homeId: homeId).updateData(data)
+    }
+    
     // Removes home member from given home
     func removeHomeMember(homeId: String, userId: String) async throws {
         let data: [String: Any] = [
             HomeProfile.CodingKeys.members.rawValue : FieldValue.arrayRemove([userId])
         ]
         try await homeDocument(homeId: homeId).updateData(data)
+        try await UserManager.shared.removeHomeId(userId: userId)
     }
 
 }

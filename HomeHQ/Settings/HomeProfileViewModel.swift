@@ -5,19 +5,52 @@
 //  Created by Cooper Jacob on 11/9/2023.
 //
 
-import Foundation
+import SwiftUI
+import CoreImage.CIFilterBuiltins
 
+@MainActor
 final class HomeProfileViewModel: BaseViewModel {
+    
+    let context = CIContext()
+    let filter = CIFilter.qrCodeGenerator()
     
     @Published var home: HomeProfile? = nil
     
-    @Published var name: String = ""
+    @Published var homeName: String = ""
     @Published var address: String = ""
     
     // Shows sheet to join a new home
     @Published var showJoinHomeSheet: Bool = false
+    @Published var showAddMemberSheet: Bool = false
     // Bound to text field in displayed
     @Published var homeIdText: String = ""
+    
+    @Published var homeOwner: String = ""
+    @Published var homeMembers: [String] = []
+    
+    func loadHome() async {
+        loadingState = .loading
+        guard let homeId else { return }
+        do {
+            self.home = try await dataStore.homeManager.getHome(homeId: homeId)
+            loadingState = .loaded
+            if self.home != nil {
+                getHomeOwner()
+                getHomeMembers()
+                loadValues()
+            }
+        } catch {
+            showError = true
+            errorMessage = error.localizedDescription
+            loadingState = .error
+        }
+    }
+    
+    func loadValues() {
+        guard let home else { return }
+        homeName = home.name
+        address = home.address ?? ""
+    }
     
     func joinHome() {
         guard let userId else {
@@ -30,10 +63,22 @@ final class HomeProfileViewModel: BaseViewModel {
             do {
                 try await dataStore.homeManager.addHomeMember(homeId: homeIdText, userId: userId)
                 try await dataStore.userManager.updateHomeId(userId: userId, homeId: homeIdText)
-                self.home = try await dataStore.homeManager.getHome(homeId: homeIdText)
+                await loadHome()
             } catch {
                 showError = true
                 errorMessage = "Could not add user to home"
+            }
+        }
+    }
+    
+    func updateHomeName() {
+        guard let home else { return }
+        Task {
+            do {
+                try await dataStore.homeManager.updateHomeName(homeId: home.homeId, homeName: homeName)
+            } catch {
+                showError = true
+                errorMessage = error.localizedDescription
             }
         }
     }
@@ -46,7 +91,7 @@ final class HomeProfileViewModel: BaseViewModel {
             return
         }
         let members = [userId]
-        let home = HomeProfile(name: name, address: address, owner: userId, members: members)
+        let home = HomeProfile(name: homeName, address: address, owner: userId, members: members)
         Task {
             do {
                 try await dataStore.homeManager.createNewHome(home: home)
@@ -57,5 +102,52 @@ final class HomeProfileViewModel: BaseViewModel {
                 errorMessage = "Failed to create home"
             }
         }
+    }
+    
+    func getHomeOwner() {
+        guard let home else { return }
+        Task {
+            let owner = try await dataStore.userManager.getUser(userId: home.owner)
+            self.homeOwner = owner.name ?? owner.userId
+        }
+    }
+    
+    func getHomeMembers() {
+        guard let home else { return }
+        Task {
+            var homeMembers: [String] = []
+            for member in home.members {
+                let user = try await dataStore.userManager.getUser(userId: member)
+                let name = user.name ?? user.userId
+                homeMembers.append(name)
+            }
+            self.homeMembers = homeMembers
+        }
+    }
+    
+    func leaveHome() {
+        guard let home else { return }
+        guard let userId else { return }
+        Task {
+            do {
+                try await dataStore.homeManager.removeHomeMember(homeId: home.homeId, userId: userId)
+                await loadHome()
+            } catch {
+                showError = true
+                errorMessage = error.localizedDescription
+            }
+
+        }
+       
+    }
+    
+    func generateQRCode(homeId: String) -> UIImage {
+        filter.message = Data(homeId.utf8)
+        if let outputImage = filter.outputImage {
+            if let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
+                return UIImage(cgImage: cgImage)
+            }
+        }
+        return UIImage(systemName: "xmark.circle") ?? UIImage()
     }
 }

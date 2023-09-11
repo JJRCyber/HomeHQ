@@ -36,12 +36,14 @@ struct EmailSignInView: View {
                     .background(Color("ButtonBackground"))
                     .cornerRadius(10)
                     .padding(.horizontal)
+                    .textContentType(.emailAddress)
                 SecureField("Password...", text: $viewModel.password)
                     .padding()
                     .frame(maxWidth: .infinity)
                     .background(Color("ButtonBackground"))
                     .cornerRadius(10)
                     .padding(.horizontal)
+                    .textContentType(.password)
 
                 // When button is pressed call signIn function and display any errors
                 // with alert popup

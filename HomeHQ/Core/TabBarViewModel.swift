@@ -11,8 +11,9 @@ import Foundation
 @MainActor
 final class TabBarViewModel: BaseViewModel {
     
-    @Published var homeName = "Home 1"
+    @Published var homeName = ""
     @Published var user: UserProfile?
+    @Published var home: HomeProfile?
     @Published var selectedTab: Int = 0
     
     // Loads the currently logged in user when object is initialised
@@ -20,17 +21,19 @@ final class TabBarViewModel: BaseViewModel {
         super.init()
         loadingState = .loading
         Task {
-            await loadCurrentUser()
+            await loadCurrentHome()
         }
     }
     
     // Loads currently logged in user and saves homeId to UserDefaults
-    func loadCurrentUser() async {
+    func loadCurrentHome() async {
         do {
-            let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
-            self.user = try await UserManager.shared.getUser(userId: authDataResult.uid)
+            let authDataResult = try authManager.getAuthenticatedUser()
+            self.user = try await dataStore.userManager.getUser(userId: authDataResult.uid)
             UserDefaults.standard.set(self.user?.userId, forKey: "userId")
             if let homeId = self.user?.homeId {
+                self.home = try await dataStore.homeManager.getHome(homeId: homeId)
+                homeName = self.home?.name ?? ""
                 UserDefaults.standard.set(homeId, forKey: "homeId")
             }
             loadingState = .loaded

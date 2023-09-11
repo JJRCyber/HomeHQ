@@ -16,73 +16,82 @@ struct ProfileView: View {
         ZStack {
             Color("ButtonBackground")
                 .edgesIgnoringSafeArea(.all)
-            VStack {
-                if let user = viewModel.user {
-                    List {
-                        Section(header: Text("Account Details")) {
-                            Text("User ID: \(user.userId)")
-                            Text("Email: \(user.email ?? "")")
+            switch viewModel.loadingState {
+            case .idle, .loading:
+                LoadingView()
+            case .loaded:
+                VStack {
+                    if let user = viewModel.user {
+                        List {
+                            Section(header: Text("Account Details")) {
+                                Text("User ID: \(user.userId)")
+                                Text("Email: \(user.email ?? "")")
+                            }
+                            Section(header: Text("User Profile")) {
+                                VStack(alignment: .leading) {
+                                    Text("Username")
+                                        .font(.caption)
+                                    TextField("Enter your username", text: $viewModel.userName)
+                                }
+                                VStack(alignment: .leading) {
+                                    Text("Name")
+                                        .font(.caption)
+                                    TextField("Enter your name", text: $viewModel.name)
+                                }
+                                VStack(alignment: .leading) {
+                                    Text("Mobile")
+                                        .font(.caption)
+                                    TextField("Enter your mobile", text: $viewModel.mobile)
+                                }
+                            }
+                            
                         }
-                        Section(header: Text("User Profile")) {
-                            VStack(alignment: .leading) {
-                                Text("Username")
-                                    .font(.caption)
-                                TextField("Enter your username", text: $viewModel.userName)
-                            }
-                            VStack(alignment: .leading) {
-                                Text("Name")
-                                    .font(.caption)
-                                TextField("Enter your name", text: $viewModel.name)
-                            }
-                            VStack(alignment: .leading) {
-                                Text("Mobile")
-                                    .font(.caption)
-                                TextField("Enter your mobile", text: $viewModel.mobile)
-                            }
+                        Button {
+                            viewModel.updateUserProfile()
+                        } label: {
+                            Text("Update Profile")
+                                .frame(height: 55)
+                                .frame(maxWidth: .infinity)
+                                .background(Color("Highlight"))
+                                .cornerRadius(10)
+                                .padding()
+                                .foregroundColor(Color("PrimaryText"))
                         }
+                        Spacer()
                         
+                        .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {
+                            Button("Ok", role: .cancel) { }
+                        }
+                        .task {
+                            viewModel.updateValues()
+                        }
+
+
+
                     }
+                    Spacer()
                     Button {
-                        viewModel.updateUserProfile()
+                        try? viewModel.signOut()
+                        showSignInView = true
                     } label: {
-                        Text("Update Profile")
+                        Text("Sign out")
                             .frame(height: 55)
                             .frame(maxWidth: .infinity)
-                            .background(Color("Highlight"))
+                            .background(Color("ButtonBackgroundSecondary"))
                             .cornerRadius(10)
                             .padding()
                             .foregroundColor(Color("PrimaryText"))
                     }
-                    Spacer()
-                    
-                    .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {
-                        Button("Ok", role: .cancel) { }
-                    }
-                    .task {
-                        viewModel.updateValues()
-                    }
-
-
-
                 }
-                Spacer()
-                Button {
-                    try? viewModel.signOut()
-                    showSignInView = true
-                } label: {
-                    Text("Sign out")
-                        .frame(height: 55)
-                        .frame(maxWidth: .infinity)
-                        .background(Color("ButtonBackgroundSecondary"))
-                        .cornerRadius(10)
-                        .padding()
-                        .foregroundColor(Color("PrimaryText"))
-                }
+            case .error:
+                MissingHomeView()
             }
-            .task {
-                try? await viewModel.loadCurrentUser()
+
+
         }
-        }
+        .task {
+            await viewModel.loadCurrentUser()
+    }
         .navigationTitle("User Profile")
     }
 }

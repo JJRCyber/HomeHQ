@@ -149,4 +149,12 @@ final class UserManager {
         try await userDocument(userId: userId).updateData(data)
         UserDefaults.standard.set(homeId, forKey: "homeId")
     }
+    
+    func removeHomeId(userId: String) async throws {
+        let data: [String:Any] = [
+            UserProfile.CodingKeys.homeId.rawValue : FieldValue.delete()
+        ]
+        try await userDocument(userId: userId).updateData(data)
+        UserDefaults.standard.removeObject(forKey: "homeId")
+    }
 }
