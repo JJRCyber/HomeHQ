@@ -29,7 +29,10 @@ struct ShoppingListWidgetView: View {
             Spacer()
         }
         .task {
-            try? await viewModel.loadShoppingList()
+            await viewModel.loadShoppingList()
+        }
+        .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {
+            Button("Ok", role: .cancel) { }
         }
         .frame(maxHeight: 150)
         .frame(maxWidth: .infinity)

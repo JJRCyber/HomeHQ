@@ -11,64 +11,64 @@ import Foundation
 @MainActor
 class ShoppingListViewModel: BaseViewModel {
     
-    @Published var loadingState: LoadingState = .idle
-    
-    @Published var home: HomeProfile? = nil
-    
     // Bound to text field to add new item
     @Published var newItemName: String = ""
     
     // Array of ShoppingListItem
     @Published var shoppingList:[ShoppingListItem] = []
     
-    func loadHome() async throws {
+    func loadShoppingList() async {
         loadingState = .loading
-        let user = try await dataStore.userManager.getCurrentUser()
-        if let homeId = user.homeId {
-            self.home = try await dataStore.homeManager.getHome(homeId: homeId)
-            try await loadShoppingList()
+        do {
+            self.shoppingList = try await HomeManager.shared.getShoppingList()
             loadingState = .loaded
-        }
-    }
-    
-    func loadShoppingList() async throws {
-        let user = try await dataStore.userManager.getCurrentUser()
-        if let homeId = user.homeId {
-            self.shoppingList = try await HomeManager.shared.getShoppingList(homeId: homeId)
+        } catch {
+            loadingState = .error
         }
     }
     
     
     // Deletes item from array at specified index
     func deleteItem(at offsets: IndexSet) {
-        guard let home else { return }
         guard let index = offsets.first else { return }
         let shoppingListItemId = shoppingList[index].id
         shoppingList.remove(atOffsets: offsets)
         Task {
-            try await dataStore.homeManager.removeShoppingListItem(homeId: home.homeId, shoppingListItemId: shoppingListItemId)
-            try await loadShoppingList()
+            do {
+                try await dataStore.homeManager.removeShoppingListItem(shoppingListItemId: shoppingListItemId)
+                await loadShoppingList()
+            } catch {
+                showError = true
+                errorMessage = error.localizedDescription
+            }
         }
-        }
+    }
     
     func deleteItem(at index: Int) {
-        guard let home else { return }
         let shoppingListItemId = shoppingList[index].id
         shoppingList.remove(at: index)
         Task {
-            try await dataStore.homeManager.removeShoppingListItem(homeId: home.homeId, shoppingListItemId: shoppingListItemId)
-            try await loadShoppingList()
+            do {
+                try await dataStore.homeManager.removeShoppingListItem(shoppingListItemId: shoppingListItemId)
+                await loadShoppingList()
+            } catch {
+                showError = true
+                errorMessage = error.localizedDescription
+            }
         }
-        }
+    }
     
     // Finds the item in the array and calls the model function to update completion
     func updateItemCompletion(item: ShoppingListItem) {
         if let index = shoppingList.firstIndex(where: {$0.id == item.id}) {
             shoppingList[index] = item.toggleCompleted()
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                if self.shoppingList[index].completed {
-                    self.deleteItem(at: index)
+                if let currentIndex = self.shoppingList.firstIndex(where: {$0.id == item.id}) {
+                    if self.shoppingList[currentIndex].completed {
+                        self.deleteItem(at: currentIndex)
+                    }
                 }
+
             }
         }
     }
@@ -86,26 +86,20 @@ class ShoppingListViewModel: BaseViewModel {
             }
         }
     }
-
-    // Adds item to shoppingList if input is valid 
-//    func addItem() {
-//        if isValidEntry() {
-//            let item = ShoppingListItem(name: newItemName)
-//            shoppingList.insert(item, at: 0)
-//            newItemName = ""
-//        }
-//    }
     
     func addItem() {
         if isValidEntry() {
-            guard let home else { return }
             let item = ShoppingListItem(name: newItemName)
             Task {
-                try await HomeManager.shared.addShoppingListItem(homeId: home.homeId, shopppingListItem: item)
-                try await loadShoppingList()
+                do {
+                    try await HomeManager.shared.addShoppingListItem(shopppingListItem: item)
+                    await loadShoppingList()
+                    newItemName = ""
+                } catch {
+                    showError = true
+                    errorMessage = error.localizedDescription
+                }
             }
-            newItemName = ""
-
         }
     }
 }

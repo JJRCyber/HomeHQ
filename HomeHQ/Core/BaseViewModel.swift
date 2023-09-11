@@ -13,11 +13,14 @@ open class BaseViewModel: ObservableObject {
         case idle
         case loading
         case loaded
-        case error(Error)
+        case error
     }
     
     let authManager = AuthenticationManager.shared
     let dataStore = DataStore.shared
     let homeId = UserDefaults.standard.string(forKey: "homeId")
+    @Published var loadingState: LoadingState = .idle
+    @Published var showError: Bool = false
+    @Published var errorMessage: String = ""
     
 }

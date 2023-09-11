@@ -10,28 +10,32 @@ import Foundation
 @MainActor
 class ShoppingListWidgetViewModel: BaseViewModel {
     
-    @Published var loadingState: LoadingState = .idle
-    
     // Array of ShoppingListItem
     @Published var shoppingList:[ShoppingListItem] = []
     
-    func loadShoppingList() async throws {
+    func loadShoppingList() async {
         loadingState = .loading
-        guard let homeId = try await dataStore.userManager.getCurrentUser().homeId else { return }
-//        self.homeId = homeId
-        self.shoppingList = try await dataStore.homeManager.getShoppingList(homeId: homeId)
-        loadingState = .loaded
+        do {
+            self.shoppingList = try await dataStore.homeManager.getShoppingList()
+            loadingState = .loaded
+        } catch {
+            loadingState = .error
+        }
     }
     
-    func deleteItem(at index: Int) {
-        guard let homeId else { return }
+    private func deleteItem(at index: Int) {
         let shoppingListItemId = shoppingList[index].id
         shoppingList.remove(at: index)
         Task {
-            try await dataStore.homeManager.removeShoppingListItem(homeId: homeId, shoppingListItemId: shoppingListItemId)
-            try await loadShoppingList()
+            do {
+                try await dataStore.homeManager.removeShoppingListItem(shoppingListItemId: shoppingListItemId)
+                await loadShoppingList()
+            } catch {
+                showError = true
+                errorMessage = error.localizedDescription
+            }
         }
-        }
+    }
     
     // Finds the item in the array and calls the model function to update completion
     func updateItemCompletion(item: ShoppingListItem) {

@@ -25,44 +25,55 @@ struct ShoppingListView: View {
             }
 
             Divider()
-            List {
-                TextField("Add Item", text: $viewModel.newItemName)
-                    .listRowBackground(Color.clear)
-                    .foregroundColor(Color("PrimaryText"))
-                    .font(.callout)
-                    .overlay(alignment: .trailing, content: {
-                        Image(systemName: "xmark")
-                            .foregroundColor(.red)
-                            .opacity(viewModel.isValidEntry() ? 0.0 : 1.0)
-                    })
-                    .onSubmit {
-                        viewModel.addItem()
-                    }
-                switch viewModel.loadingState {
-                case .idle, .loaded:
-                    ForEach(viewModel.shoppingList) { item in
-                        ShoppingListRowView(viewModel: viewModel, item: item)
-                            .listRowInsets(EdgeInsets())
-                            .listRowBackground(Color.clear)
-                    }
-                    .onDelete(perform: viewModel.deleteItem)
-                case .loading, .error:
-                    HStack(alignment: .center) {
-                        Spacer()
-                        ProgressView("Loading...")
-                            .listRowInsets(EdgeInsets())
-                            .padding()
-                        Spacer()
-                    }
-                    .listRowBackground(Color.clear)
-
+            switch viewModel.loadingState {
+            case .idle, .loading:
+                VStack {
+                    Spacer()
+                    ProgressView()
+                    Spacer()
                 }
-
+                .listRowBackground(Color.clear)
+            case .loaded:
+                List {
+                    TextField("Add Item", text: $viewModel.newItemName)
+                        .listRowBackground(Color.clear)
+                        .foregroundColor(Color("PrimaryText"))
+                        .font(.callout)
+                        .overlay(alignment: .trailing, content: {
+                            Image(systemName: "xmark")
+                                .foregroundColor(.red)
+                                .opacity(viewModel.isValidEntry() ? 0.0 : 1.0)
+                        })
+                        .onSubmit {
+                            viewModel.addItem()
+                        }
+                        ForEach(viewModel.shoppingList) { item in
+                            ShoppingListRowView(viewModel: viewModel, item: item)
+                                .listRowInsets(EdgeInsets())
+                                .listRowBackground(Color.clear)
+                        }
+                        .onDelete(perform: viewModel.deleteItem)
+                }
+                .listStyle(.plain)
+            case .error:
+                VStack {
+                    Spacer()
+                    Image(systemName: "house.lodge.fill")
+                        .font(.headline)
+                        .foregroundColor(.orange)
+                    Text("Please add or join a home")
+                        .font(.headline)
+                        .foregroundColor(.orange)
+                    Spacer()
+                }
             }
-            .listStyle(.plain)
+
         }
         .task {
-            try? await viewModel.loadHome()
+            await viewModel.loadShoppingList()
+        }
+        .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {
+            Button("Ok", role: .cancel) { }
         }
         .frame(maxHeight: 250)
         .frame(maxWidth: .infinity)

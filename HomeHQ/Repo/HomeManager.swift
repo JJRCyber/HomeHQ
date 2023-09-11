@@ -9,6 +9,7 @@ import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
+//MARK: HomeProfile Struct
 struct HomeProfile: Codable {
     let homeId: String
     let name: String
@@ -53,12 +54,13 @@ struct HomeProfile: Codable {
 
 }
 
+//MARK: Home
 final class HomeManager {
     static let shared = HomeManager()
     private init() { }
     
     private let homeCollection = Firestore.firestore().collection("homes")
-    private let homeId = UserDefaults.standard.string(forKey: "homeId")
+//    private let homeId = UserDefaults.standard.string(forKey: "homeId")
     
     private func homeDocument(homeId: String) -> DocumentReference {
         homeCollection.document(homeId)
@@ -91,17 +93,18 @@ final class HomeManager {
 //MARK: Shopping List
 extension HomeManager {
     
-    private func shoppingListCollection(homeId: String) -> CollectionReference {
-        homeDocument(homeId: homeId).collection("shopping_list")
+    private func shoppingListCollection() throws -> CollectionReference {
+        guard let homeId = UserDefaults.standard.string(forKey: "homeId") else { throw ApplicationError.homeIdNotRetrieved }
+        return homeDocument(homeId: homeId).collection("shopping_list")
     }
     
-    private func shoppingListCollectionDocument(homeId: String, shoppingListItemId: String) -> DocumentReference {
-        shoppingListCollection(homeId: homeId).document(shoppingListItemId)
+    private func shoppingListCollectionDocument(shoppingListItemId: String) throws -> DocumentReference {
+        try shoppingListCollection().document(shoppingListItemId)
     }
     
-    func getShoppingList(homeId: String) async throws -> [ShoppingListItem] {
+    func getShoppingList() async throws -> [ShoppingListItem] {
         var shoppingList:[ShoppingListItem] = []
-        let snapshot = try await shoppingListCollection(homeId: homeId).getDocuments()
+        let snapshot = try await shoppingListCollection().getDocuments()
         for document in snapshot.documents {
             let shoppingListItem = try document.data(as: ShoppingListItem.self)
             shoppingList.append(shoppingListItem)
@@ -109,17 +112,15 @@ extension HomeManager {
         return shoppingList
     }
     
-    func addShoppingListItem(homeId: String, shopppingListItem: ShoppingListItem) async throws {
-        try shoppingListCollectionDocument(homeId: homeId, shoppingListItemId: shopppingListItem.id).setData(from: shopppingListItem, merge: false)
+    func addShoppingListItem(shopppingListItem: ShoppingListItem) async throws {
+        try shoppingListCollectionDocument(shoppingListItemId: shopppingListItem.id).setData(from: shopppingListItem, merge: false)
     }
     
-    func removeShoppingListItem(homeId: String, shoppingListItemId: String) async throws {
-        try await shoppingListCollectionDocument(homeId: homeId, shoppingListItemId: shoppingListItemId).delete()
+    func removeShoppingListItem(shoppingListItemId: String) async throws {
+        try await shoppingListCollectionDocument(shoppingListItemId: shoppingListItemId).delete()
     }
     
     func updateShoppingListItem(shoppingListItem: ShoppingListItem) async throws {
-        if let homeId {
-            try shoppingListCollectionDocument(homeId: homeId, shoppingListItemId: shoppingListItem.id).setData(from: shoppingListItem)
-        }
+        try shoppingListCollectionDocument(shoppingListItemId: shoppingListItem.id).setData(from: shoppingListItem)
     }
 }
