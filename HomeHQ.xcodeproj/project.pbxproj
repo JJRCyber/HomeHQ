@@ -299,17 +299,8 @@
 			isa = PBXGroup;
 			children = (
 				9B7C7FC42A9EEC65009B53E6 /* Notice.swift */,
-				9B17BF2A2A95D4E4007516C6 /* NoticePageViewModel.swift */,
-				9B17BF1E2A95BD73007516C6 /* NoticesPageView.swift */,
-				9B17BF282A95D466007516C6 /* NoticesWidgetView.swift */,
-				9B17BF422A96222B007516C6 /* NoticesWidgetRowView.swift */,
-				9B17BF442A96289D007516C6 /* NoticesRowView.swift */,
-				9B17BF472A9639C6007516C6 /* ImportanceView.swift */,
-				9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */,
-				9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */,
-				9BF66B102A98D1AE00720241 /* NoticesView.swift */,
-				9BF66B122A99F19400720241 /* AddNoticeView.swift */,
-				9BCA63342AAEB76C00A132F3 /* NoticeWidgetViewModel.swift */,
+				9BCA63372AAEC6BE00A132F3 /* Widget */,
+				9BCA63362AAEC68300A132F3 /* Page */,
 			);
 			path = "Notice Board";
 			sourceTree = "<group>";
@@ -343,6 +334,47 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9BCA63362AAEC68300A132F3 /* Page */ = {
+			isa = PBXGroup;
+			children = (
+				9BCA63392AAEC6F900A132F3 /* Subviews */,
+				9B17BF1E2A95BD73007516C6 /* NoticesPageView.swift */,
+				9B17BF2A2A95D4E4007516C6 /* NoticePageViewModel.swift */,
+			);
+			path = Page;
+			sourceTree = "<group>";
+		};
+		9BCA63372AAEC6BE00A132F3 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				9BCA63382AAEC6CB00A132F3 /* Subviews */,
+				9B17BF282A95D466007516C6 /* NoticesWidgetView.swift */,
+				9BCA63342AAEB76C00A132F3 /* NoticeWidgetViewModel.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		9BCA63382AAEC6CB00A132F3 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				9B17BF422A96222B007516C6 /* NoticesWidgetRowView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		9BCA63392AAEC6F900A132F3 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */,
+				9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */,
+				9BF66B102A98D1AE00720241 /* NoticesView.swift */,
+				9BF66B122A99F19400720241 /* AddNoticeView.swift */,
+				9B17BF442A96289D007516C6 /* NoticesRowView.swift */,
+				9B17BF472A9639C6007516C6 /* ImportanceView.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

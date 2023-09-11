@@ -20,6 +20,10 @@ struct WeekPlannerRowView: View {
                 .frame(width: 100)
                 .padding()
             Divider()
+            if viewModel.dayHasNotice(for: date) {
+                Image(systemName: "circle.fill")
+                    .foregroundColor(Color("Highlight"))
+            }
             Spacer()
             Image(systemName: "chevron.right")
                 .padding(.horizontal)

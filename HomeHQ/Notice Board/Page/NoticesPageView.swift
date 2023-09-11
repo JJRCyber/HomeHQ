@@ -49,13 +49,16 @@ struct NoticesPageView: View {
 
 // Custom preview viewModel so can be previewed with tab bar
 struct NoticesPageView_Previews: PreviewProvider {
-    static var viewModel: TabBarViewModel = {
-        let vm = TabBarViewModel()
-        vm.selectedTab = 2
+    static var viewModel: NoticePageViewModel = {
+        let vm = NoticePageViewModel()
+        vm.notices = [
+            Notice(title: "Testing", detail: "", date: Date(), importance: 3)
+        ]
+        vm.loadingState = .loaded
         return vm
     }()
     
     static var previews: some View {
-        TabBarView(showSignInView: .constant(false), viewModel: viewModel)
+        NoticesPageView(viewModel: viewModel)
     }
 }

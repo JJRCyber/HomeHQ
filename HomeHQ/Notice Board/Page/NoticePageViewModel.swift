@@ -95,5 +95,12 @@ class NoticePageViewModel: BaseViewModel {
         }
     }
     
+    func dayHasNotice(for date: Date) -> Bool {
+        let calendar = Calendar.current
+        return notices.contains { notice in
+            calendar.isDate(notice.date, inSameDayAs: date)
+        }
+    }
+    
     
 }
