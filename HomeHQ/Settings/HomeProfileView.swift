@@ -122,7 +122,7 @@ struct HomeProfileView: View {
                 }
                 .ignoresSafeArea(.keyboard)
                 .sheet(isPresented: $viewModel.showQRScannerSheet) {
-                    CodeScannerView(codeTypes: [.qr], completion: viewModel.handleQRScan)
+                    QRScanView(completion: viewModel.handleQRScan)
                 }
             case .error:
                 MissingHomeView()

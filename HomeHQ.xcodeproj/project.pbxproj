@@ -38,6 +38,7 @@
 		9B17BF452A96289D007516C6 /* NoticesRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF442A96289D007516C6 /* NoticesRowView.swift */; };
 		9B17BF482A9639C6007516C6 /* ImportanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF472A9639C6007516C6 /* ImportanceView.swift */; };
 		9B3B748E2AA8326600C36136 /* ShoppingListWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3B748D2AA8326600C36136 /* ShoppingListWidgetViewModel.swift */; };
+		9B7C41AF2AAF1EE80093B73F /* QRScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C41AE2AAF1EE80093B73F /* QRScanView.swift */; };
 		9B7C7FC52A9EEC65009B53E6 /* Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C7FC42A9EEC65009B53E6 /* Notice.swift */; };
 		9B7C7FC82A9EF53D009B53E6 /* AppleSignInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C7FC72A9EF53D009B53E6 /* AppleSignInHelper.swift */; };
 		9B7C7FCB2A9EF587009B53E6 /* GoogleSignInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7C7FCA2A9EF587009B53E6 /* GoogleSignInHelper.swift */; };
@@ -108,6 +109,7 @@
 		9B17BF442A96289D007516C6 /* NoticesRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticesRowView.swift; sourceTree = "<group>"; };
 		9B17BF472A9639C6007516C6 /* ImportanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportanceView.swift; sourceTree = "<group>"; };
 		9B3B748D2AA8326600C36136 /* ShoppingListWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListWidgetViewModel.swift; sourceTree = "<group>"; };
+		9B7C41AE2AAF1EE80093B73F /* QRScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanView.swift; sourceTree = "<group>"; };
 		9B7C7FC42A9EEC65009B53E6 /* Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notice.swift; sourceTree = "<group>"; };
 		9B7C7FC72A9EF53D009B53E6 /* AppleSignInHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInHelper.swift; sourceTree = "<group>"; };
 		9B7C7FCA2A9EF587009B53E6 /* GoogleSignInHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInHelper.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				9BCA633C2AAECDAE00A132F3 /* HomeProfileViewModel.swift */,
 				9BCA633E2AAEE3EF00A132F3 /* AddMemberView.swift */,
 				9BCA63402AAEEABE00A132F3 /* JoinHomeView.swift */,
+				9B7C41AE2AAF1EE80093B73F /* QRScanView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				9B7C7FE12A9EF786009B53E6 /* AuthenticationManager.swift in Sources */,
 				9B17BF482A9639C6007516C6 /* ImportanceView.swift in Sources */,
 				9B12B6802AA2AC96006D11ED /* DataStore.swift in Sources */,
+				9B7C41AF2AAF1EE80093B73F /* QRScanView.swift in Sources */,
 				9BCA63412AAEEABE00A132F3 /* JoinHomeView.swift in Sources */,
 				9B0A8EC72A9B5BF400943C2B /* ShoppingListRowView.swift in Sources */,
 				9B7C7FDF2A9EF75D009B53E6 /* RootView.swift in Sources */,
