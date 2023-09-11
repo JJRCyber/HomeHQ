@@ -21,29 +21,12 @@ struct NoticesPageView: View {
             VStack(spacing: 0) {
                 NoticesView(viewModel: viewModel)
                 WeekPlannerView(viewModel: viewModel)
-                createNoticeButton
             }
             .sheet(isPresented: $viewModel.showAddNoticeSheet) {
                 AddNoticeView(viewModel: viewModel)
             }
-
+            
         }
-        }
-        
-    
-    var createNoticeButton: some View {
-        Button {
-            viewModel.showAddNoticeSheet.toggle()
-        } label: {
-            Text("Create Notice")
-                .frame(height: 55)
-                .frame(maxWidth: .infinity)
-                .background(Color("Highlight"))
-                .cornerRadius(10)
-                .padding()
-                .foregroundColor(Color("SecondaryText"))
-        }
-
     }
 }
 

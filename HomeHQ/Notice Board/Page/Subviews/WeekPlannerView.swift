@@ -25,11 +25,12 @@ struct WeekPlannerView: View {
             }
 
         }
-        .frame(maxHeight: 300)
+        .frame(maxHeight: 450)
         .frame(maxWidth: .infinity)
         .background(Color("ButtonBackground"))
         .cornerRadius(10)
         .padding(.horizontal)
+        .padding(.bottom)
     }
 }
 

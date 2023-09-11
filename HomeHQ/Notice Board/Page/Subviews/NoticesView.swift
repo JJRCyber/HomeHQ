@@ -13,7 +13,7 @@ struct NoticesView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            title
+            headerBar
             Divider()
             switch viewModel.loadingState {
             case .idle, .loading:
@@ -55,10 +55,23 @@ struct NoticesView: View {
         .padding()
     }
     
-    var title: some View {
-        Text("Notices")
-            .foregroundColor(Color("PrimaryText"))
-            .padding(.vertical)
+    var headerBar: some View {
+        HStack {
+            Spacer()
+            Text("Notices")
+                .foregroundColor(Color("PrimaryText"))
+                .padding(.vertical)
+                .padding(.leading)
+            Spacer()
+            Button {
+                viewModel.showAddNoticeSheet.toggle()
+            } label: {
+                Image(systemName: "plus")
+                    .foregroundColor(Color("PrimaryText"))
+
+            }
+        }
+        .padding(.horizontal)
     }
 }
 

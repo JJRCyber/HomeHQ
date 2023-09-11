@@ -24,14 +24,23 @@ struct NoticesWidgetView: View {
             case .idle, .loading:
                 LoadingView()
             case .loaded:
-                List {
-                    ForEach(viewModel.notices) { notice in
-                        NoticesWidgetRowView(notice: notice)
+                if !viewModel.notices.isEmpty {
+                    List {
+                        ForEach(viewModel.notices) { notice in
+                            NoticesWidgetRowView(notice: notice)
+                        }
+                        .listRowBackground(Color.clear)
                     }
-                    .listRowBackground(Color.clear)
+                    .listStyle(.plain)
+                    Spacer()
+                } else {
+                    Spacer()
+                    Text("No Notices!")
+                        .font(.headline)
+                        .foregroundColor(Color("PrimaryText"))
+                    Spacer()
                 }
-                .listStyle(.plain)
-                Spacer()
+
             case .error:
                 MissingHomeView()
             }
