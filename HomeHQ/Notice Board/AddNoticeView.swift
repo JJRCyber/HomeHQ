@@ -16,31 +16,32 @@ struct AddNoticeView: View {
         ZStack {
             Color("ButtonBackground")
                 .edgesIgnoringSafeArea(.all)
-            ScrollView {
-                VStack(alignment: .leading) {
-                    menuBar
-                    titleTextField
-                    Text("Description")
-                        .font(.callout)
-                        .padding(.horizontal)
-                        .foregroundColor(Color("PrimaryText"))
-                    descriptionTextField
-                    DatePicker(selection: $viewModel.noticeDate, displayedComponents: .date) {
-                        Text("Notice Date")
-                    }
-                    .datePickerStyle(.graphical)
-                    .foregroundColor(Color("PrimaryText"))
-                    .padding()
-                    Stepper(value: $viewModel.noticeImportance, in: 1...4) {
-                        HStack {
-                            Text("Importance")
-                            ImportanceView(importance: viewModel.noticeImportance)
+            VStack(alignment: .leading) {
+                menuBar
+                ScrollView {
+                        titleTextField
+                        Text("Description")
+                            .font(.callout)
+                            .padding(.horizontal)
+                            .foregroundColor(Color("PrimaryText"))
+                        descriptionTextField
+                        DatePicker(selection: $viewModel.noticeDate, displayedComponents: .date) {
+                            Text("Notice Date")
                         }
-                    }
-                    .padding(.horizontal)
-                    Spacer()
+                        .datePickerStyle(.graphical)
+                        .foregroundColor(Color("PrimaryText"))
+                        .padding()
+                        Stepper(value: $viewModel.noticeImportance, in: 1...4) {
+                            HStack {
+                                Text("Importance")
+                                ImportanceView(importance: viewModel.noticeImportance)
+                            }
+                        }
+                        .padding(.horizontal)
+                        Spacer()
                 }
             }
+
         }
     }
     
