@@ -92,11 +92,16 @@ struct TabBarView: View {
             Text(viewModel.homeName)
                 .padding()
             Spacer()
-            Image(systemName: "house.fill")
             NavigationLink {
-                SettingsView(showSignInView: $showSignInView)
+                HomeProfileView()
             } label: {
-                Image(systemName: "gearshape.fill")
+                Image(systemName: "house.fill")
+            }
+
+            NavigationLink {
+                ProfileView(showSignInView: $showSignInView)
+            } label: {
+                Image(systemName: "person.fill")
                     .padding()
             }
         }

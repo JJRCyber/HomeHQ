@@ -29,6 +29,7 @@ final class TabBarViewModel: BaseViewModel {
         do {
             let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
             self.user = try await UserManager.shared.getUser(userId: authDataResult.uid)
+            UserDefaults.standard.set(self.user?.userId, forKey: "userId")
             if let homeId = self.user?.homeId {
                 UserDefaults.standard.set(homeId, forKey: "homeId")
             }

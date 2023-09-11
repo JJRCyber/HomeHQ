@@ -132,9 +132,11 @@ final class UserManager {
     }
     
     // Updates name in Firestore
-    func updateName(userId: String, name: String) async throws {
+    func updateUserProfile(userId: String, userName: String, name: String, mobile: String) async throws {
         let data: [String:Any] = [
-            UserProfile.CodingKeys.name.rawValue : name
+            UserProfile.CodingKeys.userName.rawValue : userName,
+            UserProfile.CodingKeys.name.rawValue : name,
+            UserProfile.CodingKeys.mobile.rawValue : mobile
         ]
         try await userDocument(userId: userId).updateData(data)
     }

@@ -23,6 +23,7 @@ open class BaseViewModel: ObservableObject {
     
     // Retrieve homeId from UserDefaults
     let homeId = UserDefaults.standard.string(forKey: "homeId")
+    let userId = UserDefaults.standard.string(forKey: "userId")
     
     // Default loading state set to idle
     @Published var loadingState: LoadingState = .idle

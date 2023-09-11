@@ -65,6 +65,7 @@ final class AuthenticationManager {
     // Signs out the current account
     func signOut() throws {
         try Auth.auth().signOut()
+        UserDefaults.standard.removeObject(forKey: "userId")
         UserDefaults.standard.removeObject(forKey: "homeId")
     }
 }
