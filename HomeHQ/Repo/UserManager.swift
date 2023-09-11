@@ -9,6 +9,7 @@ import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
+// Struct for UserProfile
 struct UserProfile: Codable {
     let userId: String
     let userName: String?
@@ -20,6 +21,7 @@ struct UserProfile: Codable {
     let dateCreated: Date?
     let homeId: String?
     
+    // Init from AuthDataResult which is returned when user signs in via Firebase
     init(auth: AuthDataResultModel) {
         self.userId = auth.uid
         self.userName = nil
@@ -32,6 +34,7 @@ struct UserProfile: Codable {
         self.homeId = nil
     }
     
+    // Init from passed values
     init(
         userId: String,
         userName: String? = nil,
@@ -54,6 +57,7 @@ struct UserProfile: Codable {
         self.homeId = homeId
     }
     
+    // Allows custom encoding to snake case for storing in Firestore
     enum CodingKeys: String, CodingKey {
         case userId = "user_id"
         case userName = "user_name"
@@ -66,6 +70,7 @@ struct UserProfile: Codable {
         case homeId = "home_id"
     }
     
+    // Decodes from Firestore to UserProfile
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.userId = try container.decode(String.self, forKey: .userId)
@@ -79,6 +84,7 @@ struct UserProfile: Codable {
         self.homeId = try container.decodeIfPresent(String.self, forKey: .homeId)
     }
     
+    // Encodes from UserProfile to Firestore
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(self.userId, forKey: .userId)
@@ -91,40 +97,41 @@ struct UserProfile: Codable {
         try container.encodeIfPresent(self.dateCreated, forKey: .dateCreated)
         try container.encodeIfPresent(self.homeId, forKey: .homeId)
     }
-    
-
-    
-//    mutating func updateName(name: String) {
-//        self.name = name
-//    }
 }
 
 
 final class UserManager {
     
+    //Singleton pattern - Single Source of Truth
     static let shared = UserManager()
     private init() { }
     
+    // Sets userCollection to Firestore collection
     private let userCollection = Firestore.firestore().collection("users")
     
+    // Returns userDocument for specified user
     private func userDocument(userId: String) -> DocumentReference {
         userCollection.document(userId)
     }
     
+    // Creates a new userProfile - function is called on signup
     func createNewUser(user: UserProfile) async throws {
         try userDocument(userId: user.userId).setData(from: user, merge: false)
     }
     
+    // Returns user document from Firestore as UserProfile object
     func getUser(userId: String) async throws -> UserProfile {
         try await userDocument(userId: userId).getDocument(as: UserProfile.self)
     }
     
+    // Returns currently logged in user
     func getCurrentUser() async throws -> UserProfile {
         let userId = try AuthenticationManager.shared.getAuthenticatedUser().uid
         let userProfile = try await getUser(userId: userId)
         return userProfile
     }
     
+    // Updates name in Firestore
     func updateName(userId: String, name: String) async throws {
         let data: [String:Any] = [
             UserProfile.CodingKeys.name.rawValue : name
@@ -132,6 +139,7 @@ final class UserManager {
         try await userDocument(userId: userId).updateData(data)
     }
     
+    // Updates homeId both in Firestore and saves into UserDefaults
     func updateHomeId(userId: String, homeId: String) async throws {
         let data: [String:Any] = [
             UserProfile.CodingKeys.homeId.rawValue : homeId
@@ -139,9 +147,4 @@ final class UserManager {
         try await userDocument(userId: userId).updateData(data)
         UserDefaults.standard.set(homeId, forKey: "homeId")
     }
-
-    
-    
-    
-    
 }

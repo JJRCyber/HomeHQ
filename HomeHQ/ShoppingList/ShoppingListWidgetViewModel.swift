@@ -13,6 +13,7 @@ class ShoppingListWidgetViewModel: BaseViewModel {
     // Array of ShoppingListItem
     @Published var shoppingList:[ShoppingListItem] = []
     
+    // Loads shopping list from Firestore
     func loadShoppingList() async {
         loadingState = .loading
         do {
@@ -23,6 +24,8 @@ class ShoppingListWidgetViewModel: BaseViewModel {
         }
     }
     
+    // Private function that is called when item is marked as completed
+    // Widget view does not allow direct way to delete items
     private func deleteItem(at index: Int) {
         let shoppingListItemId = shoppingList[index].id
         shoppingList.remove(at: index)
@@ -41,6 +44,7 @@ class ShoppingListWidgetViewModel: BaseViewModel {
     func updateItemCompletion(item: ShoppingListItem) {
         if let index = shoppingList.firstIndex(where: {$0.id == item.id}) {
             shoppingList[index] = item.toggleCompleted()
+            // Deletes the item from array after 5 seconds if completion hasn't been undone
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 if self.shoppingList[index].completed {
                     self.deleteItem(at: index)

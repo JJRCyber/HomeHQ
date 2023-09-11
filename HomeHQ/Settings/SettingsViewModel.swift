@@ -11,22 +11,27 @@ import Foundation
 @MainActor
 final class SettingsViewModel: ObservableObject {
     
-//    @Published private(set) var user: UserProfile? = nil
+    // UserProfile init as nil before being async loaded from Firestore
     @Published var user: UserProfile? = nil
     
+    // Bound to view textfields
     @Published var name: String = ""
     @Published var userName: String = ""
     @Published var email: String = ""
     @Published var mobile: String = ""
     
+    // Shows sheet to join a new home
     @Published var showJoinHomeSheet: Bool = false
+    // Bound to text field in displayed
     @Published var homeId: String = ""
     
+    // Loads current user from Firestore
     func loadCurrentUser() async throws {
         let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
         self.user = try await UserManager.shared.getUser(userId: authDataResult.uid)
     }
     
+    //FIXME: Need to update values when entered
     func updateValues() {
         if let user = self.user {
             name = user.name ?? ""
@@ -44,6 +49,7 @@ final class SettingsViewModel: ObservableObject {
         }
     }
     
+    //FIXME: What is this function doing
     func updateHomeId() {
         guard let user else { return }
         Task {
@@ -52,6 +58,7 @@ final class SettingsViewModel: ObservableObject {
         }
     }
     
+    // Creates a new home with some default values
     func createHome() {
         guard let user else { return }
         let members = [user.userId]

@@ -15,6 +15,7 @@ final class TabBarViewModel: BaseViewModel {
     @Published var user: UserProfile?
     @Published var selectedTab: Int = 0
     
+    // Loads the currently logged in user when object is initialised
     override init() {
         super.init()
         loadingState = .loading
@@ -23,6 +24,7 @@ final class TabBarViewModel: BaseViewModel {
         }
     }
     
+    // Loads currently logged in user and saves homeId to UserDefaults
     func loadCurrentUser() async {
         do {
             let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
@@ -32,8 +34,6 @@ final class TabBarViewModel: BaseViewModel {
             }
             loadingState = .loaded
         } catch {
-            showError = true
-            errorMessage = error.localizedDescription
             loadingState = .error
         }
     }

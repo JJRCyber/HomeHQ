@@ -17,6 +17,7 @@ class ShoppingListViewModel: BaseViewModel {
     // Array of ShoppingListItem
     @Published var shoppingList:[ShoppingListItem] = []
     
+    // Loads shopping list from Firestore
     func loadShoppingList() async {
         loadingState = .loading
         do {
@@ -28,7 +29,8 @@ class ShoppingListViewModel: BaseViewModel {
     }
     
     
-    // Deletes item from array at specified index
+    // Deletes item from array at specified offset
+    // Performs instant view update then syncs with Firestore
     func deleteItem(at offsets: IndexSet) {
         guard let index = offsets.first else { return }
         let shoppingListItemId = shoppingList[index].id
@@ -38,12 +40,15 @@ class ShoppingListViewModel: BaseViewModel {
                 try await dataStore.homeManager.removeShoppingListItem(shoppingListItemId: shoppingListItemId)
                 await loadShoppingList()
             } catch {
+                // Displays alert popup if this fails
                 showError = true
                 errorMessage = error.localizedDescription
             }
         }
     }
     
+    // Deletes item at specified index
+    // Overloaded above function
     func deleteItem(at index: Int) {
         let shoppingListItemId = shoppingList[index].id
         shoppingList.remove(at: index)
@@ -62,6 +67,7 @@ class ShoppingListViewModel: BaseViewModel {
     func updateItemCompletion(item: ShoppingListItem) {
         if let index = shoppingList.firstIndex(where: {$0.id == item.id}) {
             shoppingList[index] = item.toggleCompleted()
+            // Deletes the item from array after 5 seconds if completion hasn't been undone
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 if let currentIndex = self.shoppingList.firstIndex(where: {$0.id == item.id}) {
                     if self.shoppingList[currentIndex].completed {
@@ -87,6 +93,7 @@ class ShoppingListViewModel: BaseViewModel {
         }
     }
     
+    // Adds an item to the Firestore shoppingList and refreshes the view
     func addItem() {
         if isValidEntry() {
             let item = ShoppingListItem(name: newItemName)

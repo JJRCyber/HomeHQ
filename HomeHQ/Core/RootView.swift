@@ -21,7 +21,6 @@ struct RootView: View {
                 NavigationStack {
                     TabBarView(showSignInView: $showSignInView)
                 }
-
             }
         }
 

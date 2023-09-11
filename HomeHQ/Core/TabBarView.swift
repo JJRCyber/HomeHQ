@@ -16,28 +16,20 @@ struct TabBarView: View {
     // Tab and header bar that are seen through all tab pages
     var body: some View {
             VStack(spacing: 0) {
-                HStack {
-                    Text(viewModel.homeName)
-                        .padding()
-                    Spacer()
-                    Image(systemName: "house.fill")
-                    NavigationLink {
-                        SettingsView(showSignInView: $showSignInView)
-                    } label: {
-                        Image(systemName: "gearshape.fill")
-                            .padding()
-                    }
-                }
-                .background(Color("AlternateBackground"))
-                .font(.title)
-                .foregroundColor(Color("PrimaryText"))
+                headerBar
+                
+                // Switch based on loading state
                 switch(viewModel.loadingState) {
+                
+                // Loading spinner when view is loading
                 case .loading, .idle:
                     VStack {
                         Spacer()
                         ProgressView()
                         Spacer()
                     }
+                
+                // Display tab bar once view has loaded
                 case .loaded:
                     TabView(selection: $viewModel.selectedTab) {
                         Group {
@@ -74,6 +66,10 @@ struct TabBarView: View {
                         .toolbarBackground(.visible, for: .tabBar)
                         .font(.headline)
                         }
+                
+                // Displays error sign and message if view cannot load
+                // This would indicate critical error of app as user
+                // would be seeing tab bar without being logged into any account
                 case .error:
                     VStack {
                         Spacer()
@@ -85,11 +81,28 @@ struct TabBarView: View {
                             .foregroundColor(.orange)
                         Spacer()
                     }
-
-                    
                 }
             }
         .environmentObject(viewModel)
+    }
+    
+    // Header bar to display home name and icons
+    var headerBar: some View {
+        HStack {
+            Text(viewModel.homeName)
+                .padding()
+            Spacer()
+            Image(systemName: "house.fill")
+            NavigationLink {
+                SettingsView(showSignInView: $showSignInView)
+            } label: {
+                Image(systemName: "gearshape.fill")
+                    .padding()
+            }
+        }
+        .background(Color("AlternateBackground"))
+        .font(.title)
+        .foregroundColor(Color("PrimaryText"))
     }
 
 }

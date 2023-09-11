@@ -9,7 +9,7 @@ import Foundation
 import CryptoKit
 import AuthenticationServices
 
-
+// MARK: DO NOT MARK - WRITTEN PRIOR TO THIS SUBJECT
 /// Defines SSO sign in functions for both Google + Apple
 /// Requires helper classes that are completely decoupled
 /// Firestore implementation currently not functional
@@ -19,8 +19,6 @@ final class AuthenticationViewModel: ObservableObject {
     // Variables to show alerts if sign in fails
     @Published var signInError = false
     @Published var errorText = ""
-    
-    // TODO: Implement Firestore
     
     // Launches Google Sign In pop up and create news document for user if sign-in successful
     func signInGoogle() async throws {

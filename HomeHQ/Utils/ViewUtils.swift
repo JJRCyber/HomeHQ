@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SwiftUI
 
-
+// MARK: DO NOT MARK - WRITTEN PRIOR TO THIS SUBJECT
 final class ViewUtils {
     static let shared = ViewUtils()
     private init() { }
