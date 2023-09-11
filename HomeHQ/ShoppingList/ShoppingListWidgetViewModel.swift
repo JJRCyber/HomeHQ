@@ -10,33 +10,41 @@ import Foundation
 @MainActor
 class ShoppingListWidgetViewModel: BaseViewModel {
     
-    @Published var loadingState: LoadingState = .idle
-    
     // Array of ShoppingListItem
     @Published var shoppingList:[ShoppingListItem] = []
     
-    func loadShoppingList() async throws {
+    // Loads shopping list from Firestore
+    func loadShoppingList() async {
         loadingState = .loading
-        guard let homeId = try await dataStore.userManager.getCurrentUser().homeId else { return }
-//        self.homeId = homeId
-        self.shoppingList = try await dataStore.homeManager.getShoppingList(homeId: homeId)
-        loadingState = .loaded
+        do {
+            self.shoppingList = try await dataStore.homeManager.getShoppingList()
+            loadingState = .loaded
+        } catch {
+            loadingState = .error
+        }
     }
     
-    func deleteItem(at index: Int) {
-        guard let homeId else { return }
+    // Private function that is called when item is marked as completed
+    // Widget view does not allow direct way to delete items
+    private func deleteItem(at index: Int) {
         let shoppingListItemId = shoppingList[index].id
         shoppingList.remove(at: index)
         Task {
-            try await dataStore.homeManager.removeShoppingListItem(homeId: homeId, shoppingListItemId: shoppingListItemId)
-            try await loadShoppingList()
+            do {
+                try await dataStore.homeManager.removeShoppingListItem(shoppingListItemId: shoppingListItemId)
+                await loadShoppingList()
+            } catch {
+                showError = true
+                errorMessage = error.localizedDescription
+            }
         }
-        }
+    }
     
     // Finds the item in the array and calls the model function to update completion
     func updateItemCompletion(item: ShoppingListItem) {
         if let index = shoppingList.firstIndex(where: {$0.id == item.id}) {
             shoppingList[index] = item.toggleCompleted()
+            // Deletes the item from array after 5 seconds if completion hasn't been undone
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 if self.shoppingList[index].completed {
                     self.deleteItem(at: index)

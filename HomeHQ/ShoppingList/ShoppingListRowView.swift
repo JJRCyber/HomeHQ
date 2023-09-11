@@ -7,11 +7,14 @@
 
 import SwiftUI
 
+// Custom list view for each shopping list item
 struct ShoppingListRowView: View {
     
+    // Has the parent viewModel passed in
     @ObservedObject var viewModel: ShoppingListViewModel
     let item: ShoppingListItem
     
+    // Fairly complicated view as it contains multiple points of interaction
     var body: some View {
         HStack(spacing: 0) {
             Text(item.name)
@@ -20,16 +23,20 @@ struct ShoppingListRowView: View {
                 .padding()
             Spacer()
             quantityStepper
+            // Checkbox becomes filled and turns green when pressed
             Image(systemName: item.completed ? "checkmark.circle.fill": "circle")
                 .foregroundColor(item.completed ? .green: Color("PrimaryText"))
                 .padding()
                 .onTapGesture {
                     withAnimation(.easeInOut(duration: 2.0)) {
+                        // Updates the item completion property
                         viewModel.updateItemCompletion(item: item)
                     }
                 }
         }
-        .contentShape(Rectangle())  // This allows the HStack to respond to tap events
+        // Green overlay the moves from left to right with animation
+        // This is to provide user feedback the item is completed and will be removed
+        .contentShape(Rectangle())
         .overlay(
             HStack {
                 Color.green
@@ -37,11 +44,13 @@ struct ShoppingListRowView: View {
                     .frame(maxWidth: item.completed ? .infinity : 0)
                 Spacer()
             }
-            .allowsHitTesting(false) // This disables taps for the overlay
+            // Prevents overlay from being tapped so user can "undo" the completion
+            .allowsHitTesting(false)
         )
         .frame(maxWidth: .infinity)
     }
     
+    // Custom stepper to increase and decrease quantity
     var quantityStepper: some View {
         HStack {
             Spacer()
@@ -56,6 +65,7 @@ struct ShoppingListRowView: View {
         .frame(width: 80)
     }
     
+    // Plus button to increase quantity
     var plusButton: some View {
         Image(systemName: "plus.circle.fill")
             .foregroundColor(Color("ButtonBackgroundSecondary"))
@@ -64,6 +74,7 @@ struct ShoppingListRowView: View {
             }
     }
     
+    // Minus button to decrease quantity
     var minusButton: some View {
         Image(systemName: "minus.circle.fill")
             .foregroundColor(Color("ButtonBackgroundSecondary"))

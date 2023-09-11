@@ -7,11 +7,13 @@
 
 import SwiftUI
 
+// Custom view for each shoppping list widget
 struct ShoppingListWidgetRowView: View {
     
     @ObservedObject var viewModel: ShoppingListWidgetViewModel
     let item: ShoppingListItem
     
+    // Basic view - allows updating completion
     var body: some View {
         HStack(spacing: 0) {
             Text(item.name)
@@ -33,6 +35,7 @@ struct ShoppingListWidgetRowView: View {
         .frame(maxWidth: .infinity)
     }
     
+    // Quantity indicator inside HStack so alignment doesnt change
     var quantityIndicator: some View {
         HStack {
             Spacer()

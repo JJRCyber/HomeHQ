@@ -8,6 +8,6 @@
 import Foundation
 
 // View model for Dashboard view
-class DashboardViewModel: ObservableObject {
+class DashboardViewModel: BaseViewModel {
     
 }

@@ -7,9 +7,8 @@
 
 import SwiftUI
 
+// View not implemented
 struct BillWidgetView: View {
-    
-    
     var body: some View {
         HStack(alignment: .top) {
             Text("Upcoming Bills")

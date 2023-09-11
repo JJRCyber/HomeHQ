@@ -7,9 +7,8 @@
 
 import SwiftUI
 
+// View not implemented
 struct HouseDutiesWidgetView: View {
-    
-    
     var body: some View {
         HStack(alignment: .top) {
             Text("Today's Tasks")

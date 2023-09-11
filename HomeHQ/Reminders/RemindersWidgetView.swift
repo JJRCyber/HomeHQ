@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Not yet implemented
 struct RemindersWidgetView: View {
     var body: some View {
         HStack(spacing: 20) {

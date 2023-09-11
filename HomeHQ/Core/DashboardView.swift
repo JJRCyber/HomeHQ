@@ -32,7 +32,6 @@ struct DashboardView: View {
                                 tabBarViewModel.selectedTab = 3
                             }
                     }
-
                     BillWidgetView()
                         .onTapGesture {
                             tabBarViewModel.selectedTab = 1
