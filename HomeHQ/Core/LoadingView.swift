@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Loading spinner that is reused across views when view is loading
 struct LoadingView: View {
     var body: some View {
         VStack {

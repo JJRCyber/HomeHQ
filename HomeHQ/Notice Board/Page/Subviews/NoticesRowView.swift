@@ -11,8 +11,10 @@ struct NoticesRowView: View {
     
     let notice: Notice
     
+    // Row view for each notice
     var body: some View {
         HStack() {
+            // Placeholder image - will be replaced with user uploaded image
             Image("Example")
                 .resizable()
                 .frame(width: 100, height: 100)
@@ -23,6 +25,7 @@ struct NoticesRowView: View {
                 detail
                 Spacer()
                 HStack {
+                    // Displays capsules based on importance value
                     ImportanceView(importance: notice.importance)
                     Spacer()
                     Text(notice.user)

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Error view that is displayed when a home cannot be loaded
 struct MissingHomeView: View {
     var body: some View {
         VStack {

@@ -11,6 +11,7 @@ struct NoticesWidgetRowView: View {
     
     let notice: Notice
     
+    // Row view for notice widget
     var body: some View {
         HStack {
             Text(notice.title)

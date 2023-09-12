@@ -36,6 +36,7 @@ class NoticePageViewModel: BaseViewModel {
         return dates
     }
     
+    // Loads notice from Firestore
     func loadNotices() async {
         loadingState = .loading
         do {
@@ -53,7 +54,7 @@ class NoticePageViewModel: BaseViewModel {
         return formatter.string(from: date)
     }
     
-    // 1. Adds a new notice to notice array
+    // 1. Adds a new notice to Firestore
     // 2. Dismisses the create notice view
     // 3. Clears all fields associated with create notice view
     func addNotice() {
@@ -95,6 +96,8 @@ class NoticePageViewModel: BaseViewModel {
         }
     }
     
+    // Checks if a day has a notice on it and returns true if it does
+    // Used to know if a circle should be added to week planner view row
     func dayHasNotice(for date: Date) -> Bool {
         let calendar = Calendar.current
         return notices.contains { notice in

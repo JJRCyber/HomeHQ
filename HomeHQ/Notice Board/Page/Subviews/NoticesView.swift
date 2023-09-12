@@ -11,14 +11,19 @@ struct NoticesView: View {
     
     @ObservedObject var viewModel: NoticePageViewModel
     
+    // Displays notices and information about them
     var body: some View {
         VStack(spacing: 0) {
             headerBar
             Divider()
+            
+            // Switch based on loading state
             switch viewModel.loadingState {
             case .idle, .loading:
                 LoadingView()
             case .loaded:
+                // Displays notices if any notices
+                // or displays prompt if notices empty
                 if !viewModel.notices.isEmpty {
                     List {
                         ForEach(viewModel.notices) { notice in
@@ -26,6 +31,7 @@ struct NoticesView: View {
                                 .listRowInsets(EdgeInsets())
                                 .listRowBackground(Color.clear)
                         }
+                        // Allows for swiping to delete action
                         .onDelete(perform: viewModel.deleteNotice)
                     }
                     .listStyle(.plain)
@@ -39,8 +45,6 @@ struct NoticesView: View {
             case .error:
                 MissingHomeView()
             }
-
-
         }
         .task {
             await viewModel.loadNotices()
@@ -55,6 +59,8 @@ struct NoticesView: View {
         .padding()
     }
     
+    // Header bar that contains add button and title
+    // Always shown in view regardless of loading state
     var headerBar: some View {
         HStack {
             Spacer()

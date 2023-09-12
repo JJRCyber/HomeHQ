@@ -18,6 +18,7 @@ struct AddNoticeView: View {
                 .edgesIgnoringSafeArea(.all)
             VStack(alignment: .leading) {
                 menuBar
+                // Scrollview used to prevent keyboard avoidance
                 ScrollView {
                         titleTextField
                         Text("Description")
@@ -45,6 +46,7 @@ struct AddNoticeView: View {
         }
     }
     
+    // Menu bar items at top with cancel and add buttons
     var menuBar: some View {
         HStack {
             Button {
@@ -72,6 +74,7 @@ struct AddNoticeView: View {
         }
     }
     
+    // Text field for title
     var titleTextField: some View {
         TextField("Title", text: $viewModel.noticeTitle)
             .padding()
@@ -81,6 +84,7 @@ struct AddNoticeView: View {
             .padding(.horizontal)
     }
     
+    // Text field for description
     var descriptionTextField: some View {
         TextEditor(text: $viewModel.noticeDescription)
             .padding()

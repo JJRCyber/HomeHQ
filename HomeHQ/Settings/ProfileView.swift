@@ -9,9 +9,11 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    // Bound to showSignInView so user is returned to sign in screen when they log out
     @Binding var showSignInView: Bool
     @StateObject var viewModel = ProfileViewModel()
     
+    // Contains
     var body: some View {
         ZStack {
             Color("ButtonBackground")
@@ -28,39 +30,17 @@ struct ProfileView: View {
                                 Text("Email: \(user.email ?? "")")
                             }
                             .listRowBackground(Color.clear)
+                            // Allows updating of username, name and mobile
                             Section(header: Text("User Profile")) {
-                                VStack(alignment: .leading) {
-                                    Text("Username")
-                                        .font(.caption)
-                                    TextField("Enter your username", text: $viewModel.userName)
-                                }
-                                VStack(alignment: .leading) {
-                                    Text("Name")
-                                        .font(.caption)
-                                    TextField("Enter your name", text: $viewModel.name)
-                                }
-                                VStack(alignment: .leading) {
-                                    Text("Mobile")
-                                        .font(.caption)
-                                    TextField("Enter your mobile", text: $viewModel.mobile)
-                                }
+                                userNameTextField
+                                nameTextField
+                                mobileTextField
                             }
                             .listRowBackground(Color.clear)
                         }
                         .listStyle(.plain)
-                        Button {
-                            viewModel.updateUserProfile()
-                        } label: {
-                            Text("Update Profile")
-                                .frame(height: 55)
-                                .frame(maxWidth: .infinity)
-                                .background(Color("Highlight"))
-                                .cornerRadius(10)
-                                .padding()
-                                .foregroundColor(Color("PrimaryText"))
-                        }
+                        updateProfileButton
                         Spacer()
-                        
                         .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {
                             Button("Ok", role: .cancel) { }
                         }
@@ -96,6 +76,44 @@ struct ProfileView: View {
             await viewModel.loadCurrentUser()
     }
         .navigationTitle("User Profile")
+    }
+    
+    var userNameTextField: some View {
+        VStack(alignment: .leading) {
+            Text("Username")
+                .font(.caption)
+            TextField("Enter your username", text: $viewModel.userName)
+        }
+    }
+    
+    var nameTextField: some View {
+        VStack(alignment: .leading) {
+            Text("Name")
+                .font(.caption)
+            TextField("Enter your name", text: $viewModel.name)
+        }
+    }
+    
+    var mobileTextField: some View {
+        VStack(alignment: .leading) {
+            Text("Mobile")
+                .font(.caption)
+            TextField("Enter your mobile", text: $viewModel.mobile)
+        }
+    }
+    
+    var updateProfileButton: some View {
+        Button {
+            viewModel.updateUserProfile()
+        } label: {
+            Text("Update Profile")
+                .frame(height: 55)
+                .frame(maxWidth: .infinity)
+                .background(Color("Highlight"))
+                .cornerRadius(10)
+                .padding()
+                .foregroundColor(Color("PrimaryText"))
+        }
     }
 }
 

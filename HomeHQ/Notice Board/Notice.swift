@@ -26,6 +26,7 @@ struct Notice: Identifiable, Codable {
         self.user = user
     }
     
+    // Allows for custom encoding and decoding between Firestore document and Notice struct
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case title = "title"
@@ -35,6 +36,7 @@ struct Notice: Identifiable, Codable {
         case user = "user"
     }
     
+    // Init from Firestore document to Notice
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(String.self, forKey: .id)
@@ -45,6 +47,7 @@ struct Notice: Identifiable, Codable {
         self.user = try container.decode(String.self, forKey: .user)
     }
     
+    // Encode from Notice to Firestore document
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(self.id, forKey: .id)

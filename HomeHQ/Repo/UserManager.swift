@@ -150,6 +150,7 @@ final class UserManager {
         UserDefaults.standard.set(homeId, forKey: "homeId")
     }
     
+    // Removes homeId from Firestore and locally
     func removeHomeId(userId: String) async throws {
         let data: [String:Any] = [
             UserProfile.CodingKeys.homeId.rawValue : FieldValue.delete()

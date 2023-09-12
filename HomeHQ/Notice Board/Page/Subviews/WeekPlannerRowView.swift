@@ -13,6 +13,8 @@ struct WeekPlannerRowView: View {
     
     var date: Date
     
+    // Row view for week planner
+    // Displays a circle on each day if a notice occurs
     var body: some View {
         HStack {
             Text(viewModel.formatDayOfWeek(date: date))

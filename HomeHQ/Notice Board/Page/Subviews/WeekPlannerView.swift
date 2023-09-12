@@ -11,6 +11,9 @@ struct WeekPlannerView: View {
     
     @ObservedObject var viewModel: NoticePageViewModel
     
+    // Week planner view that shows the next 7 days
+    // Displays circle on days that have a notice
+    // Not fully implemented
     var body: some View {
         VStack {
             Text("Upcoming Week")

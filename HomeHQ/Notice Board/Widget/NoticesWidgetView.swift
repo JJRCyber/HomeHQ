@@ -20,6 +20,8 @@ struct NoticesWidgetView: View {
                     .padding()
                 Spacer()
             }
+            
+            // Switch on view model loading state 
             switch viewModel.loadingState {
             case .idle, .loading:
                 LoadingView()

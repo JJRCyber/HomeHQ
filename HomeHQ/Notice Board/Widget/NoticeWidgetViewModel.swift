@@ -11,6 +11,7 @@ import Foundation
 final class NoticeWidgetViewModel: BaseViewModel {
     @Published var notices: [Notice] = []
     
+    // Loads notices from Firestore
     func loadNotices() async {
         loadingState = .loading
         do {
@@ -21,7 +22,9 @@ final class NoticeWidgetViewModel: BaseViewModel {
         }
     }
     
-    // Deletes notice at given index
+    // Deletes notice at given offset
+    // Delete locally and then syncs this change with Firestore
+    // Displays alert popup if operation fails
     func deleteNotice(at offsets: IndexSet) {
         guard let index = offsets.first else { return }
         let noticeId = notices[index].id
