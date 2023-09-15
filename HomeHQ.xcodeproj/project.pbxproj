@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9B0A8EC52A9B5AC800943C2B /* ShoppingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0A8EC42A9B5AC800943C2B /* ShoppingListView.swift */; };
 		9B0A8EC72A9B5BF400943C2B /* ShoppingListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0A8EC62A9B5BF400943C2B /* ShoppingListRowView.swift */; };
-		9B0A8EC92A9B724000943C2B /* RemindersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0A8EC82A9B724000943C2B /* RemindersViewModel.swift */; };
 		9B12B67E2AA2AC4E006D11ED /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B12B67D2AA2AC4E006D11ED /* BaseViewModel.swift */; };
 		9B12B6802AA2AC96006D11ED /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B12B67F2AA2AC96006D11ED /* DataStore.swift */; };
 		9B17BF072A95BBE7007516C6 /* HomeHQApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF062A95BBE7007516C6 /* HomeHQApp.swift */; };
@@ -20,10 +19,9 @@
 		9B17BF1A2A95BCD2007516C6 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF192A95BCD2007516C6 /* TabBarViewModel.swift */; };
 		9B17BF1D2A95BD4D007516C6 /* BillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF1C2A95BD4D007516C6 /* BillView.swift */; };
 		9B17BF1F2A95BD73007516C6 /* NoticesPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF1E2A95BD73007516C6 /* NoticesPageView.swift */; };
-		9B17BF212A95BD87007516C6 /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF202A95BD87007516C6 /* RemindersView.swift */; };
+		9B17BF212A95BD87007516C6 /* ListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF202A95BD87007516C6 /* ListsView.swift */; };
 		9B17BF232A95BD95007516C6 /* HouseDutiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF222A95BD95007516C6 /* HouseDutiesView.swift */; };
 		9B17BF252A95BD9D007516C6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF242A95BD9D007516C6 /* ProfileView.swift */; };
-		9B17BF272A95C12A007516C6 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF262A95C12A007516C6 /* DashboardViewModel.swift */; };
 		9B17BF292A95D466007516C6 /* NoticesWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF282A95D466007516C6 /* NoticesWidgetView.swift */; };
 		9B17BF2B2A95D4E4007516C6 /* NoticePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF2A2A95D4E4007516C6 /* NoticePageViewModel.swift */; };
 		9B17BF2F2A95D64A007516C6 /* BillWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B17BF2E2A95D64A007516C6 /* BillWidgetView.swift */; };
@@ -70,7 +68,6 @@
 		9BCA633B2AAECC1500A132F3 /* HomeProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA633A2AAECC1500A132F3 /* HomeProfileView.swift */; };
 		9BCA633D2AAECDAE00A132F3 /* HomeProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA633C2AAECDAE00A132F3 /* HomeProfileViewModel.swift */; };
 		9BCA633F2AAEE3EF00A132F3 /* AddMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA633E2AAEE3EF00A132F3 /* AddMemberView.swift */; };
-		9BCA63412AAEEABE00A132F3 /* JoinHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA63402AAEEABE00A132F3 /* JoinHomeView.swift */; };
 		9BCA63442AAEF14400A132F3 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 9BCA63432AAEF14400A132F3 /* CodeScanner */; };
 		9BF66B0B2A98BA3C00720241 /* WeekPlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */; };
 		9BF66B0D2A98C04C00720241 /* WeekPlannerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */; };
@@ -81,7 +78,6 @@
 /* Begin PBXFileReference section */
 		9B0A8EC42A9B5AC800943C2B /* ShoppingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListView.swift; sourceTree = "<group>"; };
 		9B0A8EC62A9B5BF400943C2B /* ShoppingListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListRowView.swift; sourceTree = "<group>"; };
-		9B0A8EC82A9B724000943C2B /* RemindersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewModel.swift; sourceTree = "<group>"; };
 		9B12B67D2AA2AC4E006D11ED /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		9B12B67F2AA2AC96006D11ED /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		9B17BF032A95BBE7007516C6 /* HomeHQ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeHQ.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,10 +89,9 @@
 		9B17BF192A95BCD2007516C6 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		9B17BF1C2A95BD4D007516C6 /* BillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillView.swift; sourceTree = "<group>"; };
 		9B17BF1E2A95BD73007516C6 /* NoticesPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticesPageView.swift; sourceTree = "<group>"; };
-		9B17BF202A95BD87007516C6 /* RemindersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersView.swift; sourceTree = "<group>"; };
+		9B17BF202A95BD87007516C6 /* ListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsView.swift; sourceTree = "<group>"; };
 		9B17BF222A95BD95007516C6 /* HouseDutiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseDutiesView.swift; sourceTree = "<group>"; };
 		9B17BF242A95BD9D007516C6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		9B17BF262A95C12A007516C6 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		9B17BF282A95D466007516C6 /* NoticesWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticesWidgetView.swift; sourceTree = "<group>"; };
 		9B17BF2A2A95D4E4007516C6 /* NoticePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticePageViewModel.swift; sourceTree = "<group>"; };
 		9B17BF2E2A95D64A007516C6 /* BillWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillWidgetView.swift; sourceTree = "<group>"; };
@@ -138,7 +133,6 @@
 		9BCA633A2AAECC1500A132F3 /* HomeProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileView.swift; sourceTree = "<group>"; };
 		9BCA633C2AAECDAE00A132F3 /* HomeProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileViewModel.swift; sourceTree = "<group>"; };
 		9BCA633E2AAEE3EF00A132F3 /* AddMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberView.swift; sourceTree = "<group>"; };
-		9BCA63402AAEEABE00A132F3 /* JoinHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinHomeView.swift; sourceTree = "<group>"; };
 		9BF66B0A2A98BA3C00720241 /* WeekPlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPlannerView.swift; sourceTree = "<group>"; };
 		9BF66B0C2A98C04C00720241 /* WeekPlannerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPlannerRowView.swift; sourceTree = "<group>"; };
 		9BF66B102A98D1AE00720241 /* NoticesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticesView.swift; sourceTree = "<group>"; };
@@ -187,7 +181,6 @@
 				9B7C7FDE2A9EF75D009B53E6 /* RootView.swift */,
 				9B12B67D2AA2AC4E006D11ED /* BaseViewModel.swift */,
 				9B17BF142A95BBFE007516C6 /* DashboardView.swift */,
-				9B17BF262A95C12A007516C6 /* DashboardViewModel.swift */,
 				9B17BF172A95BCB6007516C6 /* TabBarView.swift */,
 				9B17BF192A95BCD2007516C6 /* TabBarViewModel.swift */,
 				9BCA63302AAEB47D00A132F3 /* MissingHomeView.swift */,
@@ -210,28 +203,23 @@
 			path = ShoppingList;
 			sourceTree = "<group>";
 		};
-		9B12B6852AA2AEA0006D11ED /* Reminders */ = {
+		9B12B6852AA2AEA0006D11ED /* Lists */ = {
 			isa = PBXGroup;
 			children = (
-				9B17BF322A95D752007516C6 /* RemindersWidgetView.swift */,
-				9B0A8EC82A9B724000943C2B /* RemindersViewModel.swift */,
-				9B17BF202A95BD87007516C6 /* RemindersView.swift */,
+				9BFC3D7C2AB3F13B00362B29 /* Reminders */,
+				9B12B6842AA2AE6A006D11ED /* ShoppingList */,
+				9B17BF202A95BD87007516C6 /* ListsView.swift */,
 			);
-			path = Reminders;
+			path = Lists;
 			sourceTree = "<group>";
 		};
-		9B12B6862AA2AEA4006D11ED /* Settings */ = {
+		9B12B6862AA2AEA4006D11ED /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				9B7C7FEE2A9EFFA0009B53E6 /* ProfileViewModel.swift */,
-				9B17BF242A95BD9D007516C6 /* ProfileView.swift */,
-				9BCA633A2AAECC1500A132F3 /* HomeProfileView.swift */,
-				9BCA633C2AAECDAE00A132F3 /* HomeProfileViewModel.swift */,
-				9BCA633E2AAEE3EF00A132F3 /* AddMemberView.swift */,
-				9BCA63402AAEEABE00A132F3 /* JoinHomeView.swift */,
-				9B7C41AE2AAF1EE80093B73F /* QRScanView.swift */,
+				9BFC3D7E2AB3F14B00362B29 /* Home */,
+				9BFC3D7D2AB3F14300362B29 /* User */,
 			);
-			path = Settings;
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		9B12B6872AA2AEB4006D11ED /* Tasks */ = {
@@ -287,9 +275,8 @@
 				9B12B6892AA2AF0C006D11ED /* Repo */,
 				9B12B6882AA2AEEB006D11ED /* Bill */,
 				9B12B6872AA2AEB4006D11ED /* Tasks */,
-				9B12B6862AA2AEA4006D11ED /* Settings */,
-				9B12B6852AA2AEA0006D11ED /* Reminders */,
-				9B12B6842AA2AE6A006D11ED /* ShoppingList */,
+				9B12B6862AA2AEA4006D11ED /* Profile */,
+				9B12B6852AA2AEA0006D11ED /* Lists */,
 				9B12B6832AA2AE2C006D11ED /* Core */,
 				9B7C7FD12A9EF635009B53E6 /* Authentication */,
 				9B7C7FEB2A9EF80D009B53E6 /* HomeHQ.entitlements */,
@@ -394,6 +381,34 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
+		9BFC3D7C2AB3F13B00362B29 /* Reminders */ = {
+			isa = PBXGroup;
+			children = (
+				9B17BF322A95D752007516C6 /* RemindersWidgetView.swift */,
+			);
+			path = Reminders;
+			sourceTree = "<group>";
+		};
+		9BFC3D7D2AB3F14300362B29 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				9B7C7FEE2A9EFFA0009B53E6 /* ProfileViewModel.swift */,
+				9B17BF242A95BD9D007516C6 /* ProfileView.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		9BFC3D7E2AB3F14B00362B29 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				9BCA633A2AAECC1500A132F3 /* HomeProfileView.swift */,
+				9BCA633C2AAECDAE00A132F3 /* HomeProfileViewModel.swift */,
+				9BCA633E2AAEE3EF00A132F3 /* AddMemberView.swift */,
+				9B7C41AE2AAF1EE80093B73F /* QRScanView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -493,7 +508,7 @@
 				9B17BF432A96222B007516C6 /* NoticesWidgetRowView.swift in Sources */,
 				9BF66B132A99F19400720241 /* AddNoticeView.swift in Sources */,
 				9B7C7FC82A9EF53D009B53E6 /* AppleSignInHelper.swift in Sources */,
-				9B17BF212A95BD87007516C6 /* RemindersView.swift in Sources */,
+				9B17BF212A95BD87007516C6 /* ListsView.swift in Sources */,
 				9B9110FA2A9C5BCD0020530B /* ShoppingListItem.swift in Sources */,
 				9B7C7FED2A9EF895009B53E6 /* ViewUtils.swift in Sources */,
 				9B7C7FDD2A9EF741009B53E6 /* ForgotPasswordView.swift in Sources */,
@@ -506,12 +521,10 @@
 				9B7C7FDB2A9EF713009B53E6 /* AuthenticationView.swift in Sources */,
 				9BF66B0B2A98BA3C00720241 /* WeekPlannerView.swift in Sources */,
 				9B17BF232A95BD95007516C6 /* HouseDutiesView.swift in Sources */,
-				9B0A8EC92A9B724000943C2B /* RemindersViewModel.swift in Sources */,
 				9BCA633B2AAECC1500A132F3 /* HomeProfileView.swift in Sources */,
 				9B12B67E2AA2AC4E006D11ED /* BaseViewModel.swift in Sources */,
 				9B7C7FE82A9EF7ED009B53E6 /* EmailSignUpViewModel.swift in Sources */,
 				9B17BF352A95DDE6007516C6 /* HouseDutiesWidgetView.swift in Sources */,
-				9B17BF272A95C12A007516C6 /* DashboardViewModel.swift in Sources */,
 				9B95C8B42A9ED0E300F61C8B /* ShoppingListWidgetRowView.swift in Sources */,
 				9B7C7FE42A9EF7AC009B53E6 /* EmailSignInViewModel.swift in Sources */,
 				9B17BF452A96289D007516C6 /* NoticesRowView.swift in Sources */,
@@ -531,7 +544,6 @@
 				9B17BF482A9639C6007516C6 /* ImportanceView.swift in Sources */,
 				9B12B6802AA2AC96006D11ED /* DataStore.swift in Sources */,
 				9B7C41AF2AAF1EE80093B73F /* QRScanView.swift in Sources */,
-				9BCA63412AAEEABE00A132F3 /* JoinHomeView.swift in Sources */,
 				9B0A8EC72A9B5BF400943C2B /* ShoppingListRowView.swift in Sources */,
 				9B7C7FDF2A9EF75D009B53E6 /* RootView.swift in Sources */,
 				9B17BF1D2A95BD4D007516C6 /* BillView.swift in Sources */,
@@ -677,8 +689,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -712,8 +724,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

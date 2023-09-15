@@ -12,6 +12,7 @@ struct AddMemberView: View {
     @ObservedObject var viewModel: HomeProfileViewModel
     let homeId: String
     
+    // Basic sheet view that displays QR code to allow people to join home
     var body: some View {
         ZStack {
             Color("ButtonBackground")

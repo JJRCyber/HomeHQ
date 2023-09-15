@@ -14,7 +14,7 @@ struct NoticesRowView: View {
     // Row view for each notice
     var body: some View {
         HStack() {
-            // Placeholder image - will be replaced with user uploaded image
+            // Placeholder image - will be replaced with user uploaded image in future
             Image("Example")
                 .resizable()
                 .frame(width: 100, height: 100)

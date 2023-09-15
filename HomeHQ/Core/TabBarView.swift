@@ -50,7 +50,7 @@ struct TabBarView: View {
                                     Text("Notice Board")
                                 }
                                 .tag(2)
-                            RemindersView()
+                            ListsView()
                                 .tabItem {
                                     Image(systemName: "checklist")
                                     Text("Reminders")

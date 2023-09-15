@@ -20,51 +20,62 @@ final class HomeProfileViewModel: BaseViewModel {
     @Published var homeName: String = ""
     @Published var address: String = ""
     
-    // Shows sheet to join a new home
+    // Shows different sheets based on button press
     @Published var showJoinHomeSheet: Bool = false
     @Published var showAddMemberSheet: Bool = false
     @Published var showQRScannerSheet: Bool = false
+    
     // Bound to text field in displayed
     @Published var homeIdText: String = ""
-    
     @Published var homeOwner: String = ""
     @Published var homeMembers: [String] = []
     
+    // Loads the home document from Firestore
     func loadHome() async {
+        // Checks if homeId has been set in UserDefaults
         if let homeId {
             loadingState = .loading
             do {
                 self.home = try await dataStore.homeManager.getHome(homeId: homeId)
                 loadingState = .loaded
                 if self.home != nil {
-                    getHomeOwner()
-                    getHomeMembers()
+                    // Once home is loaded load all values from document
                     loadValues()
                 }
             } catch {
+                // Display error message if can't load home
                 showError = true
                 errorMessage = error.localizedDescription
                 loadingState = .error
             }
         } else {
+            // Set loading state to loaded if no homeId
+            // This indicates the user has not joined a home
             loadingState = .loaded
         }
 
     }
     
+    // Loads values once the home has been loaded
     func loadValues() {
         guard let home else { return }
         homeName = home.name
         address = home.address ?? ""
+        getHomeOwner()
+        getHomeMembers()
     }
     
+    // Joins a home when given a homeID from QR code scanning
     func joinHome(homeId: String) {
+        // Checks that userId has been set in UserDefaults
+        // This should never be nil as it is set everytime a user logs in
         guard let userId else {
             showError = true
             errorMessage = "User could not be retrieved"
             return
         }
         
+        // Adds user to home document and updates users homeId in Firestore
         Task {
             do {
                 try await dataStore.homeManager.addHomeMember(homeId: homeId, userId: userId)
@@ -79,6 +90,7 @@ final class HomeProfileViewModel: BaseViewModel {
         }
     }
     
+    // Updates home name in Firestore
     func updateHomeName() {
         guard let home else { return }
         Task {
@@ -91,16 +103,21 @@ final class HomeProfileViewModel: BaseViewModel {
         }
     }
     
-    // Creates a new home with some default values
+    // Creates a new home
     func createHome() {
+        // Checks that userId has been set in UserDefaults
+        // This should never be nil as it is set everytime a user logs in
         guard let userId else {
             showError = true
             errorMessage = "User could not be retrieved"
             return
         }
+        
+        // Sets up home with default values
         let members = [userId]
         let home = HomeProfile(name: homeName, address: address, owner: userId, members: members)
         Task {
+            // Creates home document in Firestore and updates viewModel
             do {
                 try await dataStore.homeManager.createNewHome(home: home)
                 try await dataStore.userManager.updateHomeId(userId: userId, homeId: home.homeId)
@@ -112,6 +129,8 @@ final class HomeProfileViewModel: BaseViewModel {
         }
     }
     
+    // Function to handle QR scan which returns the homeId
+    // Uses an external library for QR scanning
     func handleQRScan(result: Result<ScanResult, ScanError>) {
         showQRScannerSheet.toggle()
         switch result {
@@ -124,6 +143,9 @@ final class HomeProfileViewModel: BaseViewModel {
         }
     }
     
+    // Rerieves home owner name from Firestore
+    // Only userId is in owner property so a seperate lookup needs
+    // to be done to get name property, defaults to userId if no name set
     func getHomeOwner() {
         guard let home else { return }
         Task {
@@ -132,6 +154,9 @@ final class HomeProfileViewModel: BaseViewModel {
         }
     }
     
+    // Rerieves home member names from Firestore
+    // Only userId is in member array so a seperate lookup needs
+    // to be done to get name property, defaults to userId if no name set
     func getHomeMembers() {
         guard let home else { return }
         Task {
@@ -145,6 +170,7 @@ final class HomeProfileViewModel: BaseViewModel {
         }
     }
     
+    // Leaves the current home and resets all viewModel values
     func leaveHome() {
         guard let home else { return }
         guard let userId else { return }
@@ -163,6 +189,7 @@ final class HomeProfileViewModel: BaseViewModel {
        
     }
     
+    // Generates QR code from homeId to display on addMember sheet
     func generateQRCode(homeId: String) -> UIImage {
         filter.message = Data(homeId.utf8)
         if let outputImage = filter.outputImage {

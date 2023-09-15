@@ -21,13 +21,13 @@ final class ProfileViewModel: BaseViewModel {
     @Published var mobile: String = ""
     
 
-    
     // Loads current user from Firestore
     func loadCurrentUser() async {
         loadingState = .loading
         do {
             let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
             self.user = try await UserManager.shared.getUser(userId: authDataResult.uid)
+            updateValues()
             loadingState = .loaded
         } catch {
             loadingState = .error
@@ -62,10 +62,6 @@ final class ProfileViewModel: BaseViewModel {
 
         }
     }
-    
-
-    
-
     
     // Signs out the currently logged in user
     func signOut() throws {

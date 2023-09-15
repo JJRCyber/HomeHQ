@@ -8,6 +8,7 @@
 import SwiftUI
 import CodeScanner
 
+// QR Scan view using an external library that launches camera and will close view once QR code scanned
 struct QRScanView: View {
     let completion: (Result<ScanResult, ScanError>) -> Void
     var body: some View {
@@ -18,7 +19,9 @@ struct QRScanView: View {
                     .font(.headline)
                     .foregroundColor(Color("PrimaryText"))
                     .padding()
-                CodeScannerView(codeTypes: [.qr], completion: completion)
+                // Displays code scanner view - this does not work on simulator due to no camera access so it just returns
+                // the simulated data. This will join the demo home but in real world would return whatever homeId the QR contains
+                CodeScannerView(codeTypes: [.qr], simulatedData: "98FABB8E-CDB9-4D6C-B145-E79C75DD042D", completion: completion)
             }
         }
 

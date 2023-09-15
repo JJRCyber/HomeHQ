@@ -18,6 +18,8 @@ struct ProfileView: View {
         ZStack {
             Color("ButtonBackground")
                 .edgesIgnoringSafeArea(.all)
+            
+            // Switch presented view based on loadingState
             switch viewModel.loadingState {
             case .idle, .loading:
                 LoadingView()
@@ -30,6 +32,7 @@ struct ProfileView: View {
                                 Text("Email: \(user.email ?? "")")
                             }
                             .listRowBackground(Color.clear)
+                            
                             // Allows updating of username, name and mobile
                             Section(header: Text("User Profile")) {
                                 userNameTextField
@@ -39,19 +42,16 @@ struct ProfileView: View {
                             .listRowBackground(Color.clear)
                         }
                         .listStyle(.plain)
+                        
                         updateProfileButton
                         Spacer()
-                        .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {
-                            Button("Ok", role: .cancel) { }
-                        }
-                        .task {
-                            viewModel.updateValues()
-                        }
-
-
-
                     }
                     Spacer()
+                    
+                    // Try to signout then set binding showSignInView to true
+                    // This returns app back to login screen
+                    // Error is ignored as it does not matter if sign out fails
+                    // User will be returned to sign in screen regardless
                     Button {
                         try? viewModel.signOut()
                         showSignInView = true
@@ -65,19 +65,27 @@ struct ProfileView: View {
                             .foregroundColor(Color("PrimaryText"))
                     }
                 }
+                // Disables keyboard avoidance
                 .ignoresSafeArea(.keyboard)
+                
+                // Displays alert popup if any functions throw erros
+                .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {
+                    Button("Ok", role: .cancel) { }
+                }
             case .error:
                 MissingHomeView()
             }
 
 
         }
+        // Async task to load current user from Firestore
         .task {
             await viewModel.loadCurrentUser()
     }
         .navigationTitle("User Profile")
     }
     
+    // Variable below are basic view components
     var userNameTextField: some View {
         VStack(alignment: .leading) {
             Text("Username")

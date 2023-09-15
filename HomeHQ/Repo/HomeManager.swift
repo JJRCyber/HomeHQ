@@ -59,6 +59,7 @@ struct HomeProfile: Codable {
 //MARK: Home
 final class HomeManager {
     
+    // Enum for collection type for function reuse
     enum CollectionType: String {
         case shoppingList = "shopping_list"
         case notices = "notices"
@@ -70,13 +71,14 @@ final class HomeManager {
     
     // Sets homeCollection to Firestore path
     private let homeCollection = Firestore.firestore().collection("homes")
-//    private let homeId = UserDefaults.standard.string(forKey: "homeId")
     
     // Returns home document for given homeId
     private func homeDocument(homeId: String) -> DocumentReference {
         homeCollection.document(homeId)
     }
     
+    // Get subcollection based on CollectionType parameter
+    // Throws custom error if not retrieved
     private func subCollection(collectionType: CollectionType) throws -> CollectionReference {
         guard let homeId = UserDefaults.standard.string(forKey: "homeId") else { throw ApplicationError.homeIdNotRetrieved }
         return homeDocument(homeId: homeId).collection(collectionType.rawValue)

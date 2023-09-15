@@ -7,11 +7,9 @@
 
 import SwiftUI
 
-struct RemindersView: View {
-
-    @StateObject var viewModel = RemindersViewModel()
-
-
+struct ListsView: View {
+    
+    // Only contains shoppingListSubview at the current time
     var body: some View {
         ZStack {
             Color("BackgroundPrimary")

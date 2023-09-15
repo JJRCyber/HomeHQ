@@ -15,7 +15,7 @@ struct NoticesWidgetView: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .top) {
-                Text("Notices ‼️")
+                Text("Notices")
                     .font(.headline)
                     .padding()
                 Spacer()

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct DashboardView: View {
     
-    @StateObject var viewModel = DashboardViewModel()
     @EnvironmentObject var tabBarViewModel: TabBarViewModel
     
     // Displays simplified widget views of different app screens

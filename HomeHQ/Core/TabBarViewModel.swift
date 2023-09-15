@@ -26,6 +26,7 @@ final class TabBarViewModel: BaseViewModel {
     }
     
     // Loads currently logged in user and saves homeId to UserDefaults
+    // Function is called every time view is initialised
     func loadCurrentHome() async {
         do {
             let authDataResult = try authManager.getAuthenticatedUser()
