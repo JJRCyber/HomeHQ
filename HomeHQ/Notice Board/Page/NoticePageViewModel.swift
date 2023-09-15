@@ -10,7 +10,7 @@ import SwiftUI
 
 // View Model for notice board view and subviews
 @MainActor
-class NoticePageViewModel: BaseViewModel {
+class NoticePageViewModel: BaseViewModel, AddItem, LoadData {
     
     // Stores array of notices that is displayed on view
     // Currently does not persist will add persistence later
@@ -37,7 +37,7 @@ class NoticePageViewModel: BaseViewModel {
     }
     
     // Loads notice from Firestore
-    func loadNotices() async {
+    func loadData() async {
         loadingState = .loading
         do {
             self.notices = try await dataStore.homeManager.getNotices()
@@ -57,14 +57,14 @@ class NoticePageViewModel: BaseViewModel {
     // 1. Adds a new notice to Firestore
     // 2. Dismisses the create notice view
     // 3. Clears all fields associated with create notice view
-    func addNotice() {
+    func addItem() {
         let notice = Notice(title: noticeTitle, detail: noticeDescription, date: noticeDate, importance: noticeImportance, user: "Cooper")
         Task {
             do {
                 try await dataStore.homeManager.addNotice(notice: notice)
-                await loadNotices()
+                await loadData()
                 showAddNoticeSheet.toggle()
-                clearAddNoticeFields()
+                clearInputFields()
             } catch {
                 showError = true
                 errorMessage = error.localizedDescription
@@ -73,7 +73,7 @@ class NoticePageViewModel: BaseViewModel {
     }
     
     // Clears all bound values for add notice fields
-    private func clearAddNoticeFields() {
+    func clearInputFields() {
         noticeTitle = ""
         noticeDescription = ""
         noticeImportance = 1
@@ -88,7 +88,7 @@ class NoticePageViewModel: BaseViewModel {
         Task {
             do {
                 try await dataStore.homeManager.removeNotice(noticeId: noticeId)
-                await loadNotices()
+                await loadData()
             } catch {
                 showError = true
                 errorMessage = error.localizedDescription

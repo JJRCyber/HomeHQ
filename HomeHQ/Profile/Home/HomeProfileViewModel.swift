@@ -10,7 +10,8 @@ import CoreImage.CIFilterBuiltins
 import CodeScanner
 
 @MainActor
-final class HomeProfileViewModel: BaseViewModel {
+final class HomeProfileViewModel: BaseViewModel, LoadData, UpdateValues {
+    
     
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
@@ -31,7 +32,7 @@ final class HomeProfileViewModel: BaseViewModel {
     @Published var homeMembers: [String] = []
     
     // Loads the home document from Firestore
-    func loadHome() async {
+    func loadData() async {
         // Checks if homeId has been set in UserDefaults
         if let homeId {
             loadingState = .loading
@@ -40,7 +41,7 @@ final class HomeProfileViewModel: BaseViewModel {
                 loadingState = .loaded
                 if self.home != nil {
                     // Once home is loaded load all values from document
-                    loadValues()
+                    updateValues()
                 }
             } catch {
                 // Display error message if can't load home
@@ -57,7 +58,7 @@ final class HomeProfileViewModel: BaseViewModel {
     }
     
     // Loads values once the home has been loaded
-    func loadValues() {
+    func updateValues() {
         guard let home else { return }
         homeName = home.name
         address = home.address ?? ""
@@ -82,7 +83,7 @@ final class HomeProfileViewModel: BaseViewModel {
                 try await dataStore.userManager.updateHomeId(userId: userId, homeId: homeId)
                 self.homeId = homeId
                 self.home = try await dataStore.homeManager.getHome(homeId: homeId)
-                await loadHome()
+                await loadData()
             } catch {
                 showError = true
                 errorMessage = "Could not add user to home"
@@ -179,7 +180,7 @@ final class HomeProfileViewModel: BaseViewModel {
                 self.home = nil
                 self.homeId = nil
                 try await dataStore.homeManager.removeHomeMember(homeId: home.homeId, userId: userId)
-                await loadHome()
+                await loadData()
             } catch {
                 showError = true
                 errorMessage = error.localizedDescription

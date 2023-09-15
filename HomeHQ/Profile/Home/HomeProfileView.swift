@@ -12,6 +12,7 @@ struct HomeProfileView: View {
     
     @StateObject var viewModel = HomeProfileViewModel()
     
+    // MARK: View
     // Home profile view displays information about home and members
     var body: some View {
         ZStack {
@@ -83,7 +84,7 @@ struct HomeProfileView: View {
             }
         }
         .task {
-            await viewModel.loadHome()
+            await viewModel.loadData()
         }
         
         // Displays pop up alert if any functions throw errors
@@ -93,6 +94,7 @@ struct HomeProfileView: View {
         .navigationTitle("Home Profile")
     }
     
+    //MARK: View Components
     // Various view components below
     var showAddMemberSheetButton: some View {
         Button {

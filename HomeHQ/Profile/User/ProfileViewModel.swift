@@ -9,7 +9,7 @@ import Foundation
 
 // ViewModel for Settings view
 @MainActor
-final class ProfileViewModel: BaseViewModel {
+final class ProfileViewModel: BaseViewModel, LoadData, UpdateValues {
     
     // UserProfile init as nil before being async loaded from Firestore
     @Published var user: UserProfile? = nil
@@ -22,7 +22,7 @@ final class ProfileViewModel: BaseViewModel {
     
 
     // Loads current user from Firestore
-    func loadCurrentUser() async {
+    func loadData() async {
         loadingState = .loading
         do {
             let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
@@ -54,7 +54,7 @@ final class ProfileViewModel: BaseViewModel {
         Task {
             do {
                 try await UserManager.shared.updateUserProfile(userId: user.userId, userName: userName, name: name, mobile: mobile)
-                await loadCurrentUser()
+                await loadData()
             } catch {
                 showError = true
                 errorMessage = error.localizedDescription

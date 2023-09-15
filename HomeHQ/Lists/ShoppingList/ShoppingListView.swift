@@ -11,7 +11,7 @@ struct ShoppingListView: View {
     
     @StateObject var viewModel = ShoppingListViewModel()
     
-    //MARK: Core View
+    //MARK: View
     // Shopping list with text field at the top before list of
     // items from view model. Buttons allow modification of quantity and completion
     var body: some View {
@@ -30,7 +30,7 @@ struct ShoppingListView: View {
             
         }
         .task {
-            await viewModel.loadShoppingList()
+            await viewModel.loadData()
         }
         .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {
             Button("Ok", role: .cancel) { }

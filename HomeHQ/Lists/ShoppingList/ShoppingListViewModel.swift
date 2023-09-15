@@ -9,7 +9,7 @@ import Foundation
 
 // View model for reminders view
 @MainActor
-class ShoppingListViewModel: BaseViewModel {
+class ShoppingListViewModel: BaseViewModel, AddItem, LoadData {
     
     // Bound to text field to add new item
     @Published var newItemName: String = ""
@@ -18,7 +18,7 @@ class ShoppingListViewModel: BaseViewModel {
     @Published var shoppingList:[ShoppingListItem] = []
     
     // Loads shopping list from Firestore
-    func loadShoppingList() async {
+    func loadData() async {
         loadingState = .loading
         do {
             self.shoppingList = try await dataStore.homeManager.getShoppingList()
@@ -38,7 +38,7 @@ class ShoppingListViewModel: BaseViewModel {
         Task {
             do {
                 try await dataStore.homeManager.removeShoppingListItem(shoppingListItemId: shoppingListItemId)
-                await loadShoppingList()
+                await loadData()
             } catch {
                 // Displays alert popup if this fails
                 showError = true
@@ -55,7 +55,7 @@ class ShoppingListViewModel: BaseViewModel {
         Task {
             do {
                 try await dataStore.homeManager.removeShoppingListItem(shoppingListItemId: shoppingListItemId)
-                await loadShoppingList()
+                await loadData()
             } catch {
                 showError = true
                 errorMessage = error.localizedDescription
@@ -100,13 +100,18 @@ class ShoppingListViewModel: BaseViewModel {
             Task {
                 do {
                     try await dataStore.homeManager.addShoppingListItem(shopppingListItem: item)
-                    await loadShoppingList()
-                    newItemName = ""
+                    await loadData()
+                    clearInputFields()
                 } catch {
                     showError = true
                     errorMessage = error.localizedDescription
                 }
             }
         }
+    }
+    
+    // Clear the new item name input field
+    func clearInputFields() {
+        newItemName = ""
     }
 }

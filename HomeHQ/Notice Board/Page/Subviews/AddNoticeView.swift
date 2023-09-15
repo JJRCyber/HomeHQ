@@ -63,7 +63,7 @@ struct AddNoticeView: View {
                 .padding()
             Spacer()
             Button {
-                viewModel.addNotice()
+                viewModel.addItem()
             } label: {
                 Text("Add")
                     .font(.headline)

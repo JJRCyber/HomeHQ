@@ -14,6 +14,7 @@ struct ShoppingListRowView: View {
     @ObservedObject var viewModel: ShoppingListViewModel
     let item: ShoppingListItem
     
+    //MARK: View
     // Fairly complicated view as it contains multiple points of interaction
     var body: some View {
         HStack(spacing: 0) {
@@ -50,6 +51,7 @@ struct ShoppingListRowView: View {
         .frame(maxWidth: .infinity)
     }
     
+    //MARK: View Components
     // Custom stepper to increase and decrease quantity
     var quantityStepper: some View {
         HStack {

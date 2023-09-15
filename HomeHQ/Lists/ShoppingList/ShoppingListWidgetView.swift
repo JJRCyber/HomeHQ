@@ -15,7 +15,7 @@ struct ShoppingListWidgetView: View {
     // Displays header and then loops over all items in shopping list 
     var body: some View {
         VStack(spacing: 0) {
-            Text("Shopping List ✏️")
+            Text("Shopping List")
                 .foregroundColor(Color("PrimaryText"))
                 .font(.caption)
                 .padding(.vertical, 8)
@@ -41,7 +41,7 @@ struct ShoppingListWidgetView: View {
 
         }
         .task {
-            await viewModel.loadShoppingList()
+            await viewModel.loadData()
         }
         .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {
             Button("Ok", role: .cancel) { }
@@ -51,30 +51,6 @@ struct ShoppingListWidgetView: View {
         .background(Color("ButtonBackground"))
         .cornerRadius(10)
         .padding(.trailing)
-    }
-    
-    // Displays a loading spinner
-    var loadingView: some View {
-        VStack {
-            Spacer()
-            ProgressView()
-            Spacer()
-        }
-    }
-    
-    // Error displayed if no homeId connected to user
-    // Prompts user to add or join home
-    var errorView: some View {
-        VStack {
-            Spacer()
-            Image(systemName: "house.lodge.fill")
-                .font(.subheadline)
-                .foregroundColor(.orange)
-            Text("Please add or join a home")
-                .font(.subheadline)
-                .foregroundColor(.orange)
-            Spacer()
-        }
     }
 }
 

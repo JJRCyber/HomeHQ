@@ -8,11 +8,11 @@
 import Foundation
 
 @MainActor
-final class NoticeWidgetViewModel: BaseViewModel {
+final class NoticeWidgetViewModel: BaseViewModel, LoadData {
     @Published var notices: [Notice] = []
     
     // Loads notices from Firestore
-    func loadNotices() async {
+    func loadData() async {
         loadingState = .loading
         do {
             self.notices = try await dataStore.homeManager.getNotices()
@@ -32,7 +32,7 @@ final class NoticeWidgetViewModel: BaseViewModel {
         Task {
             do {
                 try await dataStore.homeManager.removeNotice(noticeId: noticeId)
-                await loadNotices()
+                await loadData()
             } catch {
                 showError = true
                 errorMessage = error.localizedDescription

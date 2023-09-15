@@ -47,7 +47,7 @@ struct NoticesView: View {
             }
         }
         .task {
-            await viewModel.loadNotices()
+            await viewModel.loadData()
         }
         .alert(viewModel.errorMessage, isPresented: $viewModel.showError) {
             Button("Ok", role: .cancel) { }

@@ -8,13 +8,13 @@
 import Foundation
 
 @MainActor
-class ShoppingListWidgetViewModel: BaseViewModel {
+class ShoppingListWidgetViewModel: BaseViewModel, LoadData {
     
     // Array of ShoppingListItem
     @Published var shoppingList:[ShoppingListItem] = []
     
     // Loads shopping list from Firestore
-    func loadShoppingList() async {
+    func loadData() async {
         loadingState = .loading
         do {
             self.shoppingList = try await dataStore.homeManager.getShoppingList()
@@ -32,7 +32,7 @@ class ShoppingListWidgetViewModel: BaseViewModel {
         Task {
             do {
                 try await dataStore.homeManager.removeShoppingListItem(shoppingListItemId: shoppingListItemId)
-                await loadShoppingList()
+                await loadData()
             } catch {
                 showError = true
                 errorMessage = error.localizedDescription

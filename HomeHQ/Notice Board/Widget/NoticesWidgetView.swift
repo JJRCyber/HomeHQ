@@ -49,7 +49,7 @@ struct NoticesWidgetView: View {
 
         }
         .task {
-            await viewModel.loadNotices()
+            await viewModel.loadData()
         }
         .frame(height: 150)
         .frame(maxWidth: .infinity)

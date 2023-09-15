@@ -7,6 +7,27 @@
 
 import SwiftUI
 
+// Protocol used in all viewModels that can add items to Firestore collection
+@MainActor
+protocol AddItem {
+    func clearInputFields()
+    func addItem()
+}
+
+// Used in all viewModels that fetch data from Firestore
+@MainActor
+protocol LoadData {
+    func loadData() async
+}
+
+// Used in all viewModels that update values after async tasks
+@MainActor
+protocol UpdateValues {
+    func updateValues()
+}
+
+
+
 // Base viewModel that all viewModels inherit from
 open class BaseViewModel: ObservableObject {
     

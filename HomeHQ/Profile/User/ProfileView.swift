@@ -13,7 +13,7 @@ struct ProfileView: View {
     @Binding var showSignInView: Bool
     @StateObject var viewModel = ProfileViewModel()
     
-    // Contains
+    //MARK: View
     var body: some View {
         ZStack {
             Color("ButtonBackground")
@@ -80,11 +80,12 @@ struct ProfileView: View {
         }
         // Async task to load current user from Firestore
         .task {
-            await viewModel.loadCurrentUser()
+            await viewModel.loadData()
     }
         .navigationTitle("User Profile")
     }
     
+    //MARK: View Components
     // Variable below are basic view components
     var userNameTextField: some View {
         VStack(alignment: .leading) {

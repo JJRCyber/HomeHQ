@@ -9,7 +9,7 @@ import Foundation
 
 // View model for Tab + Top bar view
 @MainActor
-final class TabBarViewModel: BaseViewModel {
+final class TabBarViewModel: BaseViewModel, LoadData, UpdateValues {
     
     @Published var homeName = ""
     @Published var user: UserProfile?
@@ -21,25 +21,29 @@ final class TabBarViewModel: BaseViewModel {
         super.init()
         loadingState = .loading
         Task {
-            await loadCurrentHome()
+            await loadData()
         }
     }
     
     // Loads currently logged in user and saves homeId to UserDefaults
     // Function is called every time view is initialised
-    func loadCurrentHome() async {
+    func loadData() async {
         do {
             let authDataResult = try authManager.getAuthenticatedUser()
             self.user = try await dataStore.userManager.getUser(userId: authDataResult.uid)
             UserDefaults.standard.set(self.user?.userId, forKey: "userId")
             if let homeId = self.user?.homeId {
                 self.home = try await dataStore.homeManager.getHome(homeId: homeId)
-                homeName = self.home?.name ?? ""
+                updateValues()
                 UserDefaults.standard.set(homeId, forKey: "homeId")
             }
             loadingState = .loaded
         } catch {
             loadingState = .error
         }
+    }
+    
+    func updateValues() {
+        homeName = self.home?.name ?? ""
     }
 }
