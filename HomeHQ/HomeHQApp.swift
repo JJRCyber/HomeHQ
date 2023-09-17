@@ -16,7 +16,7 @@ struct HomeHQApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TabBarView(showSignInView: .constant(false))
+            RootView()
         }
     }
 }
