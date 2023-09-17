@@ -14,6 +14,12 @@ These accounts are all connected to a demo home so have items already added into
 
 New accounts can be created but they will need to join or create a home before they have access to the majority of features. The join home feature relies on a QR scanning library which is not accessible in the simulator, instead a prompt will be displayed that will join you to the demo home.
 
+************************Disclaimers:************************
+
+- Firebase Authentication code was written previously to this subject. These files have been commented to mention this.
+- Logo image was created using Midjourney AI image generator.
+- Sign In with Apple will not work when building app as it requires my Apple Developer account to sign the app when building.
+
 ### Overview
 
 The overarching idea for the app I have built is to make managing a house hold easier by having a centralised place to share information, tasks, notices and costs. I found that living in a share house myself I was using multiple apps to manage tasks such as cost splitting, household reminders, shared shopping lists and notifying other house members of important information such as house maintenance or repairs.
