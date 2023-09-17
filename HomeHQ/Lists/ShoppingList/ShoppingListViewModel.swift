@@ -74,7 +74,6 @@ class ShoppingListViewModel: BaseViewModel, AddItem, LoadData {
                         self.deleteItem(at: currentIndex)
                     }
                 }
-
             }
         }
     }

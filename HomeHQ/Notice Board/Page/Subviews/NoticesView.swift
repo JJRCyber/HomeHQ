@@ -74,7 +74,7 @@ struct NoticesView: View {
             } label: {
                 Image(systemName: "plus")
                     .foregroundColor(Color("PrimaryText"))
-
+                
             }
         }
         .padding(.horizontal)

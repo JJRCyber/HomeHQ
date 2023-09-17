@@ -54,7 +54,7 @@ final class HomeProfileViewModel: BaseViewModel, LoadData, UpdateValues {
             // This indicates the user has not joined a home
             loadingState = .loaded
         }
-
+        
     }
     
     // Loads values once the home has been loaded
@@ -185,9 +185,9 @@ final class HomeProfileViewModel: BaseViewModel, LoadData, UpdateValues {
                 showError = true
                 errorMessage = error.localizedDescription
             }
-
+            
         }
-       
+        
     }
     
     // Generates QR code from homeId to display on addMember sheet

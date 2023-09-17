@@ -19,13 +19,12 @@ struct QRScanView: View {
                     .font(.headline)
                     .foregroundColor(Color("PrimaryText"))
                     .padding()
+                
                 // Displays code scanner view - this does not work on simulator due to no camera access so it just returns
                 // the simulated data. This will join the demo home but in real world would return whatever homeId the QR contains
                 CodeScannerView(codeTypes: [.qr], simulatedData: "98FABB8E-CDB9-4D6C-B145-E79C75DD042D", completion: completion)
             }
         }
-
-
     }
 }
 

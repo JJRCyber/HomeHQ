@@ -38,7 +38,13 @@ struct ForgotPasswordView: View {
                     .foregroundColor(Color("PrimaryText"))
                     .font(.subheadline)
                 TextField("Email...", text: $viewModel.email)
-                
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color("ButtonBackground"))
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+                    .textContentType(.emailAddress)
+                    .textInputAutocapitalization(.never)
                 Button {
                     Task {
                         do {

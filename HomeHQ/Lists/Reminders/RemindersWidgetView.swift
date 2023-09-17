@@ -25,7 +25,7 @@ struct RemindersWidgetView: View {
             .foregroundColor(Color("SecondaryText"))
         }
         
-
+        
         
     }
 }

@@ -15,7 +15,7 @@ struct AuthDataResultModel {
     let uid: String
     let email: String
     let photoUrl: String?
-
+    
     init(user: User) {
         self.uid = user.uid
         self.email = user.email ?? ""
@@ -31,17 +31,17 @@ enum AuthProviders: String {
 
 
 final class AuthenticationManager {
-
+    
     // Shared instance of class is declared to be used across application
     static let shared = AuthenticationManager()
     private init() { }
-
+    
     // Try to retrieve the current user from local storage else throw an error
     func getAuthenticatedUser() throws -> AuthDataResultModel {
         guard let user = Auth.auth().currentUser else {
             throw ApplicationError.userNotRetrieved
         }
-
+        
         return AuthDataResultModel(user: user)
     }
     
@@ -61,7 +61,7 @@ final class AuthenticationManager {
         
         return providers
     }
-
+    
     // Signs out the current account
     func signOut() throws {
         try Auth.auth().signOut()
@@ -80,7 +80,7 @@ extension AuthenticationManager {
         let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)
         return AuthDataResultModel(user: authDataResult.user)
     }
-
+    
     // Sign in with email and password
     @discardableResult
     func signInUser(email: String, password: String) async throws -> AuthDataResultModel {
@@ -96,7 +96,7 @@ extension AuthenticationManager {
 
 // MARK: SIGN IN SSO
 extension AuthenticationManager {
-   
+    
     // Sign in with Google using credential token
     @discardableResult
     func signInWithGoogle(tokens: GoogleSignInResultModel) async throws -> AuthDataResultModel {
@@ -112,7 +112,7 @@ extension AuthenticationManager {
                                                        fullName: tokens.fullName)
         return try await signInWithCredential(credential: credential)
     }
-
+    
     // Sign in with crdential function used with Google
     func signInWithCredential(credential: AuthCredential) async throws -> AuthDataResultModel {
         let authDataResult = try await Auth.auth().signIn(with: credential)

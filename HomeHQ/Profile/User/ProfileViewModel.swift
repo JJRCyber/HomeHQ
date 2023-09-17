@@ -20,7 +20,7 @@ final class ProfileViewModel: BaseViewModel, LoadData, UpdateValues {
     @Published var email: String = ""
     @Published var mobile: String = ""
     
-
+    
     // Loads current user from Firestore
     func loadData() async {
         loadingState = .loading
@@ -34,7 +34,7 @@ final class ProfileViewModel: BaseViewModel, LoadData, UpdateValues {
             showError = true
             errorMessage = error.localizedDescription
         }
-
+        
     }
     
     // Updates text fields with values from Firestore user profile
@@ -59,7 +59,6 @@ final class ProfileViewModel: BaseViewModel, LoadData, UpdateValues {
                 showError = true
                 errorMessage = error.localizedDescription
             }
-
         }
     }
     

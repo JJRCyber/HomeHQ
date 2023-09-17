@@ -26,7 +26,7 @@ struct WeekPlannerView: View {
                     Divider()
                 }
             }
-
+            
         }
         .frame(maxHeight: 450)
         .frame(maxWidth: .infinity)

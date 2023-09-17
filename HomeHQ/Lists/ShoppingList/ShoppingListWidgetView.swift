@@ -38,7 +38,7 @@ struct ShoppingListWidgetView: View {
             case .error:
                 MissingHomeView()
             }
-
+            
         }
         .task {
             await viewModel.loadData()
