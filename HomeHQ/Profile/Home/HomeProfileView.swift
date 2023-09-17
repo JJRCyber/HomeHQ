@@ -38,12 +38,11 @@ struct HomeProfileView: View {
                                             .font(.caption)
                                         TextField("Enter a name for your home", text: $viewModel.homeName)
                                     }
-                                    updateHomeNameButton
-                                        .listRowSeparator(.hidden)
                                 }
-                                .listRowBackground(Color.clear)
-                                
-                                // Loops over and displays all members in home
+                            }
+                            updateHomeNameButton
+                            // Loops over and displays all members in home
+                            List {
                                 Section(header: Text("Home Members")) {
                                     ForEach(viewModel.homeMembers, id: \.self) { member in
                                         Text(member)
