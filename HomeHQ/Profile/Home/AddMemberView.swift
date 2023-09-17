@@ -35,7 +35,7 @@ struct AddMemberView: View {
                     .padding(.horizontal)
             }
         }
-
+        
     }
 }
 

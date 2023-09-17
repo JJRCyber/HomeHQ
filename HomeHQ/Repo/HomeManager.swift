@@ -117,7 +117,7 @@ final class HomeManager {
         try await homeDocument(homeId: homeId).updateData(data)
         try await UserManager.shared.removeHomeId(userId: userId)
     }
-
+    
 }
 
 //MARK: Shopping List

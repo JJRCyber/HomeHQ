@@ -27,8 +27,6 @@ struct WeekPlannerRowView: View {
                     .foregroundColor(Color("Highlight"))
             }
             Spacer()
-            Image(systemName: "chevron.right")
-                .padding(.horizontal)
         }
         .frame(height: 40)
     }

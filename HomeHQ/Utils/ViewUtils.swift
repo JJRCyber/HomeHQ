@@ -14,7 +14,7 @@ import SwiftUI
 final class ViewUtils {
     static let shared = ViewUtils()
     private init() { }
-
+    
     // Gets the top most view controller which is required for Sign In With Google flow
     // Compiler warning can be ignored as app does not support multiple scenes
     // Use of this code to be replaced when Firebase provides a SwiftUI compatible Sign In With Google Flow
@@ -34,10 +34,10 @@ final class ViewUtils {
         }
         return controller
     }
-
+    
     struct NavigationConfigurator: UIViewControllerRepresentable {
         var configure: (UINavigationController) -> Void = { _ in }
-
+        
         func makeUIViewController(context: UIViewControllerRepresentableContext<NavigationConfigurator>) -> UIViewController {
             UIViewController()
         }
@@ -46,6 +46,6 @@ final class ViewUtils {
                 self.configure(nc)
             }
         }
-
+        
     }
 }

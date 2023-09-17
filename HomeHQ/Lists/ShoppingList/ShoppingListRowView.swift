@@ -46,7 +46,7 @@ struct ShoppingListRowView: View {
                 Spacer()
             }
             // Prevents overlay from being tapped so user can "undo" the completion
-            .allowsHitTesting(false)
+                .allowsHitTesting(false)
         )
         .frame(maxWidth: .infinity)
     }
@@ -58,9 +58,9 @@ struct ShoppingListRowView: View {
             Spacer()
             minusButton
             Text("\(item.quantity)")
-                    .font(.callout)
-                    .foregroundColor(Color("PrimaryText"))
-                    .frame(width: 20)
+                .font(.callout)
+                .foregroundColor(Color("PrimaryText"))
+                .frame(width: 20)
             plusButton
             Spacer()
         }

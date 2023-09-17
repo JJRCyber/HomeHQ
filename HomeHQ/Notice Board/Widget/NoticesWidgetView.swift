@@ -21,7 +21,7 @@ struct NoticesWidgetView: View {
                 Spacer()
             }
             
-            // Switch on view model loading state 
+            // Switch on view model loading state
             switch viewModel.loadingState {
             case .idle, .loading:
                 LoadingView()
@@ -42,11 +42,11 @@ struct NoticesWidgetView: View {
                         .foregroundColor(Color("PrimaryText"))
                     Spacer()
                 }
-
+                
             case .error:
                 MissingHomeView()
             }
-
+            
         }
         .task {
             await viewModel.loadData()

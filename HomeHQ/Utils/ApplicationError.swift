@@ -21,7 +21,7 @@ enum SignInErrors: LocalizedError {
     case passwordsDontMatch(String)
     case googleSignInError(String)
     case AppleSignInError(String)
-
+    
     var errorDescription: String? {
         switch self {
         case .fieldsNotComplete(let message):
@@ -33,6 +33,6 @@ enum SignInErrors: LocalizedError {
         case .AppleSignInError(let message):
             return message
         }
-
+        
     }
 }

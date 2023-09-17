@@ -47,7 +47,7 @@ struct HomeProfileView: View {
                                 Section(header: Text("Home Members")) {
                                     ForEach(viewModel.homeMembers, id: \.self) { member in
                                         Text(member)
-
+                                        
                                     }
                                 }
                                 .listRowBackground(Color.clear)

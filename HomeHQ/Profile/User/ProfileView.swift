@@ -75,13 +75,13 @@ struct ProfileView: View {
             case .error:
                 MissingHomeView()
             }
-
-
+            
+            
         }
         // Async task to load current user from Firestore
         .task {
             await viewModel.loadData()
-    }
+        }
         .navigationTitle("User Profile")
     }
     

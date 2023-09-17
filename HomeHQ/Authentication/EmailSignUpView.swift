@@ -39,6 +39,7 @@ struct EmailSignUpView: View {
                     .cornerRadius(10)
                     .padding(.horizontal)
                     .textContentType(.emailAddress)
+                    .textInputAutocapitalization(.never)
                     .overlay(
                         Group(content: {
                         RoundedRectangle(cornerRadius: 10)
@@ -59,6 +60,7 @@ struct EmailSignUpView: View {
                     .cornerRadius(10)
                     .padding(.horizontal)
                     .textContentType(.newPassword)
+                    .textInputAutocapitalization(.never)
                     .overlay(
                         Group(content: {
                         RoundedRectangle(cornerRadius: 10)
@@ -80,6 +82,7 @@ struct EmailSignUpView: View {
                     .cornerRadius(10)
                     .padding(.horizontal)
                     .textContentType(.password)
+                    .textInputAutocapitalization(.never)
                     .overlay(
                         Group(content: {
                         RoundedRectangle(cornerRadius: 10)

@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct AddNoticeView: View {
-
+    
     @ObservedObject var viewModel: NoticePageViewModel
-
+    
     // View displayed as sheet to add notice
     var body: some View {
         ZStack {
@@ -20,29 +20,13 @@ struct AddNoticeView: View {
                 menuBar
                 // Scrollview used to prevent keyboard avoidance
                 ScrollView {
-                        titleTextField
-                        Text("Description")
-                            .font(.callout)
-                            .padding(.horizontal)
-                            .foregroundColor(Color("PrimaryText"))
-                        descriptionTextField
-                        DatePicker(selection: $viewModel.noticeDate, displayedComponents: .date) {
-                            Text("Notice Date")
-                        }
-                        .datePickerStyle(.graphical)
-                        .foregroundColor(Color("PrimaryText"))
-                        .padding()
-                        Stepper(value: $viewModel.noticeImportance, in: 1...4) {
-                            HStack {
-                                Text("Importance")
-                                ImportanceView(importance: viewModel.noticeImportance)
-                            }
-                        }
-                        .padding(.horizontal)
-                        Spacer()
+                    titleTextField
+                    descriptionTextField
+                    datePicker
+                    importanceStepper
+                    Spacer()
                 }
             }
-
         }
     }
     
@@ -60,7 +44,7 @@ struct AddNoticeView: View {
             Text("New Notice")
                 .font(.headline)
                 .foregroundColor(Color("PrimaryText"))
-                .padding()
+                .padding(.trailing)
             Spacer()
             Button {
                 viewModel.addItem()
@@ -70,7 +54,7 @@ struct AddNoticeView: View {
                     .foregroundColor(Color("PrimaryText"))
                     .padding()
             }
-
+            
         }
     }
     
@@ -86,13 +70,39 @@ struct AddNoticeView: View {
     
     // Text field for description
     var descriptionTextField: some View {
-        TextEditor(text: $viewModel.noticeDescription)
-            .padding()
-            .frame(maxWidth: .infinity)
-            .frame(height: 120)
-            .background()
-            .cornerRadius(10)
-            .padding(.horizontal)
+        VStack {
+            Text("Description")
+                .font(.callout)
+                .padding(.horizontal)
+                .foregroundColor(Color("PrimaryText"))
+            TextEditor(text: $viewModel.noticeDescription)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .frame(height: 120)
+                .background()
+                .cornerRadius(10)
+                .padding(.horizontal)
+        }
+        
+    }
+    
+    var datePicker: some View {
+        DatePicker(selection: $viewModel.noticeDate, displayedComponents: .date) {
+            Text("Notice Date")
+        }
+        .datePickerStyle(.graphical)
+        .foregroundColor(Color("PrimaryText"))
+        .padding()
+    }
+    
+    var importanceStepper: some View {
+        Stepper(value: $viewModel.noticeImportance, in: 1...4) {
+            HStack {
+                Text("Importance")
+                ImportanceView(importance: viewModel.noticeImportance)
+            }
+        }
+        .padding(.horizontal)
     }
 }
 

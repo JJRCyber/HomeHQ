@@ -37,6 +37,7 @@ struct EmailSignInView: View {
                     .cornerRadius(10)
                     .padding(.horizontal)
                     .textContentType(.emailAddress)
+                    .textInputAutocapitalization(.never)
                 SecureField("Password...", text: $viewModel.password)
                     .padding()
                     .frame(maxWidth: .infinity)
@@ -44,6 +45,7 @@ struct EmailSignInView: View {
                     .cornerRadius(10)
                     .padding(.horizontal)
                     .textContentType(.password)
+                    .textInputAutocapitalization(.never)
 
                 // When button is pressed call signIn function and display any errors
                 // with alert popup
